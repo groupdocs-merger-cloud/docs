@@ -46,13 +46,13 @@ PM> Install-Package GroupDocs.Merger-Cloud
 Complete source code of GroupDocs.Merger Cloud SDK for .Net is freely available on the [GitHub](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-dotnet).
 {{< /alert >}}
 
-{{< alert style="info" >}}Please see the GroupDocs.Viewer Cloud SDK for .NET [Examples here](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-dotnet-samples/tree/master/Examples).{{< /alert >}}
+{{< alert style="info" >}}Please see the GroupDocs.Merger Cloud SDK for .NET [Examples here](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-dotnet-samples/tree/master/Examples).{{< /alert >}}
 
 
  PHP
 **GroupDocs.Merger Cloud SDK for PHP** allows you to incorporate GroupDocs.Merger Cloud services in your PHP applications quickly and easily.
 
-groupdocs-viewer-cloud is available on Packagist as the [groupdocs-merger-cloud](https://packagist.org/packages/groupdocscloud/groupdocs-merger-cloud) package. Run the following command:
+groupdocs-merger-cloud is available on Packagist as the [groupdocs-merger-cloud](https://packagist.org/packages/groupdocscloud/groupdocs-merger-cloud) package. Run the following command:
 
 ```html 
 

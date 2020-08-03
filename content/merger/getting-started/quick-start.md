@@ -21,7 +21,7 @@ Creating an account is very simple. Go to [https://dashboard.groupdocs.cloud](h
 
 Before you can make any requests to GroupDocs Cloud API you need to get APP SID and APP key (secret key). This will be used to invoke the GroupDocs Cloud API. 
 
-You can get it from the default Application or create a new Application from [My Apps tab of GroupDocs Cloud Dashboard]({{< ref "viewer/getting-started/create-new-app-and-get-app-key-and-sid.md" >}})).
+You can get it from the default Application or create a new Application from [My Apps tab of GroupDocs Cloud Dashboard]({{< ref "merger/getting-started/create-new-app-and-get-app-key-and-sid.md" >}})).
 
 # Install the SDK of your choice #
 
