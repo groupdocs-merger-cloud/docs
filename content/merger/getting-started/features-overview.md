@@ -8,9 +8,7 @@ description: ""
 keywords: ""
 ---
 
-# Overview #
-
-GroupDocs.Merger Cloud is a REST API that allows you to join multiple documents and manipulate single document structure across a wide range of . Below, the shortlist of possible actions:
+GroupDocs.Merger Cloud is a REST API that allows you to join multiple documents and manipulate single document structure across a wide range of document formats. Below, the shortlist of possible actions:
 
 ## Document operations ##
 
@@ -21,9 +19,9 @@ Joined documents should be of the same format.
 
 ### Split Document ###
 
-The** split** operation allows dividing a source document to several resultant documents.
+The **split** operation allows dividing a source document to several resultant documents.
 
-### Document Preview  ###
+### Document Preview ###
 
 The document preview feature allows generating image representations of document pages. This may be helpful for a better understanding of document content and its structure. Preview can be generated for all document pages (by default) or for specific page numbers or page range.
 
@@ -41,7 +39,7 @@ Supported image formats for document preview are:
 
 ### Remove Pages ###
 
-**RemovePages **operation feature provides an ability to remove a single page or a collection of specific page numbers from the source document.
+**RemovePages** operation feature provides an ability to remove a single page or a collection of specific page numbers from the source document.
 
 ### Rotate Pages ###
 
@@ -49,7 +47,7 @@ Supported image formats for document preview are:
 
 ### Swap Page ###
 
-**SwapPages **operation allows swapping two pages of positions within the source document. The result is a new document where two pages have their positions exchanged.
+**SwapPages** operation allows swapping two pages of positions within the source document. The result is a new document where two pages have their positions exchanged.
 
 ### Extract Pages ###
 
@@ -57,7 +55,7 @@ Supported image formats for document preview are:
 
 ### Change Pages Orientation ###
 
-**ChangeOrientation **operation lets you set page orientation (portrait, landscape) for specific or all pages of the document.
+**ChangeOrientation** operation lets you set page orientation (portrait, landscape) for specific or all pages of the document.
 
 ## Document security operations ##
 
@@ -87,21 +85,21 @@ This may be quite useful for generating document previews.
 
 # Security and Authentication #
 
-The GroupDocs.Merger Cloud API is secured and requires authentication. Two keys AppSID and AppKey are required for Authentication which can be created at the [Dashboard](http://dashboard.groupdocs.cloud/). Check [Authenticating API Requests]({{< ref "merger/getting-started/json-web-token-authentication.md" >}})) article for the complete example.
-|---|---|---|---
+The GroupDocs.Merger Cloud API is secured and requires authentication. Two keys AppSID and AppKey are required for Authentication which can be created at the [Dashboard](http://dashboard.groupdocs.cloud/). Check [Authenticating APIRequests]({{< ref "merger/getting-started/json-web-token-authentication.md" >}}) article for the complete example.
 
-# SDKs #
+## SDKs ##
 
 Check out our GitHub [repository](https://github.com/groupdocs-merger-cloud) for a complete list of GroupDocs.Merger SDKs along with working examples, to get you started in no time.
-|---|---
 
 At the moment following SDKs are provided:
 
 * .NET ([Sources](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-dotnet), [NuGet Package](https://www.nuget.org/packages/GroupDocs.Merger-Cloud))
-|---|---|---|---
 * Java ([Sources](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-java), [Jar](https://repository.groupdocs.cloud/webapp/#/artifacts/browse/tree/General/repo/com/groupdocs/groupdocs-merger-cloud))
+* PHP ([Sources](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-php)
+* Node.js ([Sources](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-node)
+* Python ([Sources](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-python)
+* Ruby ([Sources](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-ruby)
 
 # API Explorer #
 
 The easiest way to try out our API right away in your browser! With the [GroupDocs Cloud API explorer](https://apireference.groupdocs.cloud/merger/). This is a collection of Swagger documentation for the GroupDocs Cloud APIs. You can get information about all the resources in the API. It also provides testing and interactivity to our API endpoint documentation.
-|---|---

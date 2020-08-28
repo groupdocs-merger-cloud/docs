@@ -14,7 +14,7 @@ For details on how to create a new account please check to [Create a new Account
 
 # Apply App SID and App Key #
 
-For details on how to get App Key and App SID please check to [Create New App and Get App Key and SID]({{< ref "total/getting-started/ui-topics/create-new-app-and-get-app-key-and-sid.md" >}})).
+For details on how to get App Key and App SID please check to [Create New App and Get App Key and SID]({{< ref "total/getting-started/ui-topics/create-new-app-and-get-app-key-and-sid.md" >}}).
 
 # Free Plan #
 
@@ -24,10 +24,7 @@ Our free plan allows you to use Cloud APIs as you would normally. It only applie
 
 The free plan simply becomes a paid plan when you upgrade your plan for any paid account. Please follow the below steps to upgrade your free plan to [a paid plan](https://purchase.groupdocs.cloud/pricing).
 
-1- Login to [https://dashboard.groupdocs.cloud/#/](https://dashboard.groupdocs.cloud/#/)
-
-2- Click on [Upgrade Plan](https://dashboard.groupdocs.cloud/#/plan)
-
-3- Follow instructions after clicking on [Buy Now](https://dashboard.groupdocs.cloud/#/plan/subscribe/320)
-
-4- Same App Key and App SID will be used for the free plan as well
+1. Login to [https://dashboard.groupdocs.cloud/#/](https://dashboard.groupdocs.cloud/#/)
+2. Click on [Upgrade Plan](https://dashboard.groupdocs.cloud/#/plan)
+3. Follow instructions after clicking on [Buy Now](https://dashboard.groupdocs.cloud/#/plan/subscribe/320)
+4. Same App Key and App SID will be used for the free plan as well.

@@ -7,6 +7,3 @@ weight: 1
 description: ""
 keywords: ""
 ---
-
-### Release Notes - 2019 ###
-

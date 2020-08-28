@@ -8,9 +8,9 @@ description: ""
 keywords: ""
 ---
 
-# Split the Document Into Several One-Page Documents #
+## Introduction ##
 
-GroupDocs.Merger Cloud REST API provides an ability to split the document into several one-page documents by providing exact page numbers. 
+GroupDocs.Merger Cloud REST API provides an ability to split the document into several one-page documents by providing exact page numbers.
 The following example demonstrates how to split the document into three one-page documents with 3rd, 6th, and 8th pages. As a result, these documents will be produced:
 
 |Document name|Page numbers
@@ -25,14 +25,13 @@ The following example demonstrates how to split the document into three one-page
 
 HTTP POST ~/join
 
- ```
+```
 
-[Swagger UI](https://apireference.groupdocs.cloud/merger/#/Document/Join) lets you call this REST API directly from the browser. 
-|---|---
+[Swagger UI](https://apireference.groupdocs.cloud/merger/#/Document/Join) lets you call this REST API directly from the browser.
 
-## cURL Example ##
+### cURL Example ###
 
- Request
+Request
 
 ```html
 
@@ -40,7 +39,7 @@ HTTP POST ~/join
 * Please get your App Key and App SID from https://dashboard.groupdocs.cloud/#/apps. Kindly place App Key in "client_secret" and App SID in "client_id" argument.
 curl -v "https://api.groupdocs.cloud/connect/token" \
 -X POST \
--d "grant_type#client_credentials&#x26;client_id#xxxx&#x26;client_secret#xxxx" \
+-d "grant_type=client_credentials&client_id=xxxx&client_secret=xxxx" \
 -H "Content-Type: application/x-www-form-urlencoded" \
 -H "Accept: application/json"
 
@@ -70,9 +69,9 @@ curl -v "https://api.groupdocs.cloud/v1.0/merger/join" \
     ],
     'OutputPath': 'output/joined.docx'
 }"
- ```
+```
 
- Response
+Response
 
 ```html
 
@@ -80,43 +79,41 @@ curl -v "https://api.groupdocs.cloud/v1.0/merger/join" \
 {
   "path": "Output/joined.docx"
 }
- ```
+```
 
-## SDKs ##
+### SDKs ###
 
-Using an SDK (API client) is the quickest way for a developer to speed up the development. An SDK takes care of a lot of low-level details of making requests and handling responses and lets you focus on writing code specific to your particular project. Check out our [GitHub repository](https://github.com/groupdocs-merger-cloud) for a complete list of GroupDocs.Merger Cloud SDKs along with working examples, to get you started in no time. Please check the article to learn how to add an SDK to your project.
-|---|---
+Using an SDK (API client) is the quickest way for a developer to speed up the development. An SDK takes care of a lot of low-level details of makingRequests and handlingResponses and lets you focus on writing code specific to your particular project. Check out our [GitHub repository](https://github.com/groupdocs-merger-cloud) for a complete list of GroupDocs.Merger Cloud SDKs along with working examples, to get you started in no time. Please check the article to learn how to add an SDK to your project.
 
 ### Split the Document Into Several One-Page Documents ###
 
- C#
+C#
 
 {{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_SplitToSinglePages.cs >}}
 
- Java
+Java
 
- 
 {{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_SplitToSinglePages.java >}}
 
- PHP
+PHP
 
 {{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_SplitToSinglePages.php >}}
 
- Ruby
+Ruby
 
 {{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_SplitToSinglePages.rb >}}
 
- Node.js
+Node
 
 {{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_SplitToSinglePages.js >}}
 
- Python
+Python
 
 {{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_SplitToSinglePages.py >}}
 
-# Split the Document Into Several One-Page Documents by Providing Exact Page Numbers #
+## Split the Document Into Several One-Page Documents by Providing Exact Page Numbers ##
 
-GroupDocs.Merger Cloud REST API provides an ability to split the document into several one-page documents by specifying only start/end page numbers. 
+GroupDocs.Merger Cloud REST API provides an ability to split the document into several one-page documents by specifying only start/end page numbers.
 The following example demonstrates how to split the document into several one-page documents starting from 3rd and ending at 7th-page number. As a result, these documents will be produced:
 
 |Document name|Page numbers
@@ -124,8 +121,8 @@ The following example demonstrates how to split the document into several one-pa
 |document_0|3
 |document_1|4
 |document_2|5
-|document_3     |6
-|document_4  |7
+|document_3|6
+|document_4|7
 
 ## Resource URI ##
 
@@ -133,18 +130,17 @@ The following example demonstrates how to split the document into several one-pa
 
 HTTP POST ~/join
 
- ```
+```
 
-[Swagger UI](https://apireference.groupdocs.cloud/merger/#/Document/Join) lets you call this REST API directly from the browser. 
-|---|---
+[Swagger UI](https://apireference.groupdocs.cloud/merger/#/Document/Join) lets you call this REST API directly from the browser.
 
-## cURL Example ##
+### cURL Example ###
 
- Request
+Request
 
 ```html
 
-* Response will contain storage path to resultant documents
+*Response will contain storage path to resultant documents
 {
   "documents": [
     {
@@ -165,52 +161,50 @@ HTTP POST ~/join
   ]
 }
 
- ```
+```
 
- Response
+Response
 
 ```html
-* Response will contain storage path to resultant document
+*Response will contain storage path to resultant document
 {
   "path": "Output/joined.docx"
 }
- ```
+```
 
-## SDKs ##
+### SDKs ###
 
-Using an SDK (API client) is the quickest way for a developer to speed up the development. An SDK takes care of a lot of low-level details of making requests and handling responses and lets you focus on writing code specific to your particular project. Check out our [GitHub repository](https://github.com/groupdocs-merger-cloud) for a complete list of GroupDocs.Merger Cloud SDKs along with working examples, to get you started in no time. Please check article to learn how to add an SDK to your project.
-|---|---
+Using an SDK (API client) is the quickest way for a developer to speed up the development. An SDK takes care of a lot of low-level details of makingRequests and handlingResponses and lets you focus on writing code specific to your particular project. Check out our [GitHub repository](https://github.com/groupdocs-merger-cloud) for a complete list of GroupDocs.Merger Cloud SDKs along with working examples, to get you started in no time. Please check article to learn how to add an SDK to your project.
 
 ### Split the Document Into Several One-Page Documents by Providing Exact Page Numbers ###
 
- C#
+C#
 
- 
 {{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_SplitToSinglePagesByRange.cs >}}
 
- Java
+Java
 
 {{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_SplitToSinglePagesByRange.java >}}
 
- PHP
+PHP
 
 {{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_SplitToSinglePagesByRange.php >}}
 
- Ruby
+Ruby
 
 {{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_SplitToSinglePagesByRange.rb >}}
 
- Node.js
+Node
 
 {{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_SplitToSinglePagesByRange.js >}}
 
- Python
+Python
 
 {{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_SplitToSinglePagesByRange.py >}}
 
-# Split the Document Into Several One-Page Documents by Applying Filter #
+## Split the Document Into Several One-Page Documents by Applying Filter ##
 
-GroupDocs.Merger Cloud REST API provides an ability to filter even/odd pages while splitting the document into several one-page documents by specifying only start/end page numbers 
+GroupDocs.Merger Cloud REST API provides an ability to filter even/odd pages while splitting the document into several one-page documents by specifying only start/end page numbers
 The following example demonstrates how to document several one-page documents for odd pages starting from 3rd and ending at 7th-page number. As a result, these documents will be produced:
 
 |Document name
@@ -226,14 +220,13 @@ The following example demonstrates how to document several one-page documents fo
 
 HTTP POST ~/join
 
- ```
+```
 
-[Swagger UI](https://apireference.groupdocs.cloud/merger/#/Document/Join) lets you call this REST API directly from the browser. 
-|---|---
+[Swagger UI](https://apireference.groupdocs.cloud/merger/#/Document/Join) lets you call this REST API directly from the browser.
 
-## cURL Example ##
+### cURL Example ###
 
- Request
+Request
 
 ```html
 
@@ -241,7 +234,7 @@ HTTP POST ~/join
 * Please get your App Key and App SID from https://dashboard.groupdocs.cloud/#/apps. Kindly place App Key in "client_secret" and App SID in "client_id" argument.
 curl -v "https://api.groupdocs.cloud/connect/token" \
 -X POST \
--d "grant_type#client_credentials&#x26;client_id#xxxx&#x26;client_secret#xxxx" \
+-d "grant_type=client_credentials&client_id=xxxx&client_secret=xxxx" \
 -H "Content-Type: application/x-www-form-urlencoded" \
 -H "Accept: application/json"
 
@@ -261,12 +254,13 @@ curl -v "https://api.groupdocs.cloud/v1.0/merger/split" \
       'OutputPath': 'output/split-by-start-end-numbers-with-filter'
  }"
 
- ```
+```
 
- Response
+Response
+
 ```html
 
-* Response will contain storage path to resultant documents
+*Response will contain storage path to resultant documents
 {
   "documents": [
     {
@@ -280,43 +274,41 @@ curl -v "https://api.groupdocs.cloud/v1.0/merger/split" \
     }
   ]
 }
- ```
+```
 
-## SDKs ##
+### SDKs ###
 
-Using an SDK (API client) is the quickest way for a developer to speed up the development. An SDK takes care of a lot of low-level details of making requests and handling responses and lets you focus on writing code specific to your particular project. Check out our [GitHub repository](https://github.com/groupdocs-merger-cloud) for a complete list of GroupDocs.Merger Cloud SDKs along with working examples, to get you started in no time. Please check the article to learn how to add an SDK to your project.
-|---|---
+Using an SDK (API client) is the quickest way for a developer to speed up the development. An SDK takes care of a lot of low-level details of makingRequests and handlingResponses and lets you focus on writing code specific to your particular project. Check out our [GitHub repository](https://github.com/groupdocs-merger-cloud) for a complete list of GroupDocs.Merger Cloud SDKs along with working examples, to get you started in no time. Please check the article to learn how to add an SDK to your project.
 
 ### Split the Document Into Several One-Page Documents by Applying Filter ###
 
- C#
+C#
 
- 
 {{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_SplitToSinglePagesByRangeWithFilter.cs >}}
 
- Java
+Java
 
 {{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_SplitToSinglePagesByRangeWithFilter.java >}}
 
- PHP
+PHP
 
 {{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_SplitToSinglePagesByRangeWithFilter.php >}}
 
- Ruby
+Ruby
 
 {{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_SplitToSinglePagesByRangeWithFilter.rb >}}
 
- Node.js
+Node
 
 {{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_SplitToSinglePagesByRangeWithFilter.js >}}
 
- Python
+Python
 
 {{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_SplitToSinglePagesByRangeWithFilter.py >}}
 
-# Split the Document to Several Multi-Page Documents #
+## Split the Document to Several Multi-Page Documents ##
 
-GroupDocs.Merger Cloud REST API provides an ability to split the document into several one-page documents by providing exact page numbers. 
+GroupDocs.Merger Cloud REST API provides an ability to split the document into several one-page documents by providing exact page numbers.
 The following example demonstrates how to split the document into three one-page documents with 3rd, 6th, and 8th pages. As a result, these documents will be produced:
 
 |Document name|Page numbers
@@ -332,21 +324,21 @@ The following example demonstrates how to split the document into three one-page
 
 HTTP POST ~/join
 
- ```
+```
 
-[Swagger UI](https://apireference.groupdocs.cloud/merger/#/Document/Join) lets you call this REST API directly from the browser. 
-|---|---
+[Swagger UI](https://apireference.groupdocs.cloud/merger/#/Document/Join) lets you call this REST API directly from the browser.
 
-## cURL Example ##
+### cURL Example ###
 
- Request
+Request
+
 ```html
 
-}* First get JSON Web Token
+* First get JSON Web Token
 * Please get your App Key and App SID from https://dashboard.groupdocs.cloud/#/apps. Kindly place App Key in "client_secret" and App SID in "client_id" argument.
 curl -v "https://api.groupdocs.cloud/connect/token" \
 -X POST \
--d "grant_type#client_credentials&#x26;client_id#xxxx&#x26;client_secret#xxxx" \
+-d "grant_type=client_credentials&client_id=xxxx&client_secret=xxxx" \
 -H "Content-Type: application/x-www-form-urlencoded" \
 -H "Accept: application/json"
 
@@ -364,12 +356,13 @@ curl -v "https://api.groupdocs.cloud/v1.0/merger/split" \
     'OutputPath': '/output/split-to-multipage-document'
  }"
 
- ```
+```
 
- Response
+Response
+
 ```html
 
-* Response will contain storage path to resultant documents
+*Response will contain storage path to resultant documents
 
 {
   "documents": [
@@ -387,36 +380,34 @@ curl -v "https://api.groupdocs.cloud/v1.0/merger/split" \
     }
   ]
 }
- ```
+```
 
-## SDKs ##
+### SDKs ###
 
-Using an SDK (API client) is the quickest way for a developer to speed up the development. An SDK takes care of a lot of low-level details of making requests and handling responses and lets you focus on writing code specific to your particular project. Check out our [GitHub repository](https://github.com/groupdocs-merger-cloud) for a complete list of GroupDocs.Merger Cloud SDKs along with working examples, to get you started in no time. Please check  article to learn how to add an SDK to your project.
-|---|---
+Using an SDK (API client) is the quickest way for a developer to speed up the development. An SDK takes care of a lot of low-level details of makingRequests and handlingResponses and lets you focus on writing code specific to your particular project. Check out our [GitHub repository](https://github.com/groupdocs-merger-cloud) for a complete list of GroupDocs.Merger Cloud SDKs along with working examples, to get you started in no time. Please check  article to learn how to add an SDK to your project.
 
 ### Split the Document to Several Multi-Page Documents ###
 
- C#
+C#
 
 {{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_SplitToMultiPageDocuments.cs >}}
 
- Java
+Java
 
 {{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_SplitToMultiPageDocuments.java >}}
 
- PHP
+PHP
 
 {{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_SplitToMultiPageDocuments.php >}}
 
- Ruby
+Ruby
 
 {{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_SplitToMultiPageDocuments.rb >}}
 
- Node.js
+Node
 
 {{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_SplitToMultiPageDocuments.js >}}
 
- Python
+Python
 
 {{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_SplitToMultiPageDocuments.py >}}
-
