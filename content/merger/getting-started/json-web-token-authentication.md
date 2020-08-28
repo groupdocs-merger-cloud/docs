@@ -8,11 +8,6 @@ description: ""
 keywords: ""
 ---
 
-
-
-
-
-
 # What is a JSON Web Token (JWT)? #
 
 A JSON Web Token is used to send information that can be verified and trusted by means of a digital signature. It comprises a compact and URL-safe JSON object, which is cryptographically signed to verify its authenticity, and which can also be encrypted if the payload contains sensitive information.
@@ -43,7 +38,6 @@ The JWT standard follows the JSON Web Signature (JWS) specification to generate 
 
 ![](merger/images/JWT-Workflow.png)
 
-
 A browser or mobile client makes a request to the authentication server containing user App Key and App SID. The authentication server generates a new JWT access token and returns it to the client. On every request to a restricted resource, the client sends the access token in the Authorization header. The server then validates the token and, if it’s valid, returns the secure resource to the client.
 
 ## Applications ##
@@ -67,39 +61,26 @@ The endpoint acts as an authorization server and it verifies your credentials, i
 
 ### cURL Example ###
 
-
-
-
-
  Request
 
-```html 
+```html
 curl -v "https://api.groupdocs.cloud/connect/token" \
 -X POST \
 -d "grant_type#client_credentials&#x26;client_id#xxxx&#x26;client_secret#xxxx" \
 -H "Content-Type: application/x-www-form-urlencoded" \
 -H "Accept: application/json"
 
-
  ```
-
-
-
 
  Response
 
-```html 
+```html
 {
   "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE1NjM4NjI3MDEsImV4cCI6MTU2Mzk0OTEwMSwiaXNzIjoiaHR0cHM6Ly9hcGkuYXNwb3NlLmNsb3VkIiwiYXVkIjpbImh0dHBzOi8vYXBpLmFzcG9zZS5jbG91ZC9yZXNvdXJjZXMiLCJhcGkucGxhdGZvcm0iLCJhcGkucHJvZHVjdHMiXSwiY2xpZW50X2lkIjoiQjAxQTE1RTUtMUI4My00QjlBLThFQjMtMEYyQkZBNkFDNzY2IiwiY2xpZW50X2lkU3J2SWQiOiIiLCJzY29wZSI6WyJhcGkucGxhdGZvcm0iLCJhcGkucHJvZHVjdHMiXX0.EEEDV53yzJ48DE-NFrBa54HXLR9AHBPh9iRTEU9rH3F6uPQ2JwBrUN-DLmOKFmYCd14rj2JDyM36WE00YNrH6ZCyC8ce4ogc0JXupvUDC0aeFqUr2MFcxNhijPbi2uCC8jbXbT_Lj-cL7SScX9-e9WYbrk4VVlfw6hlP9U12nPH7TzpiG3NvBOPyK4mQNsrCcAe5O_ebkvjoSEx6u2VuEQNAFA5sJBzaeRoVG1IIhZ_rAE5BDzRLD67wQun34T3nBvi-ojW-5Ee3hXpeaqzdpzo_J5PUvBHaTbeQoK5b7_4YpCGXeV1Q6YtCZajGwIqUwiTx02Ubw1Kk2JBuiV1qEg",
   "expires_in": 86400,
   "token_type": "Bearer"
 }
  ```
-
-
-
-
-
 
 ## Call REST API ##
 
@@ -112,25 +93,18 @@ Now that you have the Bearer Token (access_token) generated using the applicatio
 
 ### cURL Example ###
 
-
-
-
-
  Request
 
-```html 
+```html
 curl -X GET "https://api.groupdocs.cloud/v2.0/merger/info?FilePath#words/four-pages.docx"
--H "accept: application/json" 
+-H "accept: application/json"
 -H "authorization: Bearer [Access Token]"
 
  ```
 
-
-
-
  Response
 
-```html 
+```html
 Content-type: application/json
 {
   "fileType": "docx",
@@ -150,11 +124,6 @@ Content-type: application/json
 }
 
  ```
-
-
-
-
-
 
 ## Tokens Lifetime ##
 

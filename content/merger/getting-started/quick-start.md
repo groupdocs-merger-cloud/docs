@@ -8,18 +8,13 @@ description: ""
 keywords: ""
 ---
 
-
-
-
-
-
 # Create an account #
 
-Creating an account is very simple. Go to [https://dashboard.groupdocs.cloud](https://dashboard.groupdocs.cloud/) to create a free account. 
+Creating an account is very simple. Go to [https://dashboard.groupdocs.cloud](https://dashboard.groupdocs.cloud/) to create a free account.
 
 # Create an API client app #
 
-Before you can make any requests to GroupDocs Cloud API you need to get APP SID and APP key (secret key). This will be used to invoke the GroupDocs Cloud API. 
+Before you can make any requests to GroupDocs Cloud API you need to get APP SID and APP key (secret key). This will be used to invoke the GroupDocs Cloud API.
 
 You can get it from the default Application or create a new Application from [My Apps tab of GroupDocs Cloud Dashboard]({{< ref "merger/getting-started/create-new-app-and-get-app-key-and-sid.md" >}})).
 
@@ -35,56 +30,15 @@ Use the **App SID** and **App key (secret key)** from the API app client you
 The GitHub repository for [GroupDocs.Merger Cloud](https://github.com/groupdocs-merger-cloud) has a complete set of examples, demonstrating our API capabilities.
 {{< /alert >}}
 
- 
-
-
-
- 
-
-
-
-
-
-
-
 ~/~/ For complete examples and data files, please go to [https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-dotnet-samples](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-dotnet-samples)
-
-
-
 
 string MyAppKey # ""; ~/~/ Get AppKey and AppSID from [https://dashboard.groupdocs.cloud](https://dashboard.groupdocs.cloud/)
 
-
-
-
 string MyAppSid # ""; ~/~/ Get AppKey and AppSID from [https://dashboard.groupdocs.cloud](https://dashboard.groupdocs.cloud/)
-
-
-
-
-  
-
-
-
 
 var configuration # new Configuration(MyAppSid, MyAppKey);
 
-
-
-
 var apiInstance # new InfoApi(configuration);
 
-
-
-
- 
-
-
-
-
 var response # apiInstance.GetSupportedFileFormats();
-
-
-
-
 

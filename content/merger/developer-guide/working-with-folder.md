@@ -8,14 +8,9 @@ description: ""
 keywords: ""
 ---
 
-
-
-
-
-
 # Get the File Listing of a Specific Folder #
 
-This API allows you to get a list of all files of a specific folder from the specified Cloud Storage. If you do not pass storage name API will find the folder in GroupDocs Cloud Storage. 
+This API allows you to get a list of all files of a specific folder from the specified Cloud Storage. If you do not pass storage name API will find the folder in GroupDocs Cloud Storage.
 
 ## API Explorer ##
 
@@ -42,21 +37,18 @@ storageName
 |
 Name of the storage. If not set, then default storage used
 
-
 ## cURL Example ##
-
 
  Request
 
-```html 
+```html
 curl -X GET "https://api.groupdocs.cloud/v1.0/merger/storage/folder/conversiondocs?storageName#MyStorage" -H  "accept: application/json" -H  "authorization: Bearer [Access Token]"
 
  ```
 
-
  Response
 
-```html 
+```html
 {
   "value": [
     {
@@ -118,11 +110,7 @@ curl -X GET "https://api.groupdocs.cloud/v1.0/merger/storage/folder/conversiondo
   ]
 }
 
-
  ```
-
-
-
 
 ## SDKs ##
 
@@ -131,50 +119,29 @@ Our API is completely independent of your operating system, database system or d
 
 ### SDK Examples ###
 
-
  C#
 
 {{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_Get_Files_List.cs >}}
-
-
-
 
  Java
 
 {{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_Get_Files_List.java >}}
 
-
-
-
  PHP
 
 {{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_Get_Files_List.php >}}
-
-
-
 
  Ruby
 
 {{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_Get_Files_List.rb >}}
 
-
-
-
  Node.js
 
 {{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_Get_Files_List.js >}}
 
-
-
-
  Python
 
 {{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_Get_Files_List.py >}}
-
-
-
-
-
 
 # Create a New Folder #
 
@@ -184,7 +151,6 @@ This API allows you to create a new folder in the specified Cloud Storage. If yo
 
 [GroupDocs.Merger Cloud API Reference](https://apireference.groupdocs.cloud/merger/) lets you try out [Create Folder API](https://apireference.groupdocs.cloud/merger/#/Folder/CreateFolder) right away in your browser. It allows you to effortlessly interact and try out every single operation that our APIs expose.
 |---|---|---|---
-
 
 ### Request parameters ###
 
@@ -206,29 +172,23 @@ storageName
 |
 Name of the storage. If not set, then default storage used
 
-
 ## cURL Example ##
-
 
  Request
 
-```html 
+```html
 curl -X POST "https://api.groupdocs.cloud/v1.0/merger/storage/folder/conversiondocs3?storageName#MyStorage" -H  "accept: application/json" -H  "authorization: Bearer [Access Token]"
 
  ```
 
-
  Response
 
-```html 
-{  
+```html
+{
   "code": 200,
   "status": "OK"
 }
  ```
-
-
-
 
 ## SDKs ##
 
@@ -237,51 +197,29 @@ Our API is completely independent of your operating system, database system or d
 
 ### SDK Examples ###
 
-
  C#
 
-
 {{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_Create_Folder.cs >}}
-
-
-
 
  Java
 
 {{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_Create_Folder.java >}}
 
-
-
-
  PHP
 
 {{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_Create_Folder.php >}}
-
-
-
 
  Ruby
 
 {{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_Create_Folder.rb >}}
 
-
-
-
  Node.js
 
 {{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_Create_Folder.js >}}
 
-
-
-
  Python
 
 {{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_Create_Folder.py >}}
-
-
-
-
-
 
 # Delete a Particular Folder #
 
@@ -289,9 +227,8 @@ This API allows you to delete a particular folder in the specified Cloud Storage
 
 ## API Explorer ##
 
-[GroupDocs.Merger Cloud API Reference](https://apireference.groupdocs.cloud/merger/#/) lets you try out [Delete a Particular Folder API](https://apireference.groupdocs.cloud/merger/#/Folder/DeleteFolder) right away in your browser. It allows you to effortlessly interact and try out every single operation that our APIs expose. 
+[GroupDocs.Merger Cloud API Reference](https://apireference.groupdocs.cloud/merger/#/) lets you try out [Delete a Particular Folder API](https://apireference.groupdocs.cloud/merger/#/Folder/DeleteFolder) right away in your browser. It allows you to effortlessly interact and try out every single operation that our APIs expose.
 |---|---|---|---
-
 
 ### Request parameters ###
 
@@ -313,29 +250,23 @@ storageName
 |
 Name of the storage. If not set, then default storage used
 
-
 ## cURL Example ##
-
 
  Request
 
-```html 
+```html
 curl -X DELETE "https://api.groupdocs.cloud/v1.0/merger/storage/folder/conversiondocs3?storageName#MyStorage&#x26;recursive#true" -H  "accept: application/json" -H  "authorization: Bearer [Access Token]"
 
  ```
 
-
  Response
 
-```html 
-{  
+```html
+{
   "code": 200,
   "status": "OK"
 }
  ```
-
-
-
 
 ## SDKs ##
 
@@ -344,50 +275,29 @@ Our API is completely independent of your operating system, database system or d
 
 ### SDK Examples ###
 
-
  C#
 
 {{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_Delete_Folder.cs >}}
-
-
-
 
  Java
 
 {{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_Delete_Folder.java >}}
 
-
-
-
  PHP
 
 {{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_Delete_Folder.php >}}
-
-
-
 
  Ruby
 
 {{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_Delete_Folder.rb >}}
 
-
-
-
  Node.js
 
 {{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_Delete_Folder.js >}}
 
-
-
-
  Python
 
 {{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_Delete_Folder.py >}}
-
-
-
-
-
 
 # Copy  Specific Folder #
 
@@ -432,29 +342,23 @@ destStorageName
 
 Name of the storage of destination folder. If not set, then default storage used
 
-
 ## cURL Example ##
-
 
  Request
 
-```html 
+```html
 curl -X PUT "https://api.groupdocs.cloud/v1.0/merger/storage/folder/copy/conversiondocs?destPath#conversiondocs1&#x26;srcStorageName#MyStorage&#x26;destStorageName#MyStorage" -H  "accept: application/json" -H  "authorization: Bearer [Access Token]"
 
  ```
 
-
  Response
 
-```html 
-{  
+```html
+{
   "code": 200,
   "status": "OK"
 }
  ```
-
-
-
 
 ## SDKs ##
 
@@ -463,50 +367,29 @@ Our API is completely independent of your operating system, database system or d
 
 ### SDK Examples ###
 
-
  C#
 
 {{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_Copy_Folder.cs >}}
-
-
-
 
  Java
 
 {{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_Copy_Folder.java >}}
 
-
-
-
  PHP
 
 {{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_Copy_Folder.php >}}
-
-
-
 
  Ruby
 
 {{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_Copy_Folder.rb >}}
 
-
-
-
  Node.js
 
 {{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_Copy_Folder.js >}}
 
-
-
-
  Python
 
 {{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_Copy_Folder.py >}}
-
-
-
-
-
 
 # Move a Specific Folder #
 
@@ -551,28 +434,22 @@ destStorageName
 
 Name of the storage of destination folder. If not set, then default storage used
 
-
 ## cURL Example ##
-
 
  Request
 
-```html 
-curl -X PUT "https://api.groupdocs.cloud/v1.0/merger/storage/folder/move/conversiondocs?destPath#conversiondocs1&#x26;srcStorageName#MyStorage&#x26;destStorageName#MyStorage" -H  "accept: application/json" -H  "authorization: Bearer [Access Token]"  
+```html
+curl -X PUT "https://api.groupdocs.cloud/v1.0/merger/storage/folder/move/conversiondocs?destPath#conversiondocs1&#x26;srcStorageName#MyStorage&#x26;destStorageName#MyStorage" -H  "accept: application/json" -H  "authorization: Bearer [Access Token]"
  ```
-
 
  Response
 
-```html 
-{  
+```html
+{
   "code": 200,
   "status": "OK"
 }
  ```
-
-
-
 
 ## SDKs ##
 
@@ -581,45 +458,27 @@ Our API is completely independent of your operating system, database system or d
 
 ### SDK Examples ###
 
-
  C#
 
 {{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_Move_Folder.cs >}}
-
-
-
 
  Java
 
 {{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_Move_Folder.java >}}
 
-
-
-
  PHP
 
 {{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_Move_Folder.php >}}
-
-
-
 
  Ruby
 
 {{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_Move_Folder.rb >}}
 
-
-
-
  Node.js
 
 {{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_Move_Folder.js >}}
 
-
-
-
  Python
 
 {{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_Move_Folder.py >}}
-
-
 

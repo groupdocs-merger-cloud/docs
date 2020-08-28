@@ -8,11 +8,6 @@ description: ""
 keywords: ""
 ---
 
-
-
-
-
-
 # Running GroupDocs.Merger Cloud Examples #
 
 All examples of GroupDocs.Merger Cloud is hosted on [Github](https://github.com/groupdocs-merger-cloud). Examples are located in the **Examples** folder.

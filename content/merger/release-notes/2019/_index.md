@@ -10,5 +10,3 @@ keywords: ""
 
 ### Release Notes - 2019 ###
 
-
-

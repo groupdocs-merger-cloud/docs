@@ -16,13 +16,11 @@ This page contains release notes for GroupDocs.Merger Cloud 19.10
 
 GroupDocs.Merger Cloud is a REST API that allows you to join multiple documents and manipulate single document structure across a wide range of [supported document]({{< ref "merger/getting-started/supported-document-formats.md" >}})) types. The main features are:
 
-
-
 * Join Documents
 * Split Document
-* Document Preview 
+* Document Preview
 * Document pages operations
-* Move Page. 
+* Move Page.
 * Remove Pages
 * Rotate Pages
 * Swap Page
@@ -31,9 +29,8 @@ GroupDocs.Merger Cloud is a REST API that allows you to join multiple document
 * Check for password-protection;
 * Set document password if document is not protected with password;
 * Update password if the document is password-protected already;
-* Remove the password if the document is password-protected.  
-* GroupDocs.Merger Cloud allows obtaining basic information about source document - file type, size, pages count, page height and width, etc. 
-
+* Remove the password if the document is password-protected. 
+* GroupDocs.Merger Cloud allows obtaining basic information about source document - file type, size, pages count, page height and width, etc.
 
 \\
 

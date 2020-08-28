@@ -8,11 +8,6 @@ description: ""
 keywords: ""
 ---
 
-
-
-
-
-
 # Storage existence API #
 
 This API intended for checking the existence of cloud storage with a given name from [GroupDocs Cloud Storage](https://dashboard.groupdocs.cloud).
@@ -36,29 +31,22 @@ Description
 |
 Storage name
 
-
 ## cURL Example ##
-
-
 
  Request
 
-```html 
+```html
 curl -X GET "https://api.groupdocs.cloud/v1.0/merger/storage/MyStorage/exist" -H  "accept: application/json" -H  "authorization: Bearer  [Access Token]"
-    
- ```
 
+ ```
 
  Response
 
-```html 
+```html
 {
   "exists": true
 }
  ```
-
-
-
 
 ## SDKs ##
 
@@ -67,54 +55,29 @@ Our API is completely independent of your operating system, database system or d
 
 ### SDK Examples ###
 
-
-
  C#
 
 {{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_Storage_Exist.cs >}}
 
-
-
-
-
  Java
 
-
 {{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_Storage_Exist.java >}}
-
-
-
 
  PHP
 
 {{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_Storage_Exist.php >}}
 
-
-
-
  Ruby
 
 {{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_Storage_Exist.rb >}}
-
-
-
 
  Node.js
 
 {{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_Storage_Exist.js >}}
 
-
-
-
  Python
 
 {{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_Storage_Exist.py >}}
-
-
-
-
-
-
 
 # Storage object existence API #
 
@@ -155,29 +118,22 @@ versionId
 
 File version id
 
-
 ## cURL Example ##
-
-
 
  Request
 
-```html 
+```html
 curl -X GET "https://api.groupdocs.cloud/v1.0/merger/storage/exist/conversiondocs?storageName#MyStorage" -H  "accept: application/json" -H  "authorization: Bearer [Access Token]"
  ```
 
-
  Response
 
-```html 
+```html
 {
   "exists": true,
   "isFolder": true
 }
  ```
-
-
-
 
 ## SDKs ##
 
@@ -186,51 +142,29 @@ Our API is completely independent of your operating system, database system or d
 
 ### SDK Examples ###
 
-
  C#
 
 {{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_Object_Exists.cs >}}
-
-
-
 
  Java
 
 {{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_Object_Exists.java >}}
 
-
-
-
  PHP
 
 {{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_Object_Exists.php >}}
-
-
-
 
  Ruby
 
 {{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_Object_Exists.rb >}}
 
-
-
-
  Node.js
 
 {{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_Object_Exists.js >}}
 
-
-
-
  Python
 
 {{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_Object_Exists.py >}}
-
-
-
-
-
-
 
 # Storage Space Usage API #
 
@@ -255,29 +189,22 @@ storageName
 |
 Name of the storage. If not set, then default storage used
 
-
 ## cURL Example ##
-
-
 
  Request
 
-```html 
+```html
 curl -X GET "https://api.groupdocs.cloud/v1.0/merger/storage/disc?storageName#MyStorage" -H  "accept: application/json" -H  "authorization: Bearer [Access Token]"
  ```
 
-
  Response
 
-```html 
+```html
 {
   "usedSize": 31032368,
   "totalSize": 3221225472
 }
  ```
-
-
-
 
 ## SDKs ##
 
@@ -286,52 +213,29 @@ Our API is completely independent of your operating system, database system or d
 
 ### SDK Examples ###
 
-
-
  C#
 
 {{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_Get_Disc_Usage.cs >}}
-
-
-
 
  Java
 
 {{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_Get_Disc_Usage.java >}}
 
-
-
-
  PHP
 
 {{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_Get_Disc_Usage.php >}}
-
-
-
 
  Ruby
 
 {{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_Get_Disc_Usage.rb >}}
 
-
-
-
  Node.js
 
 {{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_Get_Disc_Usage.js >}}
 
-
-
-
  Python
 
 {{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_Get_Disc_Usage.py >}}
-
-
-
-
-
-
 
 # Storage File Versions API #
 
@@ -365,21 +269,17 @@ storageName
 |
 Name of the storage. If not set, then default storage used
 
-
 ## cURL Example ##
-
-
 
  Request
 
-```html 
+```html
 curl -X GET "https://api.groupdocs.cloud/v1.0/merger/storage/version/one-page.docx?storageName#MyStorage" -H  "accept: application/json" -H  "authorization: Bearer [Access Token]"
  ```
 
-
  Response
 
-```html 
+```html
 {
   "value": [
     {
@@ -395,9 +295,6 @@ curl -X GET "https://api.groupdocs.cloud/v1.0/merger/storage/version/one-page.do
 }
  ```
 
-
-
-
 ## SDKs ##
 
 Our API is completely independent of your operating system, database system or development language. You can use any language and platform that supports HTTP to interact with our API. However, manually writing client code can be difficult, error-prone and time-consuming. Therefore, we have provided and support API [SDKs](https://github.com/groupdocs-merger-cloud) in many development languages in order to make it easier to integrate with us. If you use [SDK](https://github.com/groupdocs-merger-cloud), it hides the [Storage File Versions API](https://apireference.groupdocs.cloud/merger/#/Storage/GetFileVersions) calls and lets you use GroupDocs Cloud features in a native way for your preferred language.
@@ -405,47 +302,27 @@ Our API is completely independent of your operating system, database system or d
 
 ### SDK Examples ###
 
-
-
  C#
 
 {{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_Get_File_Versions.cs >}}
-
-
-
 
  Java
 
 {{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_Get_Disc_Usage.java >}}
 
-
-
-
  PHP
 
 {{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_Get_Disc_Usage.php >}}
-
-
-
 
  Ruby
 
 {{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_Get_Disc_Usage.rb >}}
 
-
-
-
  Node.js
 
 {{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_Get_Disc_Usage.js >}}
 
-
-
-
  Python
 
 {{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_Get_Disc_Usage.py >}}
-
-
-
 
