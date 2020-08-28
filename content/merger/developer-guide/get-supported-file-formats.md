@@ -26,7 +26,7 @@ HTTP POST ~/formats
 
 The following example demonstrates how to get supported file types.
 
-Request
+{{< tabs tabTotal="2" tabID="1" tabName1="Request" tabName2="Response" >}} {{< tab tabNum="1" >}}
 
 ```html
 * First get JSON Web Token
@@ -46,7 +46,7 @@ curl -v "https://api.groupdocs.cloud/v1.0/merger/formats" \
 
 ```
 
-Response
+{{< /tab >}} {{< tab tabNum="2" >}}
 
 ```html
 {
@@ -73,6 +73,8 @@ Response
 
 ```
 
+{{< /tab >}} {{< /tabs >}}
+
 [Swagger UI](https://apireference.groupdocs.cloud/merger/#/Info/GetSupportedFileFormats) lets you call this REST API directly from the browser.
 
 ### SDKs ###
@@ -81,26 +83,28 @@ Using an SDK (API client) is the quickest way for a developer to speed up the de
 
 ### Get Supported File Types Examples ###
 
-C#
+{{< tabs tabTotal="6" tabID="10" tabName1="C#" tabName2="Java" tabName3="PHP" tabName4="Node.js" tabName5="Python" tabName6="Ruby" >}} {{< tab tabNum="1" >}}
 
 {{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_GetSupportedFileTypes.cs >}}
 
-Java
+{{< /tab >}} {{< tab tabNum="2" >}}
 
 {{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_GetSupportedFileTypes.java >}}
 
-PHP
+{{< /tab >}} {{< tab tabNum="3" >}}
 
 {{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_GetSupportedFileTypes.php >}}
 
-Ruby
+{{< /tab >}} {{< tab tabNum="6" >}}
 
 {{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_GetSupportedFileTypes.rb >}}
 
-Node
+{{< /tab >}} {{< tab tabNum="4" >}}
 
 {{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_GetSupportedFileTypes.js >}}
 
-Python
+{{< /tab >}} {{< tab tabNum="5" >}}
 
 {{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_GetSupportedFileTypes.py >}}
+
+{{< /tab >}} {{< /tabs >}}

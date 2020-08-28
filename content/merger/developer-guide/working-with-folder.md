@@ -25,14 +25,14 @@ This API allows you to get a list of all files of a specific folder from the 
 
 ### cURL Example ###
 
-Request
+{{< tabs tabTotal="2" tabID="1" tabName1="Request" tabName2="Response" >}} {{< tab tabNum="1" >}}
 
 ```html
 curl -X GET "https://api.groupdocs.cloud/v1.0/merger/storage/folder/conversiondocs?storageName#MyStorage" -H  "accept: application/json" -H  "authorization: Bearer [Access Token]"
 
 ```
 
-Response
+{{< /tab >}} {{< tab tabNum="2" >}}
 
 ```html
 {
@@ -98,35 +98,39 @@ Response
 
 ```
 
+{{< /tab >}} {{< /tabs >}}
+
 ### SDKs ###
 
 Our API is completely independent of your operating system, database system or development language. You can use any language and platform that supports HTTP to interact with our API. However, manually writing client code can be difficult, error-prone and time-consuming. Therefore, we have provided and support API [SDKs](https://github.com/groupdocs-merger-cloud) in many development languages in order to make it easier to integrate with us. If you use [SDK](https://github.com/groupdocs-merger-cloud), it hides the [Folder API](https://apireference.groupdocs.cloud/merger/#/Folder) calls and lets you use GroupDocs Cloud features in a native way for your preferred language.
 
 ### SDK Examples ###
 
-C#
+{{< tabs tabTotal="6" tabID="10" tabName1="C#" tabName2="Java" tabName3="PHP" tabName4="Node.js" tabName5="Python" tabName6="Ruby" >}} {{< tab tabNum="1" >}}
 
 {{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_Get_Files_List.cs >}}
 
-Java
+{{< /tab >}} {{< tab tabNum="2" >}}
 
 {{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_Get_Files_List.java >}}
 
-PHP
+{{< /tab >}} {{< tab tabNum="3" >}}
 
 {{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_Get_Files_List.php >}}
 
-Ruby
+{{< /tab >}} {{< tab tabNum="6" >}}
 
 {{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_Get_Files_List.rb >}}
 
-Node
+{{< /tab >}} {{< tab tabNum="4" >}}
 
 {{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_Get_Files_List.js >}}
 
-Python
+{{< /tab >}} {{< tab tabNum="5" >}}
 
 {{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_Get_Files_List.py >}}
+
+{{< /tab >}} {{< /tabs >}}
 
 ## Create a New Folder ##
 
@@ -144,14 +148,14 @@ This API allows you to create a new folder in the specified Cloud Storage. If yo
 
 ### cURL Example ###
 
-Request
+{{< tabs tabTotal="2" tabID="2" tabName1="Request" tabName2="Response" >}} {{< tab tabNum="1" >}}
 
 ```html
 curl -X POST "https://api.groupdocs.cloud/v1.0/merger/storage/folder/conversiondocs3?storageName#MyStorage" -H  "accept: application/json" -H  "authorization: Bearer [Access Token]"
 
 ```
 
-Response
+{{< /tab >}} {{< tab tabNum="2" >}}
 
 ```html
 {
@@ -160,35 +164,39 @@ Response
 }
 ```
 
+{{< /tab >}} {{< /tabs >}}
+
 ### SDKs ###
 
 Our API is completely independent of your operating system, database system or development language. You can use any language and platform that supports HTTP to interact with our API. However, manually writing client code can be difficult, error-prone and time-consuming. Therefore, we have provided and support API [SDKs](https://github.com/groupdocs-merger-cloud) in many development languages in order to make it easier to integrate with us. If you use [SDK](https://github.com/groupdocs-merger-cloud), it hides the [Folder API](https://apireference.groupdocs.cloud/merger/#/Folder/) calls and lets you use GroupDocs for Cloud features in a native way for your preferred language.
 
 ### SDK Examples ###
 
-C#
+{{< tabs tabTotal="6" tabID="11" tabName1="C#" tabName2="Java" tabName3="PHP" tabName4="Node.js" tabName5="Python" tabName6="Ruby" >}} {{< tab tabNum="1" >}}
 
 {{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_Create_Folder.cs >}}
 
-Java
+{{< /tab >}} {{< tab tabNum="2" >}}
 
 {{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_Create_Folder.java >}}
 
-PHP
+{{< /tab >}} {{< tab tabNum="3" >}}
 
 {{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_Create_Folder.php >}}
 
-Ruby
+{{< /tab >}} {{< tab tabNum="6" >}}
 
 {{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_Create_Folder.rb >}}
 
-Node
+{{< /tab >}} {{< tab tabNum="4" >}}
 
 {{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_Create_Folder.js >}}
 
-Python
+{{< /tab >}} {{< tab tabNum="5" >}}
 
 {{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_Create_Folder.py >}}
+
+{{< /tab >}} {{< /tabs >}}
 
 ## Delete a Particular Folder ##
 
@@ -207,14 +215,14 @@ This API allows you to delete a particular folder in the specified Cloud Storage
 
 ### cURL Example ###
 
-Request
+{{< tabs tabTotal="2" tabID="3" tabName1="Request" tabName2="Response" >}} {{< tab tabNum="1" >}}
 
 ```html
 curl -X DELETE "https://api.groupdocs.cloud/v1.0/merger/storage/folder/conversiondocs3?storageName#MyStorage&recursive#true" -H  "accept: application/json" -H  "authorization: Bearer [Access Token]"
 
 ```
 
-Response
+{{< /tab >}} {{< tab tabNum="2" >}}
 
 ```html
 {
@@ -223,35 +231,39 @@ Response
 }
 ```
 
+{{< /tab >}} {{< /tabs >}}
+
 ### SDKs ###
 
 Our API is completely independent of your operating system, database system or development language. You can use any language and platform that supports HTTP to interact with our API. However, manually writing client code can be difficult, error-prone and time-consuming. Therefore, we have provided and support API [SDKs](https://github.com/groupdocs-merger-cloud) in many development languages in order to make it easier to integrate with us. If you use [SDK](https://github.com/groupdocs-merger-cloud), it hides the [Delete Folder API](https://apireference.groupdocs.cloud/merger/#/Folder/DeleteFolder) calls and lets you use GroupDocs for Cloud features in a native way for your preferred language.
 
 ### SDK Examples ###
 
-C#
+{{< tabs tabTotal="6" tabID="12" tabName1="C#" tabName2="Java" tabName3="PHP" tabName4="Node.js" tabName5="Python" tabName6="Ruby" >}} {{< tab tabNum="1" >}}
 
 {{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_Delete_Folder.cs >}}
 
-Java
+{{< /tab >}} {{< tab tabNum="2" >}}
 
 {{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_Delete_Folder.java >}}
 
-PHP
+{{< /tab >}} {{< tab tabNum="3" >}}
 
 {{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_Delete_Folder.php >}}
 
-Ruby
+{{< /tab >}} {{< tab tabNum="6" >}}
 
 {{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_Delete_Folder.rb >}}
 
-Node
+{{< /tab >}} {{< tab tabNum="4" >}}
 
 {{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_Delete_Folder.js >}}
 
-Python
+{{< /tab >}} {{< tab tabNum="5" >}}
 
 {{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_Delete_Folder.py >}}
+
+{{< /tab >}} {{< /tabs >}}
 
 ## Copy  Specific Folder ##
 
@@ -272,14 +284,14 @@ This API allows you to copy a folder to another location in the GroupDocs Cloud 
 
 ### cURL Example ###
 
-Request
+{{< tabs tabTotal="2" tabID="4" tabName1="Request" tabName2="Response" >}} {{< tab tabNum="1" >}}
 
 ```html
 curl -X PUT "https://api.groupdocs.cloud/v1.0/merger/storage/folder/copy/conversiondocs?destPath#conversiondocs1&srcStorageName#MyStorage&destStorageName#MyStorage" -H  "accept: application/json" -H  "authorization: Bearer [Access Token]"
 
 ```
 
-Response
+{{< /tab >}} {{< tab tabNum="2" >}}
 
 ```html
 {
@@ -288,35 +300,39 @@ Response
 }
 ```
 
+{{< /tab >}} {{< /tabs >}}
+
 ### SDKs ###
 
 Our API is completely independent of your operating system, database system or development language. You can use any language and platform that supports HTTP to interact with our API. However, manually writing client code can be difficult, error-prone and time-consuming. Therefore, we have provided and support API [SDKs](https://github.com/groupdocs-merger-cloud) in many development languages in order to make it easier to integrate with us. If you use [SDK](https://github.com/groupdocs-merger-cloud), it hides the [Copy Folder API](https://apireference.groupdocs.cloud/merger/#/Folder/CopyFolder) calls and lets you use GroupDocs Cloud features in a native way for your preferred language.
 
 ### SDK Examples ###
 
-C#
+{{< tabs tabTotal="6" tabID="13" tabName1="C#" tabName2="Java" tabName3="PHP" tabName4="Node.js" tabName5="Python" tabName6="Ruby" >}} {{< tab tabNum="1" >}}
 
 {{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_Copy_Folder.cs >}}
 
-Java
+{{< /tab >}} {{< tab tabNum="2" >}}
 
 {{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_Copy_Folder.java >}}
 
-PHP
+{{< /tab >}} {{< tab tabNum="3" >}}
 
 {{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_Copy_Folder.php >}}
 
-Ruby
+{{< /tab >}} {{< tab tabNum="6" >}}
 
 {{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_Copy_Folder.rb >}}
 
-Node
+{{< /tab >}} {{< tab tabNum="4" >}}
 
 {{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_Copy_Folder.js >}}
 
-Python
+{{< /tab >}} {{< tab tabNum="5" >}}
 
 {{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_Copy_Folder.py >}}
+
+{{< /tab >}} {{< /tabs >}}
 
 ## Move a Specific Folder ##
 
@@ -338,13 +354,13 @@ This API allows you to move a folder to another location in the GroupDocs Cloud 
 
 ### cURL Example ###
 
-Request
+{{< tabs tabTotal="2" tabID="5" tabName1="Request" tabName2="Response" >}} {{< tab tabNum="1" >}}
 
 ```html
 curl -X PUT "https://api.groupdocs.cloud/v1.0/merger/storage/folder/move/conversiondocs?destPath#conversiondocs1&srcStorageName#MyStorage&destStorageName#MyStorage" -H  "accept: application/json" -H  "authorization: Bearer [Access Token]"
 ```
 
-Response
+{{< /tab >}} {{< tab tabNum="2" >}}
 
 ```html
 {
@@ -353,32 +369,36 @@ Response
 }
 ```
 
+{{< /tab >}} {{< /tabs >}}
+
 ### SDKs ###
 
 Our API is completely independent of your operating system, database system or development language. You can use any language and platform that supports HTTP to interact with our API. However, manually writing client code can be difficult, error-prone and time-consuming. Therefore, we have provided and support API [SDKs](https://github.com/groupdocs-merger-cloud) in many development languages in order to make it easier to integrate with us. If you use [SDK](https://github.com/groupdocs-merger-cloud), it hides the [Move Folder API](https://apireference.groupdocs.cloud/merger/#/Folder/MoveFolder) calls and lets you use GroupDocs Cloud features in a native way for your preferred language.
 
 ### SDK Examples ###
 
-C#
+{{< tabs tabTotal="6" tabID="14" tabName1="C#" tabName2="Java" tabName3="PHP" tabName4="Node.js" tabName5="Python" tabName6="Ruby" >}} {{< tab tabNum="1" >}}
 
 {{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_Move_Folder.cs >}}
 
-Java
+{{< /tab >}} {{< tab tabNum="2" >}}
 
 {{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_Move_Folder.java >}}
 
-PHP
+{{< /tab >}} {{< tab tabNum="3" >}}
 
 {{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_Move_Folder.php >}}
 
-Ruby
+{{< /tab >}} {{< tab tabNum="6" >}}
 
 {{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_Move_Folder.rb >}}
 
-Node
+{{< /tab >}} {{< tab tabNum="4" >}}
 
 {{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_Move_Folder.js >}}
 
-Python
+{{< /tab >}} {{< tab tabNum="5" >}}
 
 {{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_Move_Folder.py >}}
+
+{{< /tab >}} {{< /tabs >}}
