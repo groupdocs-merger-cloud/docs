@@ -341,7 +341,6 @@ This API allows you to move a folder to another location in the GroupDocs Cloud 
 ### API Explorer ###
 
 [GroupDocs.Merger Cloud API Reference](https://apireference.groupdocs.cloud/merger/#/) lets you try out [Move a Folder API](https://apireference.groupdocs.cloud/merger/#/Folder/MoveFolder) right away in your browser. It allows you to effortlessly interact and try out every single operation that our APIs expose.
-|---|---|---|---
 
 ### Request parameters ###
 

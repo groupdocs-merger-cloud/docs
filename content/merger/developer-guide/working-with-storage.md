@@ -11,7 +11,6 @@ keywords: ""
 ## Storage existence API ##
 
 This API intended for checking the existence of cloud storage with a given name from [GroupDocs Cloud Storage](https://dashboard.groupdocs.cloud).
-|---|---
 
 ### API Explorer ###
 

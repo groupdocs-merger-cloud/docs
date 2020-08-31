@@ -304,7 +304,6 @@ This API allows you to copy a specific file from [GroupDocs Cloud Storage](http
 ### API Explorer ###
 
 [GroupDocs.Merger Cloud API Reference](https://apireference.groupdocs.cloud/merger/#/) lets you try out [Move File](https://apireference.groupdocs.cloud/merger/#/File/MoveFile) right away in your browser! It allows you to effortlessly interact and try out every single operation our APIs expose.
-|---|---|---|---
 
 ### Request parameters ###
 
