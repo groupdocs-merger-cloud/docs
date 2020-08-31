@@ -18,7 +18,9 @@ Because of its compact structure, JWT is usually used in HTTP *Authorization* he
 
 A JWT is represented as a sequence of base64url encoded values that are separated by period characters.
 
-*header.payload.signature*
+```javascript
+header.payload.signature
+```
 
 ## Header ##
 

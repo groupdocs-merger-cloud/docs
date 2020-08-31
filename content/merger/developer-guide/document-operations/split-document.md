@@ -302,7 +302,7 @@ Using an SDK (API client) is the quickest way for a developer to speed up the de
 
 {{< /tab >}} {{< tab tabNum="3" >}}
 
-{{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_SplitToSinglePagesByRangeWithFilter.php >}}
+{{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_SplitToSinglePagesByRangeWithFilter.php >}}
 
 {{< /tab >}} {{< tab tabNum="6" >}}
 

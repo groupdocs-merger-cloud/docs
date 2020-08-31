@@ -8,8 +8,6 @@ description: ""
 keywords: ""
 ---
 
-# GroupDocs.Merger Cloud Technical Support #
-
 GroupDocs provides unlimited free technical support for all its products. The support is available to all users, including evaluation.
 
 If you need help with GroupDocs.Merger Cloud, consider the following:

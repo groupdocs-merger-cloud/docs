@@ -95,10 +95,10 @@ At the moment following SDKs are provided:
 
 * .NET ([Sources](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-dotnet), [NuGet Package](https://www.nuget.org/packages/GroupDocs.Merger-Cloud))
 * Java ([Sources](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-java), [Jar](https://repository.groupdocs.cloud/webapp/#/artifacts/browse/tree/General/repo/com/groupdocs/groupdocs-merger-cloud))
-* PHP ([Sources](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-php)
-* Node.js ([Sources](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-node)
-* Python ([Sources](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-python)
-* Ruby ([Sources](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-ruby)
+* PHP ([Sources](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-php))
+* Node.js ([Sources](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-node))
+* Python ([Sources](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-python))
+* Ruby ([Sources](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-ruby))
 
 # API Explorer #
 
