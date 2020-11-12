@@ -39,7 +39,7 @@ HTTP PUT ~/password
 ```html
 
 * First get JSON Web Token
-* Please get your App Key and App SID from https://dashboard.groupdocs.cloud/#/apps. Kindly place App Key in "client_secret" and App SID in "client_id" argument.
+* Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications. Kindly place Client Id in "client_id" and Client Secret in "client_secret" argument.
 curl -v "https://api.groupdocs.cloud/connect/token" \
 -X POST \
 -d "grant_type=client_credentials&client_id=xxxx&client_secret=xxxx" \
@@ -131,7 +131,7 @@ HTTP GET ~/password?filePath#{filePath}
 ```html
 
 * First get JSON Web Token
-* Please get your App Key and App SID from https://dashboard.groupdocs.cloud/#/apps. Kindly place App Key in "client_secret" and App SID in "client_id" argument.
+* Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications. Kindly place Client Id in "client_id" and Client Secret in "client_secret" argument.
 curl -v "https://api.groupdocs.cloud/connect/token" \
 -X POST \
 -d "grant_type=client_credentials&client_id=xxxx&client_secret=xxxx" \
@@ -219,7 +219,7 @@ HTTP DELETE ~/password
 ```html
 
 * First get JSON Web Token
-* Please get your App Key and App SID from https://dashboard.groupdocs.cloud/#/apps. Kindly place App Key in "client_secret" and App SID in "client_id" argument.
+* Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications. Kindly place Client Id in "client_id" and Client Secret in "client_secret" argument.
 curl -v "https://api.groupdocs.cloud/connect/token" \
 -X POST \
 -d "grant_type=client_credentials&client_id=xxxx&client_secret=xxxx" \
@@ -314,7 +314,7 @@ HTTP POST ~/password
 ```html
 
 * First get JSON Web Token
-* Please get your App Key and App SID from https://dashboard.groupdocs.cloud/#/apps. Kindly place App Key in "client_secret" and App SID in "client_id" argument.
+* Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications. Kindly place Client Id in "client_id" and Client Secret in "client_secret" argument.
 curl -v "https://api.groupdocs.cloud/connect/token" \
 -X POST \
 -d "grant_type=client_credentials&client_id=xxxx&client_secret=xxxx" \
