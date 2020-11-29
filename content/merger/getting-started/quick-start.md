@@ -14,9 +14,9 @@ Creating an account is very simple. Go to [https://dashboard.groupdocs.cloud](h
 
 # Create an API client app #
 
-Before you can make anyRequests to GroupDocs Cloud API you need to get APP SID and APP key (secret key). This will be used to invoke the GroupDocs Cloud API.
+Before you can make any requests to GroupDocs Cloud API you need to get Client Id and Client Secret. That will be used to invoke the GroupDocs Cloud API.
 
-You can get it from the default Application or create a new Application from [My Apps tab of GroupDocs Cloud Dashboard]({{< ref "merger/getting-started/create-new-app-and-get-app-key-and-sid.md" >}}).
+You can get it from existing Application or create new Application from [Applications View of GroupDocs Cloud Dashboard]({{< ref "total/getting-started/ui-topics/creating-and-managing-application.md" >}}).
 
 # Install the SDK of your choice #
 
@@ -24,7 +24,7 @@ Using an SDK (API client) is the quickest way for a developer to speed up the de
 
 # Make an APIRequest from the SDK of your choice #
 
-Use the **App SID** and **App key (secret key)** from the API app client you created in step one and replace it in the corresponding code. Below is an example demonstrating how to get a list of all supported file formats in GroupDocs.Merger Cloud.
+Use the **Client Id** and **Client Secret** from the API app client you created in step one and replace it in the corresponding code. Below is an example demonstrating how to get a list of all supported file formats in GroupDocs.Merger Cloud.
 
 {{< alert style="info" >}}
 The GitHub repository for [GroupDocs.Merger Cloud](https://github.com/groupdocs-merger-cloud) has a complete set of examples, demonstrating our API capabilities.
@@ -35,9 +35,9 @@ For complete examples and data files, please go to [https://github.com/groupdocs
 {{< tabs tabTotal="1" tabID="1" tabName1="C#" >}} {{< tab tabNum="1" >}}
 
 ```csharp
-// Get AppKey and AppSID from [https://dashboard.groupdocs.cloud](https://dashboard.groupdocs.cloud/)
+// Get Client Id and Client Secret from https://dashboard.groupdocs.cloud
 
-var configuration = new Configuration(MyAppSid, MyAppKey);
+var configuration = new Configuration(MyClientId, MyClientSecret);
 var apiInstance = new InfoApi(configuration);
 varResponse = apiInstance.GetSupportedFileFormats();
 ```
