@@ -3,7 +3,7 @@ id: "groupdocs-merger-cloud-20-12-release-notes"
 url: "merger/groupdocs-merger-cloud-20-12-release-notes"
 title: "GroupDocs.Merger Cloud 20.12 Release Notes"
 productName: "GroupDocs.Merger Cloud"
-weight: 3
+weight: 1
 description: ""
 keywords: ""
 ---
@@ -25,4 +25,4 @@ This page contains release notes for GroupDocs.Merger Cloud 20.12
 
 ### API examples and documentation ###
 
-[GroupDocs Merger Cloud API Examples and documentation>>path:/mergercloud/)
+* [GroupDocs Merger Cloud API examples and documentation]({{< ref "merger/_index.md" >}})

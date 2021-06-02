@@ -10,7 +10,7 @@ keywords: ""
 
 ## Introduction ##
 
-This REST API allows merging the source document with specific document pages from joined documents into one resultant document by specifying desired page numbers or page ranges. Joined documents should be of the same format.
+This REST API allows merging the source document with specific document pages from joined documents into one resultant document by specifying desired page numbers or page ranges.
 There are several ways to specify page numbers needed from each document:
 
 * Provide exact page numbers via Pages collection;

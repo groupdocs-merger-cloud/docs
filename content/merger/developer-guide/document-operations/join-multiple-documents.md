@@ -10,7 +10,7 @@ keywords: ""
 
 ## Introduction ##
 
-This REST API allows merging two or more documents into a single resultant document. Joined documents should be of the same format.
+This REST API allows merging two or more documents into a single resultant document.
 For the simplest scenario of combining several documents together it's only needed to provide storage path for each file. For protected documents, it is also required to provide a password.
 The table below contains the full list of properties that can be specified for each joined document.
 
