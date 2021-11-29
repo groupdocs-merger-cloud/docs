@@ -144,6 +144,36 @@ docker run \
 
 {{< /tab >}} {{< /tabs >}}
 
+### Enable Google Cloud Storage
+
+By default, a local storage used inside container for file operations. It's possible to connect a Google Cloud storage by setting GOOGLE_APPLICATION_CREDENTIALS and GOOGLE_STORAGE_BUCKET environment variables.
+
+{{< tabs tabTotal="2" tabID="3" tabName1="Windows (PowerShell)" tabName2="Linux (bash)" >}} {{< tab tabNum="1" >}}
+
+```powershell
+docker run `
+В В В В -p 8080:80 `
+В В В В -v "${pwd}/data:/data" `
+В В В В -e "GOOGLE_APPLICATION_CREDENTIALS=/data/key.json" `
+В В В В -e "GOOGLE_STORAGE_BUCKET=bucket_id" `
+В В В В --name merger_cloud `
+В В В В groupdocs/merger-cloud
+```
+
+{{< /tab >}} {{< tab tabNum="2" >}}
+
+```bash
+docker run \
+В В В В -p 8080:80 \
+В В В В -v $(pwd)/data:/data \
+В В В В -e GOOGLE_APPLICATION_CREDENTIALS=/data/key.json \
+В В В В -e GOOGLE_STORAGE_BUCKET=bucket_id \
+В В В В --name merger_cloud \
+В В В В groupdocs/merger-cloud
+```
+
+{{< /tab >}} {{< /tabs >}}
+
 ### Stop Container
 
 To stop the running Docker container, just use Ctrl+C in the same terminal where the container is running. Alternatively, you can stop the container by name.
@@ -159,4 +189,6 @@ GroupDocs.Merger Cloud can be started in trial and licensed modes. When GroupDoc
 * You can compare only two first pages of the document
 * Evaluation watermarks added to the output
 
-You can find more information about evaluation at [Evaluate GroupDocs.Merger]({{< ref "merger/getting-started/evaluate-groupdocs-merger.md" >}}).
+## DockerHub
+
+You can find more information at [DockerHub](https://hub.docker.com/repository/docker/groupdocs/merger-cloud).
