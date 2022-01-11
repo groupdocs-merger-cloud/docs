@@ -17,6 +17,12 @@ Here is an example how to retrieve metered license consumption.
 
 You can find more information about Docker version at [How to self-host GroupDocs.Merger Cloud with Docker]({{< ref "merger/getting-started/self-host-with-docker.md" >}})
 
+## Note about credits consumption when using metered license in docker version ##
+
++ Storage calls are not charged
++ Merger API calls charge is based on document size: 1 credit per call per 20MB
++ Not about /join method: if page options, like page number, are set for first of joined documents, there may be extra credit consumed, because of internal implementation. If page number not provided for 1st document than it should consume as 1 operation.If you not provide page number for 1st document than it should consume as 1 operation.
+
 ## Resource URI ##
 
 ```HTTP GET ~/merger/consumption```

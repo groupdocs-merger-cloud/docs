@@ -1,9 +1,9 @@
 ---
-id: "2021"
-url: "merger/2021"
-title: "Release Notes - 2021"
+id: "2022"
+url: "merger/2022"
+title: "Release Notes - 2022"
 productName: "GroupDocs.Merger Cloud"
-weight: 2
+weight: 1
 description: ""
 keywords: ""
 ---
