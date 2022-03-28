@@ -114,6 +114,8 @@ We generate our SDKs in different languages so you may check if yours is availab
 If you don't find your language in the SDK list, feel free to request for it on our [Support Forums](https://forum.groupdocs.cloud/c/merger), or use raw REST API requests as you can find it [here](https://products.groupdocs.cloud/merger/curl).
 {{< /alert >}}
 
+The authentication is required in case you're going to use SDK. To enable authentication set CLIENT_ID/CLIENT_SECRET parameters as it shown below.
+
 {{< tabs tabTotal="2" tabID="3" tabName1="Windows (PowerShell)" tabName2="Linux (bash)" >}} {{< tab tabNum="1" >}}
 
 ```powershell
@@ -140,6 +142,120 @@ docker run \
 В В В В -e client_secret=client_secret \
 В В В В --name merger_cloud \
 В В В В groupdocs/merger-cloud
+```
+
+{{< /tab >}} {{< /tabs >}}
+
+Then, when using SDK, setup the api base url, as shown in examples below:
+
+{{< tabs tabTotal="6" tabID="10" tabName1="C#" tabName2="Java & Android" tabName3="PHP" tabName4="Node.js" tabName5="Python" tabName6="Ruby" >}} {{< tab tabNum="1" >}}
+
+```csharp
+
+// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-dotnet-samples
+string ClientId = ""; // Get ClientId and ClientSecret from https://dashboard.groupdocs.cloud
+string ClientSecret = ""; // Get ClientId and ClientSecret from https://dashboard.groupdocs.cloud
+
+var configuration = new Configuration(ClientId, ClientSecret)
+{
+    ApiBaseUrl = "http://localhost:8080"
+};
+var apiInstance = new InfoApi(configuration);
+var response = apiInstance.GetSupportedFileFormats();
+
+```
+
+{{< /tab >}} {{< tab tabNum="2" >}}
+
+```java
+
+// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-java-samples
+String ClientId = ""; // Get ClientId and ClientSecret from https://dashboard.groupdocs.cloud
+String ClientSecret = ""; // Get ClientId and ClientSecret from https://dashboard.groupdocs.cloud
+
+Configuration configuration = new Configuration(ClientId, ClientSecret);
+configuration.setApiBaseUrl("http://localhost:8080");
+
+InfoApi apiInstance = new InfoApi(configuration);
+FormatsResult response = apiInstance.getSupportedFileFormats();
+
+```
+
+{{< /tab >}} {{< tab tabNum="3" >}}
+
+```php
+
+// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-php-samples
+use GroupDocs\Merger\Model;
+use GroupDocs\Merger\Model\Requests;
+
+$ClientId = ""; // Get ClientId and ClientSecret from https://dashboard.groupdocs.cloud
+$ClientSecret = ""; // Get ClientId and ClientSecret from https://dashboard.groupdocs.cloud
+
+$configuration = new GroupDocs\Merger\Configuration();
+$configuration->setAppSid($ClientId);
+$configuration->setAppKey($ClientSecret);
+$configuration->setApiBaseUrl("http://localhost:8080");
+
+$infoApi= new GroupDocs\Merger\InfoApi($configuration);
+
+$response = $infoApi->getSupportedFileFormats();
+
+```
+
+{{< /tab >}} {{< tab tabNum="4" >}}
+
+```javascript
+
+// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-node-samples
+global.merger_cloud = require("groupdocs-merger-cloud");
+
+global.clientId = "XXXX-XXXX-XXXX-XXXX"; // Get ClientId and ClientSecret from https://dashboard.groupdocs.cloud
+global.clientSecret = "XXXXXXXXXXXXXXXX"; // Get ClientId and ClientSecret from https://dashboard.groupdocs.cloud
+const config = new Configuration(clientId, clientSecret);
+config.apiBaseUrl = "http://localhost:8080";
+global.infoApi = merger_cloud.InfoApi.fromConfig(config);
+
+let response = await infoApi.getSupportedFileFormats();
+
+```
+
+{{< /tab >}} {{< tab tabNum="5" >}}
+
+```python
+
+# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-python-samples
+import groupdocs_merger_cloud
+
+client_id = "XXXX-XXXX-XXXX-XXXX" # Get ClientId and ClientSecret from https://dashboard.groupdocs.cloud
+client_secret = "XXXXXXXXXXXXXXXX" # Get ClientId and ClientSecret from https://dashboard.groupdocs.cloud
+
+configuration = Configuration(client_id, client_secret)
+configuration.api_base_url = "http://localhost:8080"
+
+infoApi = groupdocs_merger_cloud.InfoApi.from_config(configuration)
+
+result = infoApi.get_supported_file_formats()
+
+```
+
+{{< /tab >}} {{< tab tabNum="6" >}}
+
+```ruby
+
+# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-ruby-samples
+require 'groupdocs_merger_cloud'
+
+$client_id = "XXXX-XXXX-XXXX-XXXX" # Get ClientId and ClientSecret from https://dashboard.groupdocs.cloud
+$client_secret = "XXXXXXXXXXXXXXXX" # Get ClientId and ClientSecret from https://dashboard.groupdocs.cloud
+
+config = Configuration.new(client_id, client_secret)
+config.api_base_url = "http://localhost:8080"
+
+infoApi = GroupDocsMergerCloud::InfoApi.from_config(config)
+
+result = infoApi.get_supported_file_formats()
+
 ```
 
 {{< /tab >}} {{< /tabs >}}
