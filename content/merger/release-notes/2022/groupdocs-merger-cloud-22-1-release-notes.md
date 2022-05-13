@@ -3,7 +3,7 @@ id: "groupdocs-merger-cloud-22-1-release-notes"
 url: "merger/groupdocs-merger-cloud-22-1-release-notes"
 title: "GroupDocs.Merger Cloud 22.1 Release Notes"
 productName: "GroupDocs.Merger Cloud"
-weight: 1
+weight: 2
 description: ""
 keywords: ""
 ---
