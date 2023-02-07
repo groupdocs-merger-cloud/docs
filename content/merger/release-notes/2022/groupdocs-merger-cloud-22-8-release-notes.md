@@ -24,7 +24,7 @@ This page contains release notes for GroupDocs.Merger Cloud 22.8
 
 ### API changes ###
 
-There is not API changes in this release
+There is no API changes in this release
 
 ### API examples and documentation ###
 
