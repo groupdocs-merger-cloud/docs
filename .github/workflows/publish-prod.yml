@@ -42,8 +42,8 @@ jobs:
         run: |
           # echo ${{ env.ROOT_DIR }}
           cp -r content/* ${{ env.ROOT_DIR }}/content/          
-          hugo --source ${{ env.ROOT_DIR }} --minify --config config.toml
-          rootUrl=$(sed -n -e '/^baseURL/p' ${{ env.ROOT_DIR }}/config.toml | sed 's/baseURL//; s/\s*//g; s/=//; s/"//g')
+          hugo --source ${{ env.ROOT_DIR }} --minify --config config-geekdoc.toml
+          rootUrl=$(sed -n -e '/^baseURL/p' ${{ env.ROOT_DIR }}/config-geekdoc.toml | sed 's/baseURL//; s/\s*//g; s/=//; s/"//g')
           # echo $rootUrl
           pattern="//*[*[contains(text(),'${rootUrl}storage') or contains(text(),'${rootUrl}total')]]"
           # echo $pattern

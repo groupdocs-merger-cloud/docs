@@ -6,23 +6,22 @@ productName: "GroupDocs.Merger Cloud"
 weight: 3
 description: ""
 keywords: ""
+toc: True
 ---
-
-# GroupDocs.Merger Cloud SDKs #
 
 GroupDocs.Merger Cloud is a modern REST-oriented API, that allows easy integration into existing systems.
 
-### Why use an SDK? ###
+## Why use an SDK?
 
 Using an SDK (API client) is the quickest way for a developer to speed up the development. An SDK takes care of a lot of low-level details of makingRequests and handlingResponses and lets you focus on writing code specific to your particular project.
 
-### SDK benefits ###
+## SDK benefits
 
 Our supported SDKs are 100% tested and out of the box running. These SDKs are open source and have the MIT license. You can use them and even customize them for absolutely free of charge.
 
-# Supported SDKs #
+## Supported SDKs
 
- .NET
+###  .NET
 **GroupDocs.Merger Cloud SDK for .NET** allows you to incorporate GroupDocs.Merger Cloud services in your .NET applications quickly and easily.
 
 Install **[GroupDocs.Merger-Cloud](https://www.nuget.org/packages/GroupDocs.Merger-Cloud/)** via NuGet from Package Manager:
@@ -39,7 +38,8 @@ Complete source code of GroupDocs.Merger Cloud SDK for .Net is freely available 
 
 {{< alert style="info" >}}Please see the GroupDocs.Merger Cloud SDK for .NET [Examples here](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-dotnet-samples/tree/master/Examples).{{< /alert >}}
 
-PHP
+###  PHP
+
 **GroupDocs.Merger Cloud SDK for PHP** allows you to incorporate GroupDocs.Merger Cloud services in your PHP applications quickly and easily.
 
 groupdocs-merger-cloud is available on Packagist as the [groupdocs-merger-cloud](https://packagist.org/packages/groupdocscloud/groupdocs-merger-cloud) package. Run the following command:
@@ -64,7 +64,8 @@ Complete source code of GroupDocs.Merger Cloud SDK for PHP is freely available o
 
 {{< alert style="info" >}}Please see the GroupDocs.Merger Cloud SDK for PHP [Examples here](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-php/tree/master/tests/GroupDocs/Merger/ApiTests).{{< /alert >}}
 
-Java
+###  Java
+
 **GroupDocs.Merger Cloud SDK for Java** allows you to incorporate GroupDocs.Merger Cloud services in your Java applications quickly and easily.
 
 You can directly include the source code of GroupDocs.Merger Cloud SDK for Java in your own project, the source code is available from [here](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-java).
@@ -73,7 +74,7 @@ Alternatively, you can use **[Maven](https://repository.groupdocs.cloud/webapp/#
 
 **GroupDocs Maven Repository**
 
-```html
+```xml
 
 <repository>
     <id>groupdocs-artifact-repository</id>
@@ -85,7 +86,7 @@ Alternatively, you can use **[Maven](https://repository.groupdocs.cloud/webapp/#
 
 **Maven Dependency**
 
-```html
+```xml
 
 <dependency>
     <groupId>com.groupdocs</groupId>
@@ -100,7 +101,7 @@ Alternatively, you can use **[Maven](https://repository.groupdocs.cloud/webapp/#
 
 **Maven**
 
-```html
+```bash
 
 $ mvn dependency:sources
 $ mvn dependency:resolve -Dclassifier=javadoc
@@ -109,7 +110,7 @@ $ mvn dependency:resolve -Dclassifier=javadoc
 
 **Eclipse IDE**
 
-```html
+```bash
 
 $ mvn eclipse:eclipse -DdownloadSources=true
 $ mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadocs=false
@@ -118,7 +119,7 @@ $ mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadocs=false
 
 **pom.xml**
 
-```html
+```xml
 
 <build>
     <plugins>
@@ -143,15 +144,14 @@ Complete source code of GroupDocs.Merger Cloud SDK for Java is freely available 
 
 {{< alert style="info" >}}Please see the GroupDocs.MergerCloud SDK for Java [Examples here](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-java/tree/master/src/test/java/com/groupdocs/cloud/merger/api).{{< /alert >}}
 
-Ruby
+### Ruby
+
 **GroupDocs.Merger Cloud SDK for Ruby** allows you to incorporate GroupDocs.Merger Cloud services in your Ruby applications quickly and easily.
 
 *merger-sdk-ruby* is available on **[RubyGem distribution](https://rubygems.org/gems/groupdocs_merger_cloud)** package. Run the following command::
 
-```html
-
+```bash
 gem install groupdocs_cloud_merger
-
 ```
 
 {{< alert style="info" >}}
@@ -160,15 +160,13 @@ Complete source code of GroupDocs.Merger Cloud SDK for Ruby is freely available 
 
 {{< alert style="info" >}}Please see the GroupDocs.Merger Cloud SDK for Ruby [Examples here](https://github.com/groupdocs-merger-cloud/groupdocs-Merger-cloud-ruby/tree/master/test/api).{{< /alert >}}
 
-Node
+### Node
 **GroupDocs.Merger Cloud SDK for Node.js** allows you to incorporate GroupDocs.Merger Cloud services in your Node.js applications quickly and easily.
 
 *merger-sdk-nodejs* is available on **[npmjs.com](https://www.npmjs.com/package/groupdocs-merger-cloud)** package. Run the following command:
 
-```html
-
+```bash
 npm install groupdocs-merger-cloud
-
 ```
 
 {{< alert style="info" >}}
@@ -177,15 +175,13 @@ Complete source code of GroupDocs.Merger Cloud SDK for Node.js is freely availab
 
 {{< alert style="info" >}}Please see the GroupDocs.Merger Cloud SDK for Node.js [Examples here](https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-node-samples/tree/master/Examples).{{< /alert >}}
 
-Python
+### Python
 **GroupDocs.Editor Cloud SDK for Python** allows you to incorporate GroupDocs.Editor Cloud services in your Python applications quickly and easily.
 
 Install groupdocs-merger-cloud with [PIP](https://pypi.org/project/pip/) from [PyPI](https://pypi.org/project/groupdocs-merger-cloud/) package. Run the following command:
 
-```html
-
+```bash
 pip install groupdocs-merger-cloud
-
 ```
 
 {{< alert style="info" >}}

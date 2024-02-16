@@ -6,4 +6,5 @@ productName: "GroupDocs.Merger Cloud"
 weight: 2
 description: ""
 keywords: ""
+toc: True
 ---

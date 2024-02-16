@@ -6,9 +6,8 @@ productName: "GroupDocs.Merger Cloud"
 weight: 1
 description: ""
 keywords: ""
+toc: True
 ---
-
-## Introduction ##
 
 There is an additional option for Word document joining that allows to merge those documents without page breaking between them, i.e. the last page of the initial document will be merged with the first page of the next document as one page.
 
@@ -16,7 +15,7 @@ There is an additional option for Word document joining that allows to merge tho
 |---|---|---|
 |JoinItem.WordJoinMode|Allows to join word documents without empty space between documents|Values: Default, Continous
 
-## Resource URI ##
+## Resource URI
 
 ```html
 
@@ -26,11 +25,11 @@ HTTP POST ~/join
 
 [Swagger UI](https://apireference.groupdocs.cloud/merger/#/Document/Join) lets you call this REST API directly from the browser.
 
-### cURL Example ###
+## cURL example
 
-{{< tabs tabTotal="2" tabID="1" tabName1="Request" tabName2="Response" >}} {{< tab tabNum="1" >}}
+{{< tabs "example1">}} {{< tab "Request" >}}
 
-```html
+```bash
 
 * First get JSON Web Token
 * Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications. Kindly place Client Id in "client_id" and Client Secret in "client_secret" argument.
@@ -70,9 +69,9 @@ curl -v "https://api.groupdocs.cloud/v1.0/merger/join" \
 
 ```
 
-{{< /tab >}} {{< tab tabNum="2" >}}
+{{< /tab >}} {{< tab "Response" >}}
 
-```html
+```json
 
 *Response will contain storage path to resultant document
 {
@@ -83,13 +82,11 @@ curl -v "https://api.groupdocs.cloud/v1.0/merger/join" \
 
 {{< /tab >}} {{< /tabs >}}
 
-## SDKs ##
+## SDK examples
 
 Using an SDK (API client) is the quickest way for a developer to speed up the development. An SDK takes care of a lot of low-level details of makingRequests and handlingResponses and lets you focus on writing code specific to your particular project. Check out our [GitHub repository](https://github.com/groupdocs-merger-cloud) for a complete list of GroupDocs.Merger Cloud SDKs along with working examples, to get you started in no time. Please check the article to learn how to add an SDK to your project.
 
-## Join Word Documents continously ##
-
-{{< tabs tabTotal="6" tabID="10" tabName1="C#" tabName2="Java & Android" tabName3="PHP" tabName4="Node.js" tabName5="Python" tabName6="Ruby" >}} {{< tab tabNum="1" >}}
+{{< tabs "example2">}} {{< tab "C#" >}}
 
 ```csharp
 
@@ -137,7 +134,7 @@ catch (Exception e)
 }
 ```
 
-{{< /tab >}} {{< tab tabNum="2" >}}
+{{< /tab >}} {{< tab "Java & Android" >}}
 
 ```java
 // For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-java-samples
@@ -177,7 +174,7 @@ try {
 
 ```
 
-{{< /tab >}} {{< tab tabNum="3" >}}
+{{< /tab >}} {{< tab "PHP" >}}
 
 ```php
 
@@ -218,7 +215,7 @@ echo "\n";
 
 ```
 
-{{< /tab >}} {{< tab tabNum="4" >}}
+{{< /tab >}} {{< tab "Node.js" >}}
 
 ```JavaScript
 
@@ -250,7 +247,7 @@ console.log("Output file path: " + result.path);
 
 ```
 
-{{< /tab >}} {{< tab tabNum="5" >}}
+{{< /tab >}} {{< tab "Python" >}}
 
 ```python
 
@@ -279,7 +276,7 @@ print("Output file path = " + result.path)
 
 ```
 
-{{< /tab >}} {{< tab tabNum="6" >}}
+{{< /tab >}} {{< tab "Ruby" >}}
 
 ```ruby
 

@@ -6,9 +6,8 @@ productName: "GroupDocs.Merger Cloud"
 weight: 1
 description: ""
 keywords: ""
+toc: True
 ---
-
-## Introduction ##
 
 This REST API provides an ability to generate document pages of image representations.
 There are several ways to specify page numbers needed for preview:
@@ -34,7 +33,7 @@ The following properties of preview may be customized:
 |Format|Image format - JPG, PNG, BMP|The default value is JPG
 |OutputPath|Path format to resultant images|Required
 
-## Resource URI ##
+## Resource URI
 
 ```html
 
@@ -44,11 +43,11 @@ HTTP POST ~/preview
 
 [Swagger UI](https://apireference.groupdocs.cloud/merger/#/Document/Preview) lets you call this REST API directly from the browser.
 
-### cURL Example ###
+## cURL example
 
-{{< tabs tabTotal="2" tabID="1" tabName1="Request" tabName2="Response" >}} {{< tab tabNum="1" >}}
+{{< tabs "example1">}} {{< tab "Request" >}}
 
-```html
+```bash
 * First get JSON Web Token
 * Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications. Kindly place Client Id in "client_id" and Client Secret in "client_secret" argument.
 curl -v "https://api.groupdocs.cloud/connect/token" \
@@ -73,11 +72,10 @@ curl -v "https://api.groupdocs.cloud/v1.0/merger/preview" \
 
 ```
 
-{{< /tab >}} {{< tab tabNum="2" >}}
+{{< /tab >}} {{< tab "Response" >}}
 
-```html
-
-*Response will contain storage path to resultant documents
+```json
+//Response will contain storage path to resultant documents
 {
   'documents': [
     {
@@ -92,33 +90,31 @@ curl -v "https://api.groupdocs.cloud/v1.0/merger/preview" \
 
 {{< /tab >}} {{< /tabs >}}
 
-## SDKs ##
+## SDK examples
 
 Using an SDK (API client) is the quickest way for a developer to speed up the development. An SDK takes care of a lot of low-level details of makingRequests and handlingResponses and lets you focus on writing code specific to your particular project. Check out our [GitHub repository](https://github.com/groupdocs-merger-cloud) for a complete list of GroupDocs.Merger Cloud SDKs along with working examples, to get you started in no time. Please check the article to learn how to add an SDK to your project.
 
-## Generate Document Pages Preview ##
-
-{{< tabs tabTotal="6" tabID="10" tabName1="C#" tabName2="Java" tabName3="PHP" tabName4="Node.js" tabName5="Python" tabName6="Ruby" >}} {{< tab tabNum="1" >}}
+{{< tabs "example2">}} {{< tab "C#" >}}
 
 {{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_PreviewDocument.cs >}}
 
-{{< /tab >}} {{< tab tabNum="2" >}}
+{{< /tab >}} {{< tab "Java" >}}
 
 {{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_PreviewDocument.java >}}
 
-{{< /tab >}} {{< tab tabNum="3" >}}
+{{< /tab >}} {{< tab "PHP" >}}
 
 {{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_PreviewDocument.php >}}
 
-{{< /tab >}} {{< tab tabNum="6" >}}
+{{< /tab >}} {{< tab "Ruby" >}}
 
 {{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_PreviewDocument.rb >}}
 
-{{< /tab >}} {{< tab tabNum="4" >}}
+{{< /tab >}} {{< tab "Node.js" >}}
 
 {{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_PreviewDocument.js >}}
 
-{{< /tab >}} {{< tab tabNum="5" >}}
+{{< /tab >}} {{< tab "Python" >}}
 
 {{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_PreviewDocument.py >}}
 

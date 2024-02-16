@@ -5,5 +5,6 @@ title: "GroupDocs.Merger Cloud"
 productName: "GroupDocs.Merger Cloud"
 description: ""
 keywords: ""
+toc: True
 ---
 

@@ -6,6 +6,7 @@ productName: "GroupDocs.Merger Cloud"
 weight: 11
 description: ""
 keywords: ""
+toc: True
 ---
 
 [Docker](https://docs.docker.com/get-started/overview/) is an open platform that effectively solves three main tasks development, deployment, and running the applications. With Docker, you can isolate your applications from the infrastructure that simplifies software development and delivery. The main building blocs are images and containers. The image includes everything you need to run the application: code or binaries, runtime dependencies, file system. The container is an isolated process with additional features that you can interact with. The use of containers to deploy applications is called *containerization*.
@@ -36,7 +37,7 @@ To run GroupDocs.Merger Cloud in Docker type one of the following commands:
 In case you don't have license keys you can omit LICENSE_PUBLIC_KEY and LICENSE_PRIVATE_KEY parameters. Without license GroupDocs.Merger will work in evaluation mode.
 {{< /alert >}}
 
-{{< tabs tabTotal="2" tabID="1" tabName1="Windows (PowerShell)" tabName2="Linux (bash)" >}} {{< tab tabNum="1" >}}
+{{< tabs "example1">}} {{< tab "Windows (PowerShell)" >}}
 
 ```powershell
 
@@ -50,7 +51,7 @@ docker run `
 
 ```
 
-{{< /tab >}} {{< tab tabNum="2" >}}
+{{< /tab >}} {{< tab "Linux (bash)" >}}
 
 ```bash
 
@@ -74,7 +75,7 @@ I'm running Docker on Windows and will be using PowerShell to run the commands b
 
 After the container is started you'll see the following messages that indicate that GroupDocs.Merger Cloud service up and running.
 
-![Docker container started](merger/images/docker_run.png)
+![Docker container started](/merger/images/docker_run.png)
 
 Now you can work with GroupDocs.Merger Cloud which is hosted on your machine.
 
@@ -82,13 +83,13 @@ Now you can work with GroupDocs.Merger Cloud which is hosted on your machine.
 
 When the container and GroupDocs.Merger Cloud started you can check service status by calling GET [http://localhost:8080/](http://localhost:8080/). The successful response status (200) will indicate that the service is up and running.
 
-{{< tabs tabTotal="2" tabID="2" tabName1="Windows (PowerShell)" tabName2="Linux (bash)" >}} {{< tab tabNum="1" >}}
+{{< tabs "example2">}} {{< tab "Windows (PowerShell)" >}}
 
 ```powershell
 Invoke-WebRequest -Uri http://localhost:8080/
 ```
 
-{{< /tab >}} {{< tab tabNum="2" >}}
+{{< /tab >}} {{< tab "Linux (bash)" >}}
 
 ```bash
 curl -i http://localhost:8080/
@@ -98,13 +99,13 @@ curl -i http://localhost:8080/
 
 At the following screenshot, I'm calling [http://localhost:8080/](http://localhost:8080/) in a separate Powershell window and response indicates that service is alive:
 
-![Health check](merger/images/docker_invoke.png)
+![Health check](/merger/images/docker_invoke.png)
 
 ### Using UI
 
 After starting, you can use Swagger UI at [http://localhost:8080/swagger/](http://localhost:8080/swagger/) and explore the API. With Swagger UI you can call API methods in your browser.
 
-![Swagger UI](merger/images/docker_ui.png)
+![Swagger UI](/merger/images/docker_ui.png)
 
 ### Using SDK
 
@@ -116,39 +117,39 @@ If you don't find your language in the SDK list, feel free to request for it on 
 
 The authentication is required in case you're going to use SDK. To enable authentication set CLIENT_ID/CLIENT_SECRET parameters as it shown below.
 
-{{< tabs tabTotal="2" tabID="3" tabName1="Windows (PowerShell)" tabName2="Linux (bash)" >}} {{< tab tabNum="1" >}}
+{{< tabs "example3">}} {{< tab "Windows (PowerShell)" >}}
 
 ```powershell
 docker run `
-В В В В -p 8080:80 `
-В В В В -v "${pwd}/data:/data" `
-В В В В -e "LICENSE_PUBLIC_KEY#public_key" `
-В В В В -e "LICENSE_PRIVATE_KEY#private_key" `
-В В В В -e "client_id=client_id" `
-В В В В -e "client_secret=client_secret" `
-В В В В --name merger_cloud `
-В В В В groupdocs/merger-cloud
+     -p 8080:80 `
+     -v "${pwd}/data:/data" `
+     -e "LICENSE_PUBLIC_KEY#public_key" `
+     -e "LICENSE_PRIVATE_KEY#private_key" `
+     -e "client_id=client_id" `
+     -e "client_secret=client_secret" `
+     --name merger_cloud `
+     groupdocs/merger-cloud
 ```
 
-{{< /tab >}} {{< tab tabNum="2" >}}
+{{< /tab >}} {{< tab "Linux (bash)" >}}
 
 ```bash
 docker run \
-В В В В -p 8080:80 \
-В В В В -v $(pwd)/data:/data \
-В В В В -e LICENSE_PUBLIC_KEY#public_key \
-В В В В -e LICENSE_PRIVATE_KEY#private_key \
-В В В В -e client_id=client_id \
-В В В В -e client_secret=client_secret \
-В В В В --name merger_cloud \
-В В В В groupdocs/merger-cloud
+     -p 8080:80 \
+     -v $(pwd)/data:/data \
+     -e LICENSE_PUBLIC_KEY#public_key \
+     -e LICENSE_PRIVATE_KEY#private_key \
+     -e client_id=client_id \
+     -e client_secret=client_secret \
+     --name merger_cloud \
+     groupdocs/merger-cloud
 ```
 
 {{< /tab >}} {{< /tabs >}}
 
 Then, when using SDK, setup the api base url, as shown in examples below:
 
-{{< tabs tabTotal="6" tabID="10" tabName1="C#" tabName2="Java & Android" tabName3="PHP" tabName4="Node.js" tabName5="Python" tabName6="Ruby" >}} {{< tab tabNum="1" >}}
+{{< tabs "example4">}} {{< tab "C#" >}}
 
 ```csharp
 
@@ -165,7 +166,7 @@ var response = apiInstance.GetSupportedFileFormats();
 
 ```
 
-{{< /tab >}} {{< tab tabNum="2" >}}
+{{< /tab >}} {{< tab "Java & Android" >}}
 
 ```java
 
@@ -181,7 +182,7 @@ FormatsResult response = apiInstance.getSupportedFileFormats();
 
 ```
 
-{{< /tab >}} {{< tab tabNum="3" >}}
+{{< /tab >}} {{< tab "PHP" >}}
 
 ```php
 
@@ -203,7 +204,7 @@ $response = $infoApi->getSupportedFileFormats();
 
 ```
 
-{{< /tab >}} {{< tab tabNum="4" >}}
+{{< /tab >}} {{< tab "Node.js" >}}
 
 ```javascript
 
@@ -220,7 +221,7 @@ let response = await infoApi.getSupportedFileFormats();
 
 ```
 
-{{< /tab >}} {{< tab tabNum="5" >}}
+{{< /tab >}} {{< tab "Python" >}}
 
 ```python
 
@@ -239,7 +240,7 @@ result = infoApi.get_supported_file_formats()
 
 ```
 
-{{< /tab >}} {{< tab tabNum="6" >}}
+{{< /tab >}} {{< tab "Ruby" >}}
 
 ```ruby
 
@@ -264,28 +265,28 @@ result = infoApi.get_supported_file_formats()
 
 By default, a local storage used inside container for file operations. It's possible to connect a Google Cloud storage by setting GOOGLE_APPLICATION_CREDENTIALS and GOOGLE_STORAGE_BUCKET environment variables.
 
-{{< tabs tabTotal="2" tabID="3" tabName1="Windows (PowerShell)" tabName2="Linux (bash)" >}} {{< tab tabNum="1" >}}
+{{< tabs "example5">}} {{< tab "Windows (PowerShell)" >}}
 
 ```powershell
 docker run `
-В В В В -p 8080:80 `
-В В В В -v "${pwd}/data:/data" `
-В В В В -e "GOOGLE_APPLICATION_CREDENTIALS=/data/key.json" `
-В В В В -e "GOOGLE_STORAGE_BUCKET=bucket_id" `
-В В В В --name merger_cloud `
-В В В В groupdocs/merger-cloud
+     -p 8080:80 `
+     -v "${pwd}/data:/data" `
+     -e "GOOGLE_APPLICATION_CREDENTIALS=/data/key.json" `
+     -e "GOOGLE_STORAGE_BUCKET=bucket_id" `
+     --name merger_cloud `
+     groupdocs/merger-cloud
 ```
 
-{{< /tab >}} {{< tab tabNum="2" >}}
+{{< /tab >}} {{< tab "Linux (bash)" >}}
 
 ```bash
 docker run \
-В В В В -p 8080:80 \
-В В В В -v $(pwd)/data:/data \
-В В В В -e GOOGLE_APPLICATION_CREDENTIALS=/data/key.json \
-В В В В -e GOOGLE_STORAGE_BUCKET=bucket_id \
-В В В В --name merger_cloud \
-В В В В groupdocs/merger-cloud
+    -p 8080:80 \
+    -v $(pwd)/data:/data \
+    -e GOOGLE_APPLICATION_CREDENTIALS=/data/key.json \
+    -e GOOGLE_STORAGE_BUCKET=bucket_id \
+    --name merger_cloud \
+    groupdocs/merger-cloud
 ```
 
 {{< /tab >}} {{< /tabs >}}

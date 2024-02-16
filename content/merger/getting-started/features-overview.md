@@ -6,22 +6,23 @@ productName: "GroupDocs.Merger Cloud"
 weight: 1
 description: ""
 keywords: ""
+toc: True
 ---
 
 GroupDocs.Merger Cloud is a REST API that allows you to join multiple documents and manipulate single document structure across a wide range of document formats. Below, the shortlist of possible actions:
 
-## Document operations ##
+## Document operations
 
-### Join Documents ###
+### Join Documents
 
 This feature lets you merge two or more documents into one document, join specific pages or page ranges from several source documents into a single resultant document.
 Joined documents should be of the same format.
 
-### Split Document ###
+### Split Document
 
 The **split** operation allows dividing a source document to several resultant documents.
 
-### Document Preview ###
+### Document Preview
 
 The document preview feature allows generating image representations of document pages. This may be helpful for a better understanding of document content and its structure. Preview can be generated for all document pages (by default) or for specific page numbers or page range.
 
@@ -31,33 +32,33 @@ Supported image formats for document preview are:
 * JPG
 * BMP
 
-## Document pages operations ##
+## Document pages operations
 
-### Move Page ###
+### Move Page
 
 **MovePage** operation allows the moving page to another position within a document.
 
-### Remove Pages ###
+### Remove Pages
 
 **RemovePages** operation feature provides an ability to remove a single page or a collection of specific page numbers from the source document.
 
-### Rotate Pages ###
+### Rotate Pages
 
 **The RotatePages** operation lets you rotate pages within the document. You can rotate pages by setting rotation angle to 90,180 or 270 degrees.
 
-### Swap Page ###
+### Swap Page
 
 **SwapPages** operation allows swapping two pages of positions within the source document. The result is a new document where two pages have their positions exchanged.
 
-### Extract Pages ###
+### Extract Pages
 
 **ExtractPages** feature allows extracting a specified page or page ranges from the source document. The result is a new document that contains only specified pages from the source document.
 
-### Change Pages Orientation ###
+### Change Pages Orientation
 
 **ChangeOrientation** operation lets you set page orientation (portrait, landscape) for specific or all pages of the document.
 
-## Document security operations ##
+## Document security operations
 
 GroupDocs.Merger API allows to manage document password-protection through the following security operations:
 
@@ -66,7 +67,7 @@ GroupDocs.Merger API allows to manage document password-protection through the f
 * Update password if the document is password-protected already;
 * Remove the password if the document is password-protected.
 
-## Document information extraction ##
+## Document information extraction
 
 GroupDocs.Merger Cloud allows obtaining basic information about source document - file type, size, pages count, page height and width, etc.
 This may be quite useful for generating document previews.
@@ -85,9 +86,9 @@ This may be quite useful for generating document previews.
 
 # Security and Authentication #
 
-The GroupDocs.Merger Cloud API is secured and requires authentication. One set of keys Client Id and Client Secret are required for Authentication which can be created at the [Dashboard](http://dashboard.groupdocs.cloud/). Check [Authenticating API Requests]({{< ref "total/getting-started/overview-rest-api/authenticating-api-requests.md" >}}) article for a complete example.
+The GroupDocs.Merger Cloud API is secured and requires authentication. One set of keys Client Id and Client Secret are required for Authentication which can be created at the [Dashboard](http://dashboard.groupdocs.cloud/). Check [Authenticating API Requests]({{< ref "total/overview-rest-api/authenticating-api-requests.md" >}}) article for a complete example.
 
-## SDKs ##
+## SDK examples
 
 Check out our GitHub [repository](https://github.com/groupdocs-merger-cloud) for a complete list of GroupDocs.Merger SDKs along with working examples, to get you started in no time.
 
