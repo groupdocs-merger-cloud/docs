@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: self-hosted      
     env:
-      PRODUCT: annotation
+      PRODUCT: merger
       WORK_DIR: docs-cloud-common
       PUBLIC_DIR: docs-cloud-common/public
       REMOTE_DIR: /var/www/docs.groupdocs.cloud/html
