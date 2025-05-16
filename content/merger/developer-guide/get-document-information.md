@@ -100,26 +100,148 @@ Using an SDK (API client) is the quickest way for a developer to speed up the de
 
 {{< tabs "example2">}} {{< tab "C#" >}}
 
-{{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_GetDocumentInformation.cs >}}
+```csharp
+using GroupDocs.Merger.Cloud.Sdk.Api;
+using GroupDocs.Merger.Cloud.Sdk.Client;
+using GroupDocs.Merger.Cloud.Sdk.Model;
+using GroupDocs.Merger.Cloud.Sdk.Model.Requests;
+using System;
+
+namespace GroupDocs.Merger.Cloud.Examples.CSharp
+{
+    /// <summary>
+    /// This example demonstrates how to get document info.
+    /// </summary>
+    public class GetDocumentInformation
+    {
+		public static void Run()
+		{
+            var configuration = new Configuration(Common.MyAppSid, Common.MyAppKey);
+            var apiInstance = new InfoApi(configuration);
+
+			try
+			{
+				var fileInfo = new FileInfo
+                {
+						FilePath = "WordProcessing/password-protected.docx",
+						Password = "password",
+						StorageName = Common.MyStorage
+					};
+
+				var request = new GetInfoRequest(fileInfo);
+
+				var response = apiInstance.GetInfo(request);
+				Console.WriteLine("InfoResult.Pages.Count: " + response.Pages.Count);
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine("Exception while calling InfoApi: " + e.Message);
+			}
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "Java" >}}
 
-{{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_GetDocumentInformation.java >}}
+```java
+package examples;
+
+import com.groupdocs.cloud.merger.client.*;
+import com.groupdocs.cloud.merger.model.*;
+import com.groupdocs.cloud.merger.model.requests.*;
+import com.groupdocs.cloud.merger.api.*;
+import examples.Utils;
+
+/**
+ * This example demonstrates how to get document info.
+ */
+public class Merger_Java_GetDocumentInformation {
+
+	public static void main(String[] args) {
+
+		InfoApi apiInstance = new InfoApi(Utils.GetConfiguration());
+		try {
+			FileInfo fileInfo = new FileInfo();			
+			fileInfo.setFilePath("WordProcessing/password-protected.docx");
+			fileInfo.setPassword("password");
+
+			GetInfoRequest request = new GetInfoRequest(fileInfo);
+
+			InfoResult response = apiInstance.getInfo(request);
+
+			System.err.println("InfoResult.Pages.Count: " + response.getPages().size());
+		} catch (ApiException e) {
+			System.err.println("Exception while calling InfoApi:");
+			e.printStackTrace();
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "PHP" >}}
 
-{{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_GetDocumentInformation.php >}}
+```php
+// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-php-samples
+$AppSid = 'XXXX-XXXX-XXXX-XXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$AppKey = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+$configuration = new GroupDocs\Merger\Configuration();
+$configuration->setAppSid(CommonUtils::$AppSid);
+$configuration->setAppKey(CommonUtils::$AppKey);
+ 
+$infoApi = GroupDocs\Merger\InfoApi($configuration);
+  
+$fileInfo = new Model\FileInfo();
+$fileInfo->setFilePath("WordProcessing/password-protected.docx");
+$fileInfo->setPassword("password");
+ 
+$response = $infoApi->getInfo(new Requests\getInfoRequest($fileInfo));
+```
 
 {{< /tab >}} {{< tab "Ruby" >}}
 
-{{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_GetDocumentInformation.rb >}}
+```ruby
+# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-ruby-samples
+$app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+infoApi = GroupDocsMergerCloud::InfoApi.from_keys($app_sid, $app_key)
+fileInfo = GroupDocsMergerCloud::FileInfo.new
+fileInfo.file_path = 'WordProcessing/password-protected.docx'
+fileInfo.password = 'password'
+request = GroupDocsMergerCloud::GetInfoRequest.new(fileInfo)
+response = infoApi.get_info(request)
+```
 
 {{< /tab >}} {{< tab "Node.js" >}}
 
-{{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_GetDocumentInformation.js >}}
+```js
+// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-node-samples
+global.appSid = "XXXX-XXXX-XXXX-XXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+global.appKey = "XXXXXXXXXXXXXXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+global.infoApi = merger_cloud.InfoApi.fromKeys(appSid, appKey);
+ 
+let fileInfo = new merger_cloud.FileInfo();
+fileInfo.filePath = "WordProcessing/password-protected.docx";
+fileInfo.password = "password";
+fileInfo.storageName = myStorage;
+let request = new merger_cloud.GetInfoRequest(fileInfo);
+let response = await infoApi.getInfo(request);
+```
 
 {{< /tab >}} {{< tab "Python" >}}
 
-{{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_GetDocumentInformation.py >}}
+```python
+# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-python-samples
+app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+infoApi = groupdocs_merger_cloud.InfoApi.from_keys(app_sid, app_key)
+ 
+fileInfo = groupdocs_merger_cloud.FileInfo("WordProcessing/password-protected.docx", None, None, "password")
+result = infoApi.get_info(groupdocs_merger_cloud.GetInfoRequest(fileInfo))
+```
 
 {{< /tab >}} {{< /tabs >}}

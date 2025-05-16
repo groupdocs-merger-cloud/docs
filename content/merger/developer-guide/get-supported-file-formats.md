@@ -82,26 +82,124 @@ Using an SDK (API client) is the quickest way for a developer to speed up the de
 
 {{< tabs "example2">}} {{< tab "C#" >}}
 
-{{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_GetSupportedFileTypes.cs >}}
+```csharp
+﻿using GroupDocs.Merger.Cloud.Sdk.Api;
+using GroupDocs.Merger.Cloud.Sdk.Client;
+using System;
+
+namespace GroupDocs.Merger.Cloud.Examples.CSharp
+{
+    /// <summary>
+    /// This example demonstrates how to obtain all supported file types.
+    /// </summary>
+    public class GetSupportedFileTypes
+    {
+		public static void Run()
+		{
+            var configuration = new Configuration(Common.MyAppSid, Common.MyAppKey);            
+            var apiInstance = new InfoApi(configuration);
+
+			try
+			{
+				// Get supported file formats
+				var response = apiInstance.GetSupportedFileFormats();
+
+				foreach (var entry in response.Formats)
+				{
+					Console.WriteLine($"{entry.FileFormat}: {string.Join(",", entry.Extension)}");
+				}
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine("Exception while calling InfoApi: " + e.Message);
+			}
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "Java" >}}
 
-{{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_GetSupportedFileTypes.java >}}
+```java
+package examples;
+
+import com.groupdocs.cloud.merger.client.*;
+import com.groupdocs.cloud.merger.model.*;
+import com.groupdocs.cloud.merger.api.InfoApi;
+import examples.Utils;
+
+/**
+ * This example demonstrates how to obtain all supported file types.
+ */
+public class Merger_Java_GetSupportedFileTypes {
+
+	public static void main(String[] args) {
+		
+		InfoApi apiInstance = new InfoApi(Utils.GetConfiguration());
+		
+		try {
+			FormatsResult response = apiInstance.getSupportedFileFormats();
+
+			for (Format format : response.getFormats()) {
+				System.out.println(format.getFileFormat());
+			}
+		} catch (ApiException e) {
+			System.err.println("Exception while calling InfoApi:");
+			e.printStackTrace();
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "PHP" >}}
 
-{{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_GetSupportedFileTypes.php >}}
+```php
+﻿// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-php-samples
+$AppSid = 'XXXX-XXXX-XXXX-XXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$AppKey = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+$configuration = new GroupDocs\Merger\Configuration();
+$configuration->setAppSid(CommonUtils::$AppSid);
+$configuration->setAppKey(CommonUtils::$AppKey);
+ 
+$infoApi = GroupDocs\Merger\InfoApi($configuration);
+  
+$response = $infoApi->getSupportedFileFormats();
+```
 
 {{< /tab >}} {{< tab "Ruby" >}}
 
-{{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_GetSupportedFileTypes.rb >}}
+```ruby
+﻿# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-ruby-samples
+$app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+infoApi = GroupDocsMergerCloud::InfoApi.from_keys($app_sid, $app_key)        
+result = infoApi.get_supported_file_formats()
+```
 
 {{< /tab >}} {{< tab "Node.js" >}}
 
-{{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_GetSupportedFileTypes.js >}}
+```js
+﻿// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-node-samples
+global.appSid = "XXXX-XXXX-XXXX-XXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+global.appKey = "XXXXXXXXXXXXXXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+global.infoApi = merger_cloud.InfoApi.fromKeys(appSid, appKey);
+ 
+let response = await infoApi.getSupportedFileFormats();
+```
 
 {{< /tab >}} {{< tab "Python" >}}
 
-{{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_GetSupportedFileTypes.py >}}
+```python
+﻿# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-python-samples
+app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+infoApi = groupdocs_merger_cloud.InfoApi.from_keys(app_sid, app_key)
+ 
+result = infoApi.get_supported_file_formats()
+```
 
 {{< /tab >}} {{< /tabs >}}

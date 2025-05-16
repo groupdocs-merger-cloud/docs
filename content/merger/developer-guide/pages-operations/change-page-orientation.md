@@ -88,26 +88,183 @@ Using an SDK (API client) is the quickest way for a developer to speed up the de
 
 {{< tabs "example2">}} {{< tab "C#" >}}
 
-{{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_ChangePageOrientation.cs >}}
+```csharp
+using GroupDocs.Merger.Cloud.Sdk.Api;
+using GroupDocs.Merger.Cloud.Sdk.Client;
+using GroupDocs.Merger.Cloud.Sdk.Model;
+using GroupDocs.Merger.Cloud.Sdk.Model.Requests;
+using System;
+using System.Collections.Generic;
+using FileInfo = GroupDocs.Merger.Cloud.Sdk.Model.FileInfo;
+
+namespace GroupDocs.Merger.Cloud.Examples.CSharp
+{
+    /// <summary>
+    /// This example demonstrates how to change document page orientation.
+    /// </summary>
+    public class ChangePageOrientation
+    {
+		public static void Run()
+		{
+            var configuration = new Configuration(Common.MyAppSid, Common.MyAppKey);
+            var apiInstance = new PagesApi(configuration);
+
+			try
+			{
+				var fileInfo = new FileInfo
+                {
+						FilePath = "WordProcessing/four-pages.docx"
+                };
+
+                var options = new OrientationOptions
+                {
+                    FileInfo = fileInfo,
+                    OutputPath = "Output/change-page-orientation.docx",
+                    Pages = new List<int?> { 2, 4 },
+                    Mode = OrientationOptions.ModeEnum.Landscape
+                };
+                var request = new OrientationRequest(options);
+
+                var response = apiInstance.Orientation(request);
+
+				Console.WriteLine("Output file path: " + response.Path);
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine("Exception while calling api: " + e.Message);
+			}
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "Java" >}}
 
-{{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_ChangePageOrientation.java >}}
+```java
+package examples.PagesOperations;
+
+import java.util.Arrays;
+import com.groupdocs.cloud.merger.client.*;
+import com.groupdocs.cloud.merger.model.*;
+import com.groupdocs.cloud.merger.model.requests.*;
+import com.groupdocs.cloud.merger.api.*;
+import examples.Utils;
+
+/**
+ * This example demonstrates how to change document page orientation.
+ */
+public class Merger_Java_ChangePageOrientation {
+
+	public static void main(String[] args) {		
+
+		PagesApi apiInstance = new PagesApi(Utils.GetConfiguration());
+
+		try {
+			FileInfo fileInfo = new FileInfo();			
+			fileInfo.setFilePath("WordProcessing/four-pages.docx");
+
+			OrientationOptions options = new OrientationOptions();
+			options.setFileInfo(fileInfo);
+			options.setOutputPath("output/change-page-orientation.docx");
+			options.setPages(Arrays.asList(2, 4));
+			options.setMode(OrientationOptions.ModeEnum.LANDSCAPE);
+
+			OrientationRequest request = new OrientationRequest(options);
+
+			DocumentResult response = apiInstance.orientation(request);
+
+			System.err.println("Output file path: " + response.getPath());
+		
+		} catch (ApiException e) {
+
+			System.err.println("Exception while calling api:");
+			e.printStackTrace();
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "PHP" >}}
 
-{{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_ChangePageOrientation.php >}}
+```php
+// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-php-samples
+$AppSid = 'XXXX-XXXX-XXXX-XXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$AppKey = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+$configuration = new GroupDocs\Merger\Configuration();
+$configuration->setAppSid(CommonUtils::$AppSid);
+$configuration->setAppKey(CommonUtils::$AppKey);
+ 
+$pagesApi = GroupDocs\Merger\PagesApi($configuration);
+ 
+$fileInfo = new Model\FileInfo();
+$fileInfo->setFilePath("WordProcessing/four-pages.docx");         
+ 
+$options = new Model\OrientationOptions();
+$options->setFileInfo($fileInfo);
+$options->setOutputPath("Output/change-page-orientation.docx");
+$options->setPages([2, 4]);
+$options->setMode(Model\OrientationOptions::MODE_LANDSCAPE);
+ 
+$request = new Requests\orientationRequest($options);       
+$response = $pagesApi->orientation($request);
+```
 
 {{< /tab >}} {{< tab "Ruby" >}}
 
-{{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_ChangePageOrientation.rb >}}
+```ruby
+# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-ruby-samples
+$app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+ 
+ 
+pagesApi = GroupDocsMergerCloud::PagesApi.from_keys($app_sid, $app_key)
+ 
+options = GroupDocsMergerCloud::OrientationOptions.new
+options.file_info = GroupDocsMergerCloud::FileInfo.new
+options.file_info.file_path = 'WordProcessing/four-pages.docx'
+options.output_path = "Output/change-page-orientation.docx"
+options.pages = [2, 4]
+options.mode = "Landscape"
+ 
+result = pagesApi.orientation(GroupDocsMergerCloud::OrientationRequest.new(options))
+```
 
 {{< /tab >}} {{< tab "Node.js" >}}
 
-{{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_ChangePageOrientation.js >}}
+```js
+// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-node-samples
+global.appSid = "XXXX-XXXX-XXXX-XXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+global.appKey = "XXXXXXXXXXXXXXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+global.pagesApi = merger_cloud.PagesApi.fromKeys(appSid, appKey);
+ 
+let options = new merger_cloud.OrientationOptions();
+options.fileInfo = new merger_cloud.FileInfo();
+options.fileInfo.filePath = "WordProcessing/four-pages.docx";  
+options.outputPath = "Output/change-page-orientation.docx";
+options.pages = [2, 4];
+options.mode = merger_cloud.OrientationOptions.ModeEnum.Landscape;
+ 
+let result = await pagesApi.orientation(new merger_cloud.OrientationRequest(options));
+```
 
 {{< /tab >}} {{< tab "Python" >}}
 
-{{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_ChangePageOrientation.py >}}
+```python
+# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-python-samples
+app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+pagesApi = groupdocs_merger_cloud.PagesApi.from_keys(app_sid, app_key)
+ 
+options = groupdocs_merger_cloud.OrientationOptions()
+options.file_info = groupdocs_merger_cloud.FileInfo("WordProcessing/four-pages.docx")
+options.output_path = "Output/change-page-orientation.docx"
+options.pages = [2, 4]
+options.mode = "Landscape"
+ 
+result = pagesApi.orientation(groupdocs_merger_cloud.OrientationRequest(options))
+```
 
 {{< /tab >}} {{< /tabs >}}

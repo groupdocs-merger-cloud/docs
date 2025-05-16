@@ -107,27 +107,160 @@ Our API is completely independent of your operating system, database system or d
 
 {{< tabs "example2">}} {{< tab "C#" >}}
 
-{{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_Get_Files_List.cs >}}
+```csharp
+using System;
+using GroupDocs.Merger.Cloud.Sdk.Api;
+using GroupDocs.Merger.Cloud.Sdk.Client;
+using GroupDocs.Merger.Cloud.Sdk.Model.Requests;
+
+namespace GroupDocs.Merger.Cloud.Examples.CSharp
+{
+	// Get Files List
+	class Get_Files_List
+	{
+		public static void Run()
+		{
+			var configuration = new Configuration(Common.MyAppSid, Common.MyAppKey);
+			var apiInstance = new FolderApi(configuration);
+
+			try
+			{
+				var request = new GetFilesListRequest("WordProcessing", Common.MyStorage);
+
+				var response = apiInstance.GetFilesList(request);
+				Console.WriteLine("Expected response type is FilesList: " + response.Value.Count.ToString());
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine("Exception while calling FolderApi: " + e.Message);
+			}
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "Java" >}}
 
-{{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_Get_Files_List.java >}}
+```java
+package examples.Working_With_Folder;
+
+import com.groupdocs.cloud.Merger.api.*;
+import com.groupdocs.cloud.Merger.client.ApiException;
+import com.groupdocs.cloud.Merger.model.FilesList;
+import com.groupdocs.cloud.Merger.model.*;
+import com.groupdocs.cloud.Merger.model.requests.*;
+import examples.Utils;
+
+public class Merger_Java_Get_Files_List {
+
+	public static void main(String[] args) {
+
+		FolderApi apiInstance = new FolderApi(Utils.AppSID, Utils.AppKey);
+		try {
+			GetFilesListRequest request = new GetFilesListRequest("Mergers", Utils.MYStorage);
+			FilesList response = apiInstance.getFilesList(request);
+			System.out.println("Expected response type is FilesList.");
+			for (StorageFile storageFile : response.getValue()) {
+				System.out.println("Files: " + storageFile.getPath());
+			}
+		} catch (ApiException e) {
+			System.err.println("Exception while calling FolderApi:");
+			e.printStackTrace();
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "PHP" >}}
 
-{{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_Get_Files_List.php >}}
+```php
+<?php
+
+include(dirname(__DIR__) . '\CommonUtils.php');
+
+	try {
+		$apiInstance = CommonUtils::GetFolderApiInstance();
+
+		$request = new GroupDocs\Merger\Model\Requests\GetFilesListRequest("mergerdocs", CommonUtils::$MyStorage);
+		$response = $apiInstance->getFilesList($request);
+		
+		echo "Expected response type is FilesList.", "<br />";
+
+		foreach($response->getValue() as $storageFile) {
+          echo "Files: ", $storageFile->getPath(), "<br />";
+		}
+	} catch (Exception $e) {
+		echo "Something went wrong: ", $e->getMessage(), "\n";
+	}
+?>
+```
 
 {{< /tab >}} {{< tab "Ruby" >}}
 
-{{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_Get_Files_List.rb >}}
+```ruby
+# Load the gem
+require 'groupdocs_merger_cloud'
+require 'common_utilities/Utils.rb'
+
+class Working_With_Folder
+  def self.Merger_Ruby_Get_Files_List()
+
+    # Getting instance of the API
+    $api = Common_Utilities.Get_FolderApi_Instance()
+    
+    $request = GroupDocsMergerCloud::GetFilesListRequest.new("mergerdocs/sample.docx", $myStorage)
+    $response = $api.get_files_list($request)
+
+    puts("Expected response type is FilesList: " + ($response).to_s)
+  end
+end
+```
 
 {{< /tab >}} {{< tab "Node.js" >}}
 
-{{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_Get_Files_List.js >}}
+```js
+"use strict";
+class Merger_Node_Get_Files_List {
+	static Run() {
+		// retrieve supported file-formats
+		var request = new groupdocs_merger_cloud_1.GetFilesListRequest("Mergerdocs/sample.docx", myStorage);
+		folderApi.getFilesList(request)
+			.then(function (response) {
+				console.log("Expected response type is FilesList: " + response.value.length);
+			})
+			.catch(function (error) {
+				console.log("Error: " + error.message);
+			});
+	}
+}
+module.exports = Merger_Node_Get_Files_List;
+
+```
 
 {{< /tab >}} {{< tab "Python" >}}
 
-{{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_Get_Files_List.py >}}
+```python
+# Import modules
+import groupdocs_merger_cloud
+
+from Common_Utilities.Utils import Common_Utilities
+
+
+class Merger_Python_Get_Files_List:
+    
+    @classmethod
+    def Run(self):
+        # Create instance of the API
+        api = Common_Utilities.Get_FolderApi_Instance()
+        
+        try:
+            request = groupdocs_merger_cloud.GetFilesListRequest("mergerdocs\\sample.docx", Common_Utilities.myStorage)
+            response = api.get_files_list(request)
+            
+            print("Expected response type is FilesList: " + str(response))
+        except groupdocs_merger_cloud.ApiException as e:
+            print("Exception while calling API: {0}".format(e.message))
+```
 
 {{< /tab >}} {{< /tabs >}}
 
@@ -171,27 +304,151 @@ Our API is completely independent of your operating system, database system or d
 
 {{< tabs "example4">}} {{< tab "C#" >}}
 
-{{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_Create_Folder.cs >}}
+```csharp
+using System;
+using GroupDocs.Merger.Cloud.Sdk.Api;
+using GroupDocs.Merger.Cloud.Sdk.Client;
+using GroupDocs.Merger.Cloud.Sdk.Model.Requests;
+
+namespace GroupDocs.Merger.Cloud.Examples.CSharp
+{
+	// Create Folder
+	class Create_Folder
+	{
+		public static void Run()
+		{
+			var configuration = new Configuration(Common.MyAppSid, Common.MyAppKey);
+			var apiInstance = new FolderApi(configuration);
+
+			try
+			{
+				var request = new CreateFolderRequest("", Common.MyStorage);
+
+				apiInstance.CreateFolder(request);
+				Console.WriteLine("Expected response type is Void: 'WordProcessing' folder created.");
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine("Exception while calling FolderApi: " + e.Message);
+			}
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "Java" >}}
 
-{{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_Create_Folder.java >}}
+```java
+package examples.Working_With_Folder;
+
+import com.groupdocs.cloud.Merger.api.*;
+import com.groupdocs.cloud.Merger.client.ApiException;
+import com.groupdocs.cloud.Merger.model.requests.*;
+import examples.Utils;
+
+public class Merger_Java_Create_Folder {
+
+	public static void main(String[] args) {
+
+		FolderApi apiInstance = new FolderApi(Utils.AppSID, Utils.AppKey);
+		try {
+			CreateFolderRequest request = new CreateFolderRequest("Mergers", Utils.MYStorage);
+			apiInstance.createFolder(request);
+			System.out.println("Expected response type is Void: 'Mergers' folder created.");
+		} catch (ApiException e) {
+			System.err.println("Exception while calling FolderApi:");
+			e.printStackTrace();
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "PHP" >}}
 
-{{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_Create_Folder.php >}}
+```php
+<?php
+
+include(dirname(__DIR__) . '\CommonUtils.php');
+
+	try {
+		$apiInstance = CommonUtils::GetFolderApiInstance();
+
+		$request = new GroupDocs\Merger\Model\Requests\CreateFolderRequest("mergerdocs", CommonUtils::$MyStorage);
+		$apiInstance->createFolder($request);
+		
+		echo "Expected response type is Void: 'mergerdocs' folder created.", "<br />";
+	} catch (Exception $e) {
+		echo "Something went wrong: ", $e->getMessage(), "\n";
+	}
+?>
+```
 
 {{< /tab >}} {{< tab "Ruby" >}}
 
-{{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_Create_Folder.rb >}}
+```ruby
+# Load the gem
+require 'groupdocs_merger_cloud'
+require 'common_utilities/Utils.rb'
+
+class Working_With_Folder
+  def self.Merger_Ruby_Create_Folder()
+
+    # Getting instance of the API
+    $api = Common_Utilities.Get_FolderApi_Instance()
+    
+    $request = GroupDocsMergerCloud::CreateFolderRequest.new("mergerdocs", $myStorage)
+    $response = $api.create_folder($request)
+
+    puts("Expected response type is Void: 'mergerdocs' folder created.")
+  end
+end
+```
 
 {{< /tab >}} {{< tab "Node.js" >}}
 
-{{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_Create_Folder.js >}}
+```js
+"use strict";
+class Merger_Node_Create_Folder {
+	static Run() {
+		// retrieve supported file-formats
+		var request = new groupdocs_merger_cloud_1.CreateFolderRequest("Mergerdocs", myStorage);
+		folderApi.createFolder(request)
+			.then(function () {
+				console.log("Expected response type is Void: 'Mergerdocs' folder created.");
+			})
+			.catch(function (error) {
+				console.log("Error: " + error.message);
+			});
+	}
+}
+module.exports = Merger_Node_Create_Folder;
+
+```
 
 {{< /tab >}} {{< tab "Python" >}}
 
-{{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_Create_Folder.py >}}
+```python
+# Import modules
+import groupdocs_merger_cloud
+
+from Common_Utilities.Utils import Common_Utilities
+
+
+class Merger_Python_Create_Folder:
+    
+    @classmethod
+    def Run(self):
+        # Create instance of the API
+        api = Common_Utilities.Get_FolderApi_Instance()
+        
+        try:
+            request = groupdocs_merger_cloud.CreateFolderRequest("mergerdocs", Common_Utilities.myStorage)
+            api.create_folder(request)
+            
+            print("Expected response type is Void: 'mergerdocs' folder created.")
+        except groupdocs_merger_cloud.ApiException as e:
+            print("Exception while calling API: {0}".format(e.message))
+```
 
 {{< /tab >}} {{< /tabs >}}
 
@@ -236,27 +493,152 @@ Our API is completely independent of your operating system, database system or d
 
 {{< tabs "example6">}} {{< tab "C#" >}}
 
-{{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_Delete_Folder.cs >}}
+```csharp
+using System;
+using GroupDocs.Merger.Cloud.Sdk.Api;
+using GroupDocs.Merger.Cloud.Sdk.Client;
+using GroupDocs.Merger.Cloud.Sdk.Model.Requests;
+
+namespace GroupDocs.Merger.Cloud.Examples.CSharp
+{
+	// Delete Folder
+	class Delete_Folder
+	{
+		public static void Run()
+		{
+			var configuration = new Configuration(Common.MyAppSid, Common.MyAppKey);
+			var apiInstance = new FolderApi(configuration);
+
+			try
+			{
+				var request = new DeleteFolderRequest("WordProcessing/WordProcessing1", Common.MyStorage, true);
+
+				apiInstance.DeleteFolder(request);
+				Console.WriteLine("Expected response type is Void: 'WordProcessing/WordProcessing1' folder deleted recusrsively.");
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine("Exception while calling FolderApi: " + e.Message);
+			}
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "Java" >}}
 
-{{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_Delete_Folder.java >}}
+```java
+package examples.Working_With_Folder;
+
+import com.groupdocs.cloud.Merger.api.*;
+import com.groupdocs.cloud.Merger.client.ApiException;
+import com.groupdocs.cloud.Merger.model.requests.*;
+import examples.Utils;
+
+public class Merger_Java_Delete_Folder {
+
+	public static void main(String[] args) {
+
+		FolderApi apiInstance = new FolderApi(Utils.AppSID, Utils.AppKey);
+		try {
+			DeleteFolderRequest request = new DeleteFolderRequest("Mergers\\Mergers1", Utils.MYStorage, true);
+			apiInstance.deleteFolder(request);
+			System.out
+					.println("Expected response type is Void: 'Mergers/Mergers1' folder deleted recusrsively.");
+		} catch (ApiException e) {
+			System.err.println("Exception while calling FolderApi:");
+			e.printStackTrace();
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "PHP" >}}
 
-{{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_Delete_Folder.php >}}
+```php
+<?php
+
+include(dirname(__DIR__) . '\CommonUtils.php');
+
+	try {
+		$apiInstance = CommonUtils::GetFolderApiInstance();
+
+		$request = new GroupDocs\Merger\Model\Requests\DeleteFolderRequest("mergerdocs1\\mergerdocs1", CommonUtils::$MyStorage, true);
+		$apiInstance->deleteFolder($request);
+		
+		echo "Expected response type is Void: 'mergerdocs1/mergerdocs1' folder deleted recursively.", "<br />";
+	} catch (Exception $e) {
+		echo "Something went wrong: ", $e->getMessage(), "\n";
+	}
+?>
+```
 
 {{< /tab >}} {{< tab "Ruby" >}}
 
-{{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_Delete_Folder.rb >}}
+```ruby
+# Load the gem
+require 'groupdocs_merger_cloud'
+require 'common_utilities/Utils.rb'
+
+class Working_With_Folder
+  def self.Merger_Ruby_Delete_Folder()
+
+    # Getting instance of the API
+    $api = Common_Utilities.Get_FolderApi_Instance()
+    
+    $request = GroupDocsMergerCloud::DeleteFolderRequest.new("mergerdocs1", $myStorage, true)
+    $response = $api.delete_folder($request)
+
+    puts("Expected response type is Void: 'mergerdocs/mergerdocs1' folder deleted recursively.")
+  end
+end
+```
 
 {{< /tab >}} {{< tab "Node.js" >}}
 
-{{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_Delete_Folder.js >}}
+```js
+"use strict";
+class Merger_Node_Delete_Folder {
+	static Run() {
+		// retrieve supported file-formats
+		var request = new groupdocs_merger_cloud_1.DeleteFolderRequest("Mergerdocs/Mergerdocs1", myStorage, true);
+		folderApi.deleteFolder(request)
+			.then(function () {
+				console.log("Expected response type is Void: 'Mergerdocs/Mergerdocs1' folder deleted recursively.");
+			})
+			.catch(function (error) {
+				console.log("Error: " + error.message);
+			});
+	}
+}
+module.exports = Merger_Node_Delete_Folder;
+
+```
 
 {{< /tab >}} {{< tab "Python" >}}
 
-{{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_Delete_Folder.py >}}
+```python
+# Import modules
+import groupdocs_merger_cloud
+
+from Common_Utilities.Utils import Common_Utilities
+
+
+class Merger_Python_Delete_Folder:
+    
+    @classmethod
+    def Run(self):
+        # Create instance of the API
+        api = Common_Utilities.Get_FolderApi_Instance()
+        
+        try:
+            request = groupdocs_merger_cloud.DeleteFolderRequest("mergerdocs\\mergerdocs1", Common_Utilities.myStorage, True)
+            api.delete_folder(request)
+            
+            print("Expected response type is Void: 'mergerdocs/mergerdocs1' folder deleted recursively.")
+        except groupdocs_merger_cloud.ApiException as e:
+            print("Exception while calling API: {0}".format(e.message))
+```
 
 {{< /tab >}} {{< /tabs >}}
 
@@ -303,27 +685,152 @@ Our API is completely independent of your operating system, database system or d
 
 {{< tabs "example8">}} {{< tab "C#" >}}
 
-{{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_Copy_Folder.cs >}}
+```csharp
+using System;
+using GroupDocs.Merger.Cloud.Sdk.Api;
+using GroupDocs.Merger.Cloud.Sdk.Client;
+using GroupDocs.Merger.Cloud.Sdk.Model.Requests;
+
+namespace GroupDocs.Merger.Cloud.Examples.CSharp
+{
+	// Copy Folder
+	class Copy_Folder
+	{
+		public static void Run()
+		{
+			var configuration = new Configuration(Common.MyAppSid, Common.MyAppKey);
+			var apiInstance = new FolderApi(configuration);
+
+			try
+			{
+				var request = new CopyFolderRequest("WordProcessing", "WordProcessing1", Common.MyStorage, Common.MyStorage);
+
+				apiInstance.CopyFolder(request);
+				Console.WriteLine("Expected response type is Void: 'WordProcessing' folder copied as 'WordProcessing1'.");
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine("Exception while calling FolderApi: " + e.Message);
+			}
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "Java" >}}
 
-{{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_Copy_Folder.java >}}
+```java
+package examples.Working_With_Folder;
+
+import com.groupdocs.cloud.Merger.api.*;
+import com.groupdocs.cloud.Merger.client.ApiException;
+import com.groupdocs.cloud.Merger.model.requests.*;
+import examples.Utils;
+
+public class Merger_Java_Copy_Folder {
+
+	public static void main(String[] args) {
+
+		FolderApi apiInstance = new FolderApi(Utils.AppSID, Utils.AppKey);
+		try {
+			CopyFolderRequest request = new CopyFolderRequest("Mergers", "Mergers1", Utils.MYStorage,
+					Utils.MYStorage);
+			apiInstance.copyFolder(request);
+			System.out.println("Expected response type is Void: 'Mergers' folder copied as 'Mergers1'.");
+		} catch (ApiException e) {
+			System.err.println("Exception while calling FolderApi:");
+			e.printStackTrace();
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "PHP" >}}
 
-{{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_Copy_Folder.php >}}
+```php
+<?php
+
+include(dirname(__DIR__) . '\CommonUtils.php');
+
+	try {
+		$apiInstance = CommonUtils::GetFolderApiInstance();
+
+		$request = new GroupDocs\Merger\Model\Requests\CopyFolderRequest("mergerdocs", "mergerdocs1", CommonUtils::$MyStorage, CommonUtils::$MyStorage);
+		$apiInstance->copyFolder($request);
+		
+		echo "Expected response type is Void: 'mergerdocs' folder copied as 'mergerdocs1'.", "<br />";
+	} catch (Exception $e) {
+		echo "Something went wrong: ", $e->getMessage(), "\n";
+	}
+?>
+```
 
 {{< /tab >}} {{< tab "Ruby" >}}
 
-{{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_Copy_Folder.rb >}}
+```ruby
+# Load the gem
+require 'groupdocs_merger_cloud'
+require 'common_utilities/Utils.rb'
+
+class Working_With_Folder
+  def self.Merger_Ruby_Copy_Folder()
+
+    # Getting instance of the API
+    $api = Common_Utilities.Get_FolderApi_Instance()
+    
+    $request = GroupDocsMergerCloud::CopyFolderRequest.new("mergerdocs", "mergerdocs1", $myStorage, $myStorage)
+    $response = $api.copy_folder($request)
+
+    puts("Expected response type is Void: 'mergerdocs' folder copied as 'mergerdocs1'.")
+  end
+end
+```
 
 {{< /tab >}} {{< tab "Node.js" >}}
 
-{{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_Copy_Folder.js >}}
+```js
+"use strict";
+class Merger_Node_Copy_Folder {
+	static Run() {
+		// retrieve supported file-formats
+		var request = new groupdocs_merger_cloud_1.CopyFolderRequest("Mergerdocs", "Mergerdocs1", myStorage, myStorage);
+		folderApi.copyFolder(request)
+			.then(function () {
+				console.log("Expected response type is Void: 'Mergerdocs' folder copied as 'Mergerdocs1'.");
+			})
+			.catch(function (error) {
+				console.log("Error: " + error.message);
+			});
+	}
+}
+module.exports = Merger_Node_Copy_Folder;
+
+```
 
 {{< /tab >}} {{< tab "Python" >}}
 
-{{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_Copy_Folder.py >}}
+```python
+# Import modules
+import groupdocs_merger_cloud
+
+from Common_Utilities.Utils import Common_Utilities
+
+
+class Merger_Python_Copy_Folder:
+    
+    @classmethod
+    def Run(self):
+        # Create instance of the API
+        api = Common_Utilities.Get_FolderApi_Instance()
+        
+        try:
+            request = groupdocs_merger_cloud.CopyFolderRequest("mergerdocs", "mergerdocs1", Common_Utilities.myStorage, Common_Utilities.myStorage)
+            api.copy_folder(request)
+            
+            print("Expected response type is Void: 'mergerdocs' folder copied as 'mergerdocs1'.")
+        except groupdocs_merger_cloud.ApiException as e:
+            print("Exception while calling API: {0}".format(e.message))
+```
 
 {{< /tab >}} {{< /tabs >}}
 
@@ -369,26 +876,152 @@ Our API is completely independent of your operating system, database system or d
 
 {{< tabs "example10">}} {{< tab "C#" >}}
 
-{{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_Move_Folder.cs >}}
+```csharp
+using GroupDocs.Merger.Cloud.Sdk.Api;
+using GroupDocs.Merger.Cloud.Sdk.Client;
+using GroupDocs.Merger.Cloud.Sdk.Model.Requests;
+using System;
+
+namespace GroupDocs.Merger.Cloud.Examples.CSharp
+{
+	// Move Folder
+	class Move_Folder
+	{
+		public static void Run()
+		{
+			var configuration = new Configuration(Common.MyAppSid, Common.MyAppKey);
+			var apiInstance = new FolderApi(configuration);
+
+			try
+			{
+				var request = new MoveFolderRequest("WordProcessing1", "WordProcessing\\WordProcessing1", Common.MyStorage, Common.MyStorage);
+
+				apiInstance.MoveFolder(request);
+				Console.WriteLine("Expected response type is Void: 'WordProcessing1' folder moved to 'WordProcessing/WordProcessing1'.");
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine("Exception while calling FolderApi: " + e.Message);
+			}
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "Java" >}}
 
-{{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_Move_Folder.java >}}
+```java
+package examples.Working_With_Folder;
+
+import com.groupdocs.cloud.Merger.api.*;
+import com.groupdocs.cloud.Merger.client.ApiException;
+import com.groupdocs.cloud.Merger.model.requests.*;
+import examples.Utils;
+
+public class Merger_Java_Move_Folder {
+
+	public static void main(String[] args) {
+
+		FolderApi apiInstance = new FolderApi(Utils.AppSID, Utils.AppKey);
+		try {
+			MoveFolderRequest request = new MoveFolderRequest("Mergers1", "Mergers\\Mergers1",
+					Utils.MYStorage, Utils.MYStorage);
+			apiInstance.moveFolder(request);
+			System.out.println(
+					"Expected response type is Void: 'Mergers1' folder moved to 'Mergers/Mergers1'.");
+		} catch (ApiException e) {
+			System.err.println("Exception while calling FolderApi:");
+			e.printStackTrace();
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "PHP" >}}
 
-{{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_Move_Folder.php >}}
+```php
+<?php
+
+include(dirname(__DIR__) . '\CommonUtils.php');
+
+	try {
+		$apiInstance = CommonUtils::GetFolderApiInstance();
+
+		$request = new GroupDocs\Merger\Model\Requests\MoveFolderRequest("mergerdocs1", "mergerdocs1\\mergerdocs1", CommonUtils::$MyStorage, CommonUtils::$MyStorage, true);
+		$apiInstance->moveFolder($request);
+		
+		echo "Expected response type is Void: 'mergerdocs1' folder moved to 'mergerdocs1/mergerdocs1'.", "<br />";
+	} catch (Exception $e) {
+		echo "Something went wrong: ", $e->getMessage(), "\n";
+	}
+?>
+```
 
 {{< /tab >}} {{< tab "Ruby" >}}
 
-{{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_Move_Folder.rb >}}
+```ruby
+# Load the gem
+require 'groupdocs_merger_cloud'
+require 'common_utilities/Utils.rb'
+
+class Working_With_Folder
+  def self.Merger_Ruby_Move_Folder()
+
+    # Getting instance of the API
+    $api = Common_Utilities.Get_FolderApi_Instance()
+
+    $request = GroupDocsMergerCloud::MoveFolderRequest.new("mergerdocs1", "mergerdocs/mergerdocs1", $myStorage, $myStorage)
+    $response = $api.move_folder($request)
+
+    puts("Expected response type is Void: 'mergerdocs1' folder moved to 'mergerdocs/mergerdocs1'.")
+  end
+end
+```
 
 {{< /tab >}} {{< tab "Node.js" >}}
 
-{{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_Move_Folder.js >}}
+```js
+"use strict";
+class Merger_Node_Move_Folder {
+	static Run() {
+		// retrieve supported file-formats
+		var request = new groupdocs_merger_cloud_1.MoveFolderRequest("Mergerdocs1", "Mergerdocs/Mergerdocs1", myStorage, myStorage);
+		folderApi.moveFolder(request)
+			.then(function () {
+				console.log("Expected response type is Void: 'Mergerdocs1' folder moved to 'Mergerdocs/Mergerdocs1'.");
+			})
+			.catch(function (error) {
+				console.log("Error: " + error.message);
+			});
+	}
+}
+module.exports = Merger_Node_Move_Folder;
+
+```
 
 {{< /tab >}} {{< tab "Python" >}}
 
-{{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_Move_Folder.py >}}
+```python
+# Import modules
+import groupdocs_merger_cloud
+
+from Common_Utilities.Utils import Common_Utilities
+
+
+class Merger_Python_Move_Folder:
+    
+    @classmethod
+    def Run(self):
+        # Create instance of the API
+        api = Common_Utilities.Get_FolderApi_Instance()
+        
+        try:
+            request = groupdocs_merger_cloud.MoveFolderRequest("mergerdocs1", "mergerdocs1\\mergerdocs", Common_Utilities.myStorage, Common_Utilities.myStorage)
+            api.move_folder(request)
+            
+            print("Expected response type is Void: 'mergerdocs1' folder moved to 'mergerdocs/mergerdocs1'.")
+        except groupdocs_merger_cloud.ApiException as e:
+            print("Exception while calling API: {0}".format(e.message))
+```
 
 {{< /tab >}} {{< /tabs >}}

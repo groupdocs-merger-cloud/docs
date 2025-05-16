@@ -103,26 +103,240 @@ Using an SDK (API client) is the quickest way for a developer to speed up the de
 
 {{< tabs "example2">}} {{< tab "C#" >}}
 
-{{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_JoinPagesFromVariousDocuments.cs >}}
+```csharp
+using GroupDocs.Merger.Cloud.Sdk.Api;
+using GroupDocs.Merger.Cloud.Sdk.Client;
+using GroupDocs.Merger.Cloud.Sdk.Model;
+using GroupDocs.Merger.Cloud.Sdk.Model.Requests;
+using System;
+using System.Collections.Generic;
+using FileInfo = GroupDocs.Merger.Cloud.Sdk.Model.FileInfo;
+
+namespace GroupDocs.Merger.Cloud.Examples.CSharp
+{
+    /// <summary>
+    /// This example demonstrates how to join specific pages from several source documents.
+    /// </summary>
+    public class JoinPagesFromVariousDocuments
+    {
+		public static void Run()
+		{
+            var configuration = new Configuration(Common.MyAppSid, Common.MyAppKey);
+            var apiInstance = new DocumentApi(configuration);
+
+			try
+			{
+                var item1 = new JoinItem
+                {
+                    FileInfo = new FileInfo
+                    {
+                        FilePath = "WordProcessing/sample-10-pages.docx"
+                    },
+                    Pages = new List<int?> {  3, 6, 8 }
+                };
+
+                var item2 = new JoinItem
+                {
+                    FileInfo = new FileInfo
+                    {
+                        FilePath = "WordProcessing/four-pages.docx"
+                    },
+                    StartPageNumber= 1,
+                    EndPageNumber = 4,
+                    RangeMode = JoinItem.RangeModeEnum.OddPages 
+                };
+
+                var options = new JoinOptions
+                {
+                    JoinItems = new List<JoinItem> { item1, item2 },
+                    OutputPath = "Output/joined-pages.docx"
+                };
+
+                var request = new JoinRequest(options);
+                var response = apiInstance.Join(request);
+
+                Console.WriteLine("Output file path: " + response.Path);
+            }
+			catch (Exception e)
+			{
+				Console.WriteLine("Exception while calling api: " + e.Message);
+			}
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "Java" >}}
 
-{{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_JoinPagesFromVariousDocuments.java >}}
+```java
+package examples.DocumentOperations;
+
+import java.util.Arrays;
+import com.groupdocs.cloud.merger.client.*;
+import com.groupdocs.cloud.merger.model.*;
+import com.groupdocs.cloud.merger.model.requests.*;
+import com.groupdocs.cloud.merger.api.*;
+import examples.Utils;
+
+/**
+ * This example demonstrates how to join specific pages from several source documents.
+ */
+public class Merger_Java_JoinPagesFromVariousDocuments {
+
+	public static void main(String[] args) {		
+
+		DocumentApi apiInstance = new DocumentApi(Utils.GetConfiguration());
+
+		try {
+			FileInfo fileInfo1 = new FileInfo();			
+			fileInfo1.setFilePath("WordProcessing/sample-10-pages.docx");
+			JoinItem item1 = new JoinItem();
+			item1.setFileInfo(fileInfo1);
+			item1.setPages(Arrays.asList(3, 6, 8));
+
+			FileInfo fileInfo2 = new FileInfo();			
+			fileInfo2.setFilePath("WordProcessing/four-pages.docx");
+			JoinItem item2 = new JoinItem();
+			item2.setFileInfo(fileInfo2);
+			item2.setStartPageNumber(1);
+			item2.setEndPageNumber(4);
+			item2.setRangeMode(JoinItem.RangeModeEnum.ODDPAGES);
+
+			JoinOptions options = new JoinOptions();
+			options.setJoinItems(Arrays.asList(item1, item2));
+			options.setOutputPath("output/joined-pages.docx");
+
+			JoinRequest request = new JoinRequest(options);
+
+			DocumentResult response = apiInstance.join(request);
+
+			System.err.println("Output file path: " + response.getPath());
+		
+		} catch (ApiException e) {
+
+			System.err.println("Exception while calling api:");
+			e.printStackTrace();
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "PHP" >}}
 
-{{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_JoinPagesFromVariousDocuments.php >}}
+```php
+// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-php-samples
+$AppSid = 'XXXX-XXXX-XXXX-XXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$AppKey = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+$configuration = new GroupDocs\Merger\Configuration();
+$configuration->setAppSid(CommonUtils::$AppSid);
+$configuration->setAppKey(CommonUtils::$AppKey);
+ 
+$documentApi = GroupDocs\Merger\DocumentApi($configuration);
+ 
+$fileInfo1 = new Model\FileInfo();
+$fileInfo1->setFilePath("WordProcessing/sample-10-pages.docx");         
+$item1 = new Model\JoinItem();        
+$item1->setFileInfo($fileInfo1);
+$item1->setPages([3, 6, 8]);
+ 
+$fileInfo2 = new Model\FileInfo();
+$fileInfo2->setFilePath("WordProcessing/four-pages.docx");          
+$item2 = new Model\JoinItem();
+$item2->setFileInfo($fileInfo2); 
+$item2->setStartPageNumber(1);               
+$item2->setEndPageNumber(4);
+$item2->setRangeMode(Model\JoinItem::RANGE_MODE_ODD_PAGES);
+ 
+$options = new Model\JoinOptions();
+$options->setJoinItems([$item1, $item2]);
+$options->setOutputPath("Output/joined-pages.docx");
+ 
+$request = new Requests\joinRequest($options);       
+$response = $documentApi->join($request);
+```
 
 {{< /tab >}} {{< tab "Ruby" >}}
 
-{{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_JoinPagesFromVariousDocuments.rb >}}
+```ruby
+# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-ruby-samples
+$app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+ 
+ 
+documentApi = GroupDocsMergerCloud::DocumentApi.from_keys($app_sid, $app_key)
+ 
+item1 = GroupDocsMergerCloud::JoinItem.new
+item1.file_info = GroupDocsMergerCloud::FileInfo.new
+item1.file_info.file_path = 'WordProcessing/sample-10-pages.docx'
+item1.pages = [3, 6, 8]
+ 
+item2 = GroupDocsMergerCloud::JoinItem.new
+item2.file_info = GroupDocsMergerCloud::FileInfo.new
+item2.file_info.file_path = 'WordProcessing/four-pages.docx'       
+item2.start_page_number = 1
+item2.end_page_number = 4
+item2.range_mode = "OddPages"
+ 
+options = GroupDocsMergerCloud::JoinOptions.new
+options.join_items = [item1, item2]
+options.output_path = "Output/joined-pages.docx"
+ 
+result = documentApi.join(GroupDocsMergerCloud::JoinRequest.new(options))
+```
 
 {{< /tab >}} {{< tab "Node.js" >}}
 
-{{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_JoinPagesFromVariousDocuments.js >}}
+```js
+// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-node-samples
+global.appSid = "XXXX-XXXX-XXXX-XXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+global.appKey = "XXXXXXXXXXXXXXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+global.documentApi = merger_cloud.DocumentApi.fromKeys(appSid, appKey);
+ 
+let item1 = new merger_cloud.JoinItem();
+item1.fileInfo = new merger_cloud.FileInfo();
+item1.fileInfo.filePath = "WordProcessing/sample-10-pages.docx";
+item1.pages = [3, 6, 8];
+ 
+let item2 = new merger_cloud.JoinItem();
+item2.fileInfo = new merger_cloud.FileInfo();
+item2.fileInfo.filePath = "WordProcessing/four-pages.docx";
+item2.startPageNumber = 1
+item2.endPageNumber = 4
+item2.rangeMode = merger_cloud.JoinItem.RangeModeEnum.OddPages;
+         
+let options = new merger_cloud.JoinOptions();
+options.joinItems = [item1, item2];
+options.outputPath = "Output/joined-pages.docx";
+ 
+let result = await documentApi.join(new merger_cloud.JoinRequest(options));
+```
 
 {{< /tab >}} {{< tab "Python" >}}
 
-{{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_JoinPagesFromVariousDocuments.py >}}
+```python
+# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-python-samples
+app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+documentApi = groupdocs_merger_cloud.DocumentApi.from_keys(app_sid, app_key)
+ 
+item1 = groupdocs_merger_cloud.JoinItem()
+item1.file_info = groupdocs_merger_cloud.FileInfo("WordProcessing/sample-10-pages.docx")
+item1.pages = [3, 6, 8]
+ 
+item2 = groupdocs_merger_cloud.JoinItem()
+item2.file_info = groupdocs_merger_cloud.FileInfo("WordProcessing/four-pages.docx")
+item2.start_page_number = 1
+item2.end_page_number = 4
+item2.range_mode = "OddPages"
+ 
+options = groupdocs_merger_cloud.JoinOptions()
+options.join_items = [item1, item2]
+options.output_path = "Output/joined-pages.docx"
+ 
+result = documentApi.join(groupdocs_merger_cloud.JoinRequest(options))
+```
 
 {{< /tab >}} {{< /tabs >}}

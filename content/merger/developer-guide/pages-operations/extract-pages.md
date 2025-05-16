@@ -71,27 +71,178 @@ Using an SDK (API client) is the quickest way for a developer to speed up the de
 
 {{< tabs "example2">}} {{< tab "C#" >}}
 
-{{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_ExtractPagesByNumbers.cs >}}
+```csharp
+using GroupDocs.Merger.Cloud.Sdk.Api;
+using GroupDocs.Merger.Cloud.Sdk.Client;
+using GroupDocs.Merger.Cloud.Sdk.Model;
+using GroupDocs.Merger.Cloud.Sdk.Model.Requests;
+using System;
+using System.Collections.Generic;
+using FileInfo = GroupDocs.Merger.Cloud.Sdk.Model.FileInfo;
+
+namespace GroupDocs.Merger.Cloud.Examples.CSharp
+{
+    /// <summary>
+    /// This example demonstrates how to extract document pages by specifying their numbers.
+    /// </summary>
+    public class ExtractPagesByNumbers
+    {
+		public static void Run()
+		{
+            var configuration = new Configuration(Common.MyAppSid, Common.MyAppKey);
+            var apiInstance = new PagesApi(configuration);
+
+			try
+			{
+				var fileInfo = new FileInfo
+                {
+						FilePath = "WordProcessing/sample-10-pages.docx"
+                };
+
+                var options = new ExtractOptions
+                {
+                    FileInfo = fileInfo,
+                    OutputPath = "Output/extract-pages-by-numbers.docx",
+                    Pages = new List<int?> { 2, 4, 7 }
+                };
+                var request = new ExtractRequest(options);
+
+                var response = apiInstance.Extract(request);
+
+				Console.WriteLine("Output file path: " + response.Path);
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine("Exception while calling api: " + e.Message);
+			}
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "Java" >}}
 
-{{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_ExtractPagesByNumbers.java >}}
+```java
+package examples.PagesOperations.ExtractPages;
+
+import java.util.Arrays;
+import com.groupdocs.cloud.merger.client.*;
+import com.groupdocs.cloud.merger.model.*;
+import com.groupdocs.cloud.merger.model.requests.*;
+import com.groupdocs.cloud.merger.api.*;
+import examples.Utils;
+
+/**
+ * This example demonstrates how to extract document pages by specifying their numbers.
+ */
+public class Merger_Java_ExtractPagesByNumbers {
+
+	public static void main(String[] args) {		
+
+		PagesApi apiInstance = new PagesApi(Utils.GetConfiguration());
+
+		try {
+			FileInfo fileInfo = new FileInfo();			
+			fileInfo.setFilePath("WordProcessing/sample-10-pages.docx");
+
+			ExtractOptions options = new ExtractOptions();
+			options.setFileInfo(fileInfo);
+			options.setOutputPath("output/extract-pages-by-numbers.docx");
+			options.setPages(Arrays.asList(2, 4, 7));			
+
+			ExtractRequest request = new ExtractRequest(options);
+
+			DocumentResult response = apiInstance.extract(request);
+
+			System.err.println("Output file path: " + response.getPath());
+		
+		} catch (ApiException e) {
+
+			System.err.println("Exception while calling api:");
+			e.printStackTrace();
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "PHP" >}}
 
-{{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_ExtractPagesByNumbers.php >}}
+```php
+// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-php-samples
+$AppSid = 'XXXX-XXXX-XXXX-XXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$AppKey = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+$configuration = new GroupDocs\Merger\Configuration();
+$configuration->setAppSid(CommonUtils::$AppSid);
+$configuration->setAppKey(CommonUtils::$AppKey);
+ 
+$pagesApi = GroupDocs\Merger\PagesApi($configuration);
+  
+$fileInfo = new Model\FileInfo();
+$fileInfo->setFilePath("WordProcessing/sample-10-pages.docx");         
+ 
+$options = new Model\ExtractOptions();
+$options->setFileInfo($fileInfo);
+$options->setOutputPath("Output/extract-pages-by-numbers.docx");
+$options->setPages([2, 4, 7]);
+ 
+$request = new Requests\extractRequest($options);       
+$response = $pagesApi->extract($request);
+```
 
 {{< /tab >}} {{< tab "Ruby" >}}
 
-{{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_ExtractPagesByNumbers.rb >}}
+```ruby
+# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-ruby-samples
+$app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+ 
+ 
+pagesApi = GroupDocsMergerCloud::PagesApi.from_keys($app_sid, $app_key)
+ 
+options = GroupDocsMergerCloud::ExtractOptions.new
+options.file_info = GroupDocsMergerCloud::FileInfo.new
+options.file_info.file_path = 'WordProcessing/sample-10-pages.docx'
+options.output_path = "Output/extract-pages-by-numbers.docx"
+options.pages = [2, 4, 7]
+ 
+result = pagesApi.extract(GroupDocsMergerCloud::ExtractRequest.new(options))
+```
 
 {{< /tab >}} {{< tab "Node.js" >}}
 
-{{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_ExtractPagesByNumbers.js >}}
+```js
+// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-node-samples
+global.appSid = "XXXX-XXXX-XXXX-XXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+global.appKey = "XXXXXXXXXXXXXXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+global.pagesApi = merger_cloud.PagesApi.fromKeys(appSid, appKey);
+ 
+let options = new merger_cloud.ExtractOptions();
+options.fileInfo = new merger_cloud.FileInfo();
+options.fileInfo.filePath = "WordProcessing/sample-10-pages.docx";  
+options.outputPath = "Output/extract-pages-by-numbers.docx";
+options.pages = [2, 4, 7];
+ 
+let result = await pagesApi.extract(new merger_cloud.ExtractRequest(options));
+```
 
 {{< /tab >}} {{< tab "Python" >}}
 
-{{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_ExtractPagesByNumbers.py >}}
+```python
+# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-python-samples
+app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+pagesApi = groupdocs_merger_cloud.PagesApi.from_keys(app_sid, app_key)
+ 
+options = groupdocs_merger_cloud.ExtractOptions()
+options.file_info = groupdocs_merger_cloud.FileInfo("WordProcessing/sample-10-pages.docx")
+options.output_path = "Output/extract-pages-by-numbers.docx"
+options.pages = [2, 4, 7]        
+ 
+result = pagesApi.extract(groupdocs_merger_cloud.ExtractRequest(options))
+```
 
 {{< /tab >}} {{< /tabs >}}
 
@@ -160,26 +311,187 @@ Using an SDK (API client) is the quickest way for a developer to speed up the de
 
 {{< tabs "example4">}} {{< tab "C#" >}}
 
-{{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_ExtractPagesByRange.cs >}}
+```csharp
+using GroupDocs.Merger.Cloud.Sdk.Api;
+using GroupDocs.Merger.Cloud.Sdk.Client;
+using GroupDocs.Merger.Cloud.Sdk.Model;
+using GroupDocs.Merger.Cloud.Sdk.Model.Requests;
+using System;
+using System.Collections.Generic;
+using FileInfo = GroupDocs.Merger.Cloud.Sdk.Model.FileInfo;
+
+namespace GroupDocs.Merger.Cloud.Examples.CSharp
+{
+    /// <summary>
+    /// This example demonstrates how to extract document pages by specifying page numbers range.
+    /// </summary>
+    public class ExtractPagesByRange
+    {
+		public static void Run()
+		{
+            var configuration = new Configuration(Common.MyAppSid, Common.MyAppKey);
+            var apiInstance = new PagesApi(configuration);
+
+			try
+			{
+				var fileInfo = new FileInfo
+                {
+						FilePath = "WordProcessing/sample-10-pages.docx"
+                };
+
+                var options = new ExtractOptions
+                {
+                    FileInfo = fileInfo,
+                    OutputPath = "Output/extract-pages-by-range.docx",
+                    StartPageNumber = 1,
+                    EndPageNumber = 10,
+                    RangeMode = PageOptions.RangeModeEnum.EvenPages 
+                };
+                var request = new ExtractRequest(options);
+
+                var response = apiInstance.Extract(request);
+
+				Console.WriteLine("Output file path: " + response.Path);
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine("Exception while calling api: " + e.Message);
+			}
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "Java" >}}
 
-{{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_ExtractPagesByRange.java >}}
+```java
+package examples.PagesOperations.ExtractPages;
+
+import com.groupdocs.cloud.merger.client.*;
+import com.groupdocs.cloud.merger.model.*;
+import com.groupdocs.cloud.merger.model.requests.*;
+import com.groupdocs.cloud.merger.api.*;
+import examples.Utils;
+
+/**
+ * This example demonstrates how to extract document pages by specifying page numbers range.
+ */
+public class Merger_Java_ExtractPagesByRange {
+
+	public static void main(String[] args) {		
+
+		PagesApi apiInstance = new PagesApi(Utils.GetConfiguration());
+
+		try {
+			FileInfo fileInfo = new FileInfo();			
+			fileInfo.setFilePath("WordProcessing/sample-10-pages.docx");
+
+			ExtractOptions options = new ExtractOptions();
+			options.setFileInfo(fileInfo);
+			options.setOutputPath("output/extract-pages-by-range.docx");
+			options.setStartPageNumber(1);
+			options.setEndPageNumber(10);
+			options.setRangeMode(PageOptions.RangeModeEnum.EVENPAGES);
+
+			ExtractRequest request = new ExtractRequest(options);
+
+			DocumentResult response = apiInstance.extract(request);
+
+			System.err.println("Output file path: " + response.getPath());
+		
+		} catch (ApiException e) {
+
+			System.err.println("Exception while calling api:");
+			e.printStackTrace();
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "PHP" >}}
 
-{{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_ExtractPagesByRange.php >}}
+```php
+// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-php-samples
+$AppSid = 'XXXX-XXXX-XXXX-XXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$AppKey = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+$configuration = new GroupDocs\Merger\Configuration();
+$configuration->setAppSid(CommonUtils::$AppSid);
+$configuration->setAppKey(CommonUtils::$AppKey);
+ 
+$pagesApi = GroupDocs\Merger\PagesApi($configuration);
+$fileInfo = new Model\FileInfo();
+$fileInfo->setFilePath("WordProcessing/sample-10-pages.docx");         
+ 
+$options = new Model\ExtractOptions();
+$options->setFileInfo($fileInfo);
+$options->setOutputPath("Output/extract-pages-by-range.docx");
+$options->setStartPageNumber(1);
+$options->setEndPageNumber(10);
+$options->setRangeMode(Model\ExtractOptions::RANGE_MODE_EVEN_PAGES);
+ 
+$request = new Requests\extractRequest($options);       
+$response = $pagesApi->extract($request);
+```
 
 {{< /tab >}} {{< tab "Ruby" >}}
 
-{{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_ExtractPagesByRange.rb >}}
+```ruby
+# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-ruby-samples
+$app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+ 
+ 
+pagesApi = GroupDocsMergerCloud::PagesApi.from_keys($app_sid, $app_key)
+ 
+options = GroupDocsMergerCloud::ExtractOptions.new
+options.file_info = GroupDocsMergerCloud::FileInfo.new
+options.file_info.file_path = 'WordProcessing/sample-10-pages.docx'
+options.output_path = "Output/extract-pages-by-range.docx"
+options.start_page_number = 1
+options.end_page_number = 10
+options.range_mode = "EvenPages"
+ 
+result = pagesApi.extract(GroupDocsMergerCloud::ExtractRequest.new(options))
+```
 
 {{< /tab >}} {{< tab "Node.js" >}}
 
-{{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_ExtractPagesByRange.js >}}
+```js
+// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-node-samples
+global.appSid = "XXXX-XXXX-XXXX-XXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+global.appKey = "XXXXXXXXXXXXXXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+global.pagesApi = merger_cloud.PagesApi.fromKeys(appSid, appKey);
+ 
+let options = new merger_cloud.ExtractOptions();
+options.fileInfo = new merger_cloud.FileInfo();
+options.fileInfo.filePath = "WordProcessing/sample-10-pages.docx";  
+options.outputPath = "Output/extract-pages-by-range.docx";
+options.startPageNumber = 1;
+options.endPageNumber = 10;
+options.rangeMode = merger_cloud.ExtractOptions.RangeModeEnum.EvenPages;
+ 
+let result = await pagesApi.extract(new merger_cloud.ExtractRequest(options));
+```
 
 {{< /tab >}} {{< tab "Python" >}}
 
-{{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_ExtractPagesByRange.py >}}
+```python
+# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-python-samples
+app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+pagesApi = groupdocs_merger_cloud.PagesApi.from_keys(app_sid, app_key)
+ 
+options = groupdocs_merger_cloud.ExtractOptions()
+options.file_info = groupdocs_merger_cloud.FileInfo("WordProcessing/sample-10-pages.docx")
+options.output_path = "Output/extract-pages-by-range.docx"
+options.start_page_number = 1
+options.end_page_number = 10
+options.range_mode = "EvenPages"     
+ 
+result = pagesApi.extract(groupdocs_merger_cloud.ExtractRequest(options))
+```
 
 {{< /tab >}} {{< /tabs >}}

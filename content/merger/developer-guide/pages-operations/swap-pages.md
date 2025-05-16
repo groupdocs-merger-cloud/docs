@@ -81,26 +81,182 @@ Using an SDK (API client) is the quickest way for a developer to speed up the de
 
 {{< tabs "example2">}} {{< tab "C#" >}}
 
-{{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_SwapPages.cs >}}
+```csharp
+using GroupDocs.Merger.Cloud.Sdk.Api;
+using GroupDocs.Merger.Cloud.Sdk.Client;
+using GroupDocs.Merger.Cloud.Sdk.Model;
+using GroupDocs.Merger.Cloud.Sdk.Model.Requests;
+using System;
+using System.Collections.Generic;
+using FileInfo = GroupDocs.Merger.Cloud.Sdk.Model.FileInfo;
+
+namespace GroupDocs.Merger.Cloud.Examples.CSharp
+{
+    /// <summary>
+    /// This example demonstrates how to swap document pages.
+    /// </summary>
+    public class SwapPages
+    {
+		public static void Run()
+		{
+            var configuration = new Configuration(Common.MyAppSid, Common.MyAppKey);
+            var apiInstance = new PagesApi(configuration);
+
+			try
+			{
+				var fileInfo = new FileInfo
+                {
+						FilePath = "WordProcessing/four-pages.docx"
+                };
+
+                var options = new SwapOptions
+                {
+                    FileInfo = fileInfo,
+                    OutputPath = "Output/swap-pages.docx",
+                    FirstPageNumber = 2,
+                    SecondPageNumber = 4
+                };
+                var request = new SwapRequest(options);
+
+                var response = apiInstance.Swap(request);
+
+				Console.WriteLine("Output file path: " + response.Path);
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine("Exception while calling api: " + e.Message);
+			}
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "Java" >}}
 
-{{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_SwapPages.java >}}
+```java
+package examples.PagesOperations;
+
+import com.groupdocs.cloud.merger.client.*;
+import com.groupdocs.cloud.merger.model.*;
+import com.groupdocs.cloud.merger.model.requests.*;
+import com.groupdocs.cloud.merger.api.*;
+import examples.Utils;
+
+/**
+ * This example demonstrates how to swap document pages.
+ */
+public class Merger_Java_SwapPages {
+
+	public static void main(String[] args) {		
+
+		PagesApi apiInstance = new PagesApi(Utils.GetConfiguration());
+
+		try {
+			FileInfo fileInfo = new FileInfo();			
+			fileInfo.setFilePath("WordProcessing/four-pages.docx");
+
+			SwapOptions options = new SwapOptions();
+			options.setFileInfo(fileInfo);
+			options.setOutputPath("output/swap-pages.docx");
+			options.setFirstPageNumber(2);
+			options.setSecondPageNumber(4);
+
+			SwapRequest request = new SwapRequest(options);
+
+			DocumentResult response = apiInstance.swap(request);
+
+			System.err.println("Output file path: " + response.getPath());
+		
+		} catch (ApiException e) {
+
+			System.err.println("Exception while calling api:");
+			e.printStackTrace();
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "PHP" >}}
 
-{{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_SwapPages.php >}}
+```php
+// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-php-samples
+$AppSid = 'XXXX-XXXX-XXXX-XXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$AppKey = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+$configuration = new GroupDocs\Merger\Configuration();
+$configuration->setAppSid(CommonUtils::$AppSid);
+$configuration->setAppKey(CommonUtils::$AppKey);
+ 
+$pagesApi = GroupDocs\Merger\PagesApi($configuration);
+ 
+$fileInfo = new Model\FileInfo();
+$fileInfo->setFilePath("WordProcessing/four-pages.docx");         
+ 
+$options = new Model\SwapOptions();
+$options->setFileInfo($fileInfo);
+$options->setOutputPath("Output/swap-pages.docx");
+$options->setFirstPageNumber(2);
+$options->setSecondPageNumber(4);
+ 
+$request = new Requests\swapRequest($options);       
+$response = $pagesApi->swap($request);
+```
 
 {{< /tab >}} {{< tab "Ruby" >}}
 
-{{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_SwapPages.rb >}}
+```ruby
+# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-ruby-samples
+$app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+ 
+ 
+pagesApi = GroupDocsMergerCloud::PagesApi.from_keys($app_sid, $app_key)
+ 
+options = GroupDocsMergerCloud::SwapOptions.new
+options.file_info = GroupDocsMergerCloud::FileInfo.new
+options.file_info.file_path = 'WordProcessing/four-pages.docx'
+options.output_path = "Output/swap-pages.docx"
+options.first_page_number = 2
+options.second_page_number = 4
+ 
+result = pagesApi.swap(GroupDocsMergerCloud::SwapRequest.new(options))
+```
 
 {{< /tab >}} {{< tab "Node.js" >}}
 
-{{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_SwapPages.js >}}
+```js
+// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-node-samples
+global.appSid = "XXXX-XXXX-XXXX-XXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+global.appKey = "XXXXXXXXXXXXXXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+global.pagesApi = merger_cloud.PagesApi.fromKeys(appSid, appKey);
+ 
+let options = new merger_cloud.SwapOptions();
+options.fileInfo = new merger_cloud.FileInfo();
+options.fileInfo.filePath = "WordProcessing/four-pages.docx";  
+options.outputPath = "Output/swap-pages.docx";
+options.firstPageNumber = 2;
+options.secondPageNumber = 4;
+ 
+let result = await pagesApi.swap(new merger_cloud.SwapRequest(options));
+```
 
 {{< /tab >}} {{< tab "Python" >}}
 
-{{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_SwapPages.py >}}
+```python
+# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-python-samples
+app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+pagesApi = groupdocs_merger_cloud.PagesApi.from_keys(app_sid, app_key)
+ 
+options = groupdocs_merger_cloud.SwapOptions()
+options.file_info = groupdocs_merger_cloud.FileInfo("WordProcessing/four-pages.docx")
+options.output_path = "Output/swap-pages.docx"
+options.first_page_number = 2
+options.second_page_number = 4
+ 
+result = pagesApi.swap(groupdocs_merger_cloud.SwapRequest(options))
+```
 
 {{< /tab >}} {{< /tabs >}}

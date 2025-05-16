@@ -96,26 +96,188 @@ Using an SDK (API client) is the quickest way for a developer to speed up the de
 
 {{< tabs "example2">}} {{< tab "C#" >}}
 
-{{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_PreviewDocument.cs >}}
+```csharp
+using GroupDocs.Merger.Cloud.Sdk.Api;
+using GroupDocs.Merger.Cloud.Sdk.Client;
+using GroupDocs.Merger.Cloud.Sdk.Model;
+using GroupDocs.Merger.Cloud.Sdk.Model.Requests;
+using System;
+using System.Collections.Generic;
+using FileInfo = GroupDocs.Merger.Cloud.Sdk.Model.FileInfo;
+
+namespace GroupDocs.Merger.Cloud.Examples.CSharp
+{
+    /// <summary>
+    /// This example demonstrates how to generate document pages preview.
+    /// </summary>
+    public class PreviewDocument
+	{
+		public static void Run()
+		{
+            var configuration = new Configuration(Common.MyAppSid, Common.MyAppKey);
+            var apiInstance = new DocumentApi(configuration);
+
+			try
+			{
+				var fileInfo = new FileInfo
+                {
+						FilePath = "WordProcessing/four-pages.docx"
+                };
+
+                var options = new PreviewOptions()
+                {
+                    FileInfo = fileInfo,
+                    OutputPath = "Output/preview-page",
+                    Pages = new List<int?> { 1, 3 },
+                    Format = PreviewOptions.FormatEnum.Png
+                };
+
+                var request = new PreviewRequest(options);
+                var response = apiInstance.Preview(request);
+
+                foreach (var document in response.Documents)
+                {
+                    Console.WriteLine("Output file path: " + document.Path);
+                }
+            }
+			catch (Exception e)
+			{
+				Console.WriteLine("Exception while calling api: " + e.Message);
+			}
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "Java" >}}
 
-{{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_PreviewDocument.java >}}
+```java
+package examples.DocumentOperations;
+
+import java.util.Arrays;
+import com.groupdocs.cloud.merger.client.*;
+import com.groupdocs.cloud.merger.model.*;
+import com.groupdocs.cloud.merger.model.requests.*;
+import com.groupdocs.cloud.merger.api.*;
+import examples.Utils;
+
+/**
+ * This example demonstrates how to generate document pages preview.
+ */
+public class Merger_Java_PreviewDocument {
+
+	public static void main(String[] args) {		
+
+		DocumentApi apiInstance = new DocumentApi(Utils.GetConfiguration());
+
+		try {
+			FileInfo fileInfo = new FileInfo();			
+			fileInfo.setFilePath("WordProcessing/four-pages.docx");
+
+			PreviewOptions options = new PreviewOptions();
+			options.setFileInfo(fileInfo);
+			options.setPages(Arrays.asList(1, 3));
+			options.setOutputPath("output/preview-page");
+			options.setFormat(PreviewOptions.FormatEnum.PNG);
+
+			PreviewRequest request = new PreviewRequest(options);
+
+			MultiDocumentResult response = apiInstance.preview(request);
+
+			for (DocumentResult documentResult : response.getDocuments()) {
+				System.err.println("Output file path: " + documentResult.getPath());
+			}			
+		
+		} catch (ApiException e) {
+
+			System.err.println("Exception while calling api:");
+			e.printStackTrace();
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "PHP" >}}
 
-{{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_PreviewDocument.php >}}
+```php
+// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-php-samples
+$AppSid = 'XXXX-XXXX-XXXX-XXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$AppKey = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+$configuration = new GroupDocs\Merger\Configuration();
+$configuration->setAppSid(CommonUtils::$AppSid);
+$configuration->setAppKey(CommonUtils::$AppKey);
+ 
+$documentApi = GroupDocs\Merger\DocumentApi($configuration);
+ 
+$fileInfo = new Model\FileInfo();
+$fileInfo->setFilePath("WordProcessing/four-pages.docx");         
+ 
+$options = new Model\PreviewOptions();
+$options->setFileInfo($fileInfo);
+$options->setOutputPath("Output/preview-page");
+$options->setPages([1, 3]);
+$options->setFormat(Model\PreviewOptions::FORMAT_PNG);
+ 
+$request = new Requests\previewRequest($options);       
+$response = $documentApi->preview($request);
+```
 
 {{< /tab >}} {{< tab "Ruby" >}}
 
-{{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_PreviewDocument.rb >}}
+```ruby
+# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-ruby-samples
+$app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+ 
+ 
+documentApi = GroupDocsMergerCloud::DocumentApi.from_keys($app_sid, $app_key)
+ 
+options = GroupDocsMergerCloud::PreviewOptions.new
+options.file_info = GroupDocsMergerCloud::FileInfo.new
+options.file_info.file_path = 'WordProcessing/four-pages.docx'
+options.output_path = "Output/preview-page"
+options.pages = [1, 3]
+options.format = "Png"
+ 
+result = documentApi.preview(GroupDocsMergerCloud::PreviewRequest.new(options))
+```
 
 {{< /tab >}} {{< tab "Node.js" >}}
 
-{{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_PreviewDocument.js >}}
+```js
+// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-node-samples
+global.appSid = "XXXX-XXXX-XXXX-XXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+global.appKey = "XXXXXXXXXXXXXXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+global.documentApi = merger_cloud.DocumentApi.fromKeys(appSid, appKey);
+ 
+let options = new merger_cloud.PreviewOptions();
+options.fileInfo = new merger_cloud.FileInfo();
+options.fileInfo.filePath = "WordProcessing/four-pages.docx";  
+options.outputPath = "Output/preview-page";
+options.pages = [1, 3];
+options.format = merger_cloud.PreviewOptions.FormatEnum.Png;
+ 
+let result = await documentApi.preview(new merger_cloud.PreviewRequest(options));
+```
 
 {{< /tab >}} {{< tab "Python" >}}
 
-{{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_PreviewDocument.py >}}
+```python
+# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-python-samples
+app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+documentApi = groupdocs_merger_cloud.DocumentApi.from_keys(app_sid, app_key)
+ 
+options = groupdocs_merger_cloud.PreviewOptions()
+options.file_info = groupdocs_merger_cloud.FileInfo("WordProcessing/four-pages.docx")
+options.output_path = "Output/preview-page"
+options.pages = [1, 3]
+options.format = "Png"
+ 
+result = documentApi.preview(groupdocs_merger_cloud.PreviewRequest(options))
+```
 
 {{< /tab >}} {{< /tabs >}}

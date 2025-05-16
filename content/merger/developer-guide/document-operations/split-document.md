@@ -91,27 +91,189 @@ Using an SDK (API client) is the quickest way for a developer to speed up the de
 
 {{< tabs "example2">}} {{< tab "C#" >}}
 
-{{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_SplitToSinglePages.cs >}}
+```csharp
+using GroupDocs.Merger.Cloud.Sdk.Api;
+using GroupDocs.Merger.Cloud.Sdk.Client;
+using GroupDocs.Merger.Cloud.Sdk.Model;
+using GroupDocs.Merger.Cloud.Sdk.Model.Requests;
+using System;
+using System.Collections.Generic;
+using FileInfo = GroupDocs.Merger.Cloud.Sdk.Model.FileInfo;
+
+namespace GroupDocs.Merger.Cloud.Examples.CSharp
+{
+    /// <summary>
+    /// This example demonstrates how to split the document to several one-page documents (by exact page numbers).
+    /// </summary>
+    public class SplitToSinglePages
+    {
+		public static void Run()
+		{
+            var configuration = new Configuration(Common.MyAppSid, Common.MyAppKey);
+            var apiInstance = new DocumentApi(configuration);
+
+			try
+			{
+				var fileInfo = new FileInfo
+                {
+						FilePath = "WordProcessing/sample-10-pages.docx"
+                };
+
+                var options = new SplitOptions
+                {
+                    FileInfo = fileInfo,
+                    OutputPath = "Output/split-document",
+                    Pages = new List<int?> { 1, 3 },
+                    Mode = SplitOptions.ModeEnum.Pages
+                };
+
+                var request = new SplitRequest(options);
+                var response = apiInstance.Split(request);
+
+                foreach (var document in response.Documents)
+                {
+                    Console.WriteLine("Output file path: " + document.Path);
+                }
+            }
+			catch (Exception e)
+			{
+				Console.WriteLine("Exception while calling api: " + e.Message);
+			}
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "Java" >}}
 
-{{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_SplitToSinglePages.java >}}
+```java
+package examples.DocumentOperations.SplitDocument;
+
+import java.util.Arrays;
+import com.groupdocs.cloud.merger.client.*;
+import com.groupdocs.cloud.merger.model.*;
+import com.groupdocs.cloud.merger.model.requests.*;
+import com.groupdocs.cloud.merger.api.*;
+import examples.Utils;
+
+/**
+ * This example demonstrates how to split the document to several one-page documents (by exact page numbers).
+ */
+public class Merger_Java_SplitToSinglePages {
+
+	public static void main(String[] args) {		
+
+		DocumentApi apiInstance = new DocumentApi(Utils.GetConfiguration());
+
+		try {
+			FileInfo fileInfo = new FileInfo();			
+			fileInfo.setFilePath("WordProcessing/sample-10-pages.docx");
+
+			SplitOptions options = new SplitOptions();
+			options.setFileInfo(fileInfo);
+			options.setPages(Arrays.asList(1, 3));
+			options.setOutputPath("output/split-document");
+			options.setMode(SplitOptions.ModeEnum.PAGES);
+
+			SplitRequest request = new SplitRequest(options);
+
+			MultiDocumentResult response = apiInstance.split(request);
+
+			for (DocumentResult documentResult : response.getDocuments()) {
+				System.err.println("Output file path: " + documentResult.getPath());
+			}			
+		
+		} catch (ApiException e) {
+
+			System.err.println("Exception while calling api:");
+			e.printStackTrace();
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "PHP" >}}
 
-{{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_SplitToSinglePages.php >}}
+```php
+// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-php-samples
+$AppSid = 'XXXX-XXXX-XXXX-XXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$AppKey = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+$configuration = new GroupDocs\Merger\Configuration();
+$configuration->setAppSid(CommonUtils::$AppSid);
+$configuration->setAppKey(CommonUtils::$AppKey);
+ 
+$documentApi = GroupDocs\Merger\DocumentApi($configuration);
+ 
+$fileInfo = new Model\FileInfo();
+$fileInfo->setFilePath("WordProcessing/sample-10-pages.docx");         
+ 
+$options = new Model\SplitOptions();
+$options->setFileInfo($fileInfo);
+$options->setOutputPath("Output/split-document");
+$options->setPages([1, 3]);
+$options->setMode(Model\SplitOptions::MODE_PAGES);
+ 
+$request = new Requests\splitRequest($options);       
+$response = $documentApi->split($request);
+```
 
 {{< /tab >}} {{< tab "Ruby" >}}
 
-{{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_SplitToSinglePages.rb >}}
+```ruby
+# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-ruby-samples
+$app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+ 
+ 
+documentApi = GroupDocsMergerCloud::DocumentApi.from_keys($app_sid, $app_key)
+ 
+options = GroupDocsMergerCloud::SplitOptions.new
+options.file_info = GroupDocsMergerCloud::FileInfo.new
+options.file_info.file_path = 'WordProcessing/sample-10-pages.docx'
+options.output_path = "Output/split-document"
+options.pages = [1, 3]
+options.mode = "Pages"
+ 
+result = documentApi.split(GroupDocsMergerCloud::SplitRequest.new(options))
+```
 
 {{< /tab >}} {{< tab "Node.js" >}}
 
-{{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_SplitToSinglePages.js >}}
+```js
+// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-node-samples
+global.appSid = "XXXX-XXXX-XXXX-XXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+global.appKey = "XXXXXXXXXXXXXXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+global.documentApi = merger_cloud.DocumentApi.fromKeys(appSid, appKey);
+ 
+let options = new merger_cloud.SplitOptions();
+options.fileInfo = new merger_cloud.FileInfo();
+options.fileInfo.filePath = "WordProcessing/sample-10-pages.docx";  
+options.outputPath = "Output/split-document";
+options.pages = [1, 3];
+options.mode = merger_cloud.SplitOptions.ModeEnum.Pages;
+ 
+let result = await documentApi.split(new merger_cloud.SplitRequest(options));
+```
 
 {{< /tab >}} {{< tab "Python" >}}
 
-{{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_SplitToSinglePages.py >}}
+```python
+# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-python-samples
+app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+documentApi = groupdocs_merger_cloud.DocumentApi.from_keys(app_sid, app_key)
+ 
+options = groupdocs_merger_cloud.SplitOptions()
+options.file_info = groupdocs_merger_cloud.FileInfo("WordProcessing/sample-10-pages.docx")
+options.output_path = "Output/split-document"
+options.pages = [1, 3]
+options.mode = "Pages"
+ 
+result = documentApi.split(groupdocs_merger_cloud.SplitRequest(options))
+```
 
 {{< /tab >}} {{< /tabs >}}
 
@@ -184,27 +346,193 @@ Using an SDK (API client) is the quickest way for a developer to speed up the de
 
 {{< tabs "example4">}} {{< tab "C#" >}}
 
-{{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_SplitToSinglePagesByRange.cs >}}
+```csharp
+﻿using GroupDocs.Merger.Cloud.Sdk.Api;
+using GroupDocs.Merger.Cloud.Sdk.Client;
+using GroupDocs.Merger.Cloud.Sdk.Model;
+using GroupDocs.Merger.Cloud.Sdk.Model.Requests;
+using System;
+using FileInfo = GroupDocs.Merger.Cloud.Sdk.Model.FileInfo;
+
+namespace GroupDocs.Merger.Cloud.Examples.CSharp
+{
+    /// <summary>
+    /// This example demonstrates how to split the document to several one-page documents (by start/end page numbers).
+    /// </summary>
+    public class SplitToSinglePagesByRange
+    {
+            public static void Run()
+            {
+                var configuration = new Configuration(Common.MyAppSid, Common.MyAppKey);
+                var apiInstance = new DocumentApi(configuration);
+
+                try
+                {
+                    var fileInfo = new FileInfo
+                    {
+                        FilePath = "WordProcessing/sample-10-pages.docx"
+                    };
+
+                    var options = new SplitOptions
+                    {
+                        FileInfo = fileInfo,
+                        OutputPath = "Output/split-by-start-end-numbers",
+                        StartPageNumber = 3,
+                        EndPageNumber = 7,
+                        Mode = SplitOptions.ModeEnum.Pages
+                    };
+
+                    var request = new SplitRequest(options);
+                    var response = apiInstance.Split(request);
+
+                    foreach (var document in response.Documents)
+                    {
+                        Console.WriteLine("Output file path: " + document.Path);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Exception while calling api: " + e.Message);
+                }
+            }
+        }
+    }
+```
 
 {{< /tab >}} {{< tab "Java" >}}
 
-{{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_SplitToSinglePagesByRange.java >}}
+```java
+package examples.DocumentOperations.SplitDocument;
+
+import com.groupdocs.cloud.merger.client.*;
+import com.groupdocs.cloud.merger.model.*;
+import com.groupdocs.cloud.merger.model.requests.*;
+import com.groupdocs.cloud.merger.api.*;
+import examples.Utils;
+
+/**
+ * This example demonstrates how to split the document to several one-page documents (by start/end page numbers).
+ */
+public class Merger_Java_SplitToSinglePagesByRange {
+
+	public static void main(String[] args) {		
+
+		DocumentApi apiInstance = new DocumentApi(Utils.GetConfiguration());
+
+		try {
+			FileInfo fileInfo = new FileInfo();			
+			fileInfo.setFilePath("WordProcessing/sample-10-pages.docx");
+
+			SplitOptions options = new SplitOptions();
+			options.setFileInfo(fileInfo);
+			options.setOutputPath("output/split-by-start-end-numbers");
+			options.setStartPageNumber(3);
+			options.setEndPageNumber(7);
+			options.setMode(SplitOptions.ModeEnum.PAGES);
+
+			SplitRequest request = new SplitRequest(options);
+
+			MultiDocumentResult response = apiInstance.split(request);
+
+			for (DocumentResult documentResult : response.getDocuments()) {
+				System.err.println("Output file path: " + documentResult.getPath());
+			}			
+		
+		} catch (ApiException e) {
+
+			System.err.println("Exception while calling api:");
+			e.printStackTrace();
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "PHP" >}}
 
-{{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_SplitToSinglePagesByRange.php >}}
+```php
+﻿// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-php-samples
+$AppSid = 'XXXX-XXXX-XXXX-XXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$AppKey = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+$configuration = new GroupDocs\Merger\Configuration();
+$configuration->setAppSid(CommonUtils::$AppSid);
+$configuration->setAppKey(CommonUtils::$AppKey);
+ 
+$documentApi = GroupDocs\Merger\DocumentApi($configuration);
+ 
+$fileInfo = new Model\FileInfo();
+$fileInfo->setFilePath("WordProcessing/sample-10-pages.docx");         
+ 
+$options = new Model\SplitOptions();
+$options->setFileInfo($fileInfo);
+$options->setOutputPath("Output/split-by-start-end-numbers");
+$options->setStartPageNumber(3);
+$options->setEndPageNumber(7);
+$options->setMode(Model\SplitOptions::MODE_PAGES);
+ 
+$request = new Requests\splitRequest($options);       
+$response = $documentApi->split($request);
+```
 
 {{< /tab >}} {{< tab "Ruby" >}}
 
-{{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_SplitToSinglePagesByRange.rb >}}
+```ruby
+﻿# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-ruby-samples
+$app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+ 
+ 
+documentApi = GroupDocsMergerCloud::DocumentApi.from_keys($app_sid, $app_key)
+ 
+options = GroupDocsMergerCloud::SplitOptions.new
+options.file_info = GroupDocsMergerCloud::FileInfo.new
+options.file_info.file_path = 'WordProcessing/sample-10-pages.docx'
+options.output_path = "Output/split-by-start-end-numbers"
+options.start_page_number = 3
+options.end_page_number = 7
+options.mode = "Pages"
+ 
+result = documentApi.split(GroupDocsMergerCloud::SplitRequest.new(options))
+```
 
 {{< /tab >}} {{< tab "Node.js" >}}
 
-{{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_SplitToSinglePagesByRange.js >}}
+```js
+﻿// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-node-samples
+global.appSid = "XXXX-XXXX-XXXX-XXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+global.appKey = "XXXXXXXXXXXXXXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+global.documentApi = merger_cloud.DocumentApi.fromKeys(appSid, appKey);
+ 
+let options = new merger_cloud.SplitOptions();
+options.fileInfo = new merger_cloud.FileInfo();
+options.fileInfo.filePath = "WordProcessing/sample-10-pages.docx";  
+options.outputPath = "Output/split-by-start-end-numbers";
+options.startPageNumber = 3;
+options.endPageNumber = 7;
+options.mode = merger_cloud.SplitOptions.ModeEnum.Pages;
+ 
+let result = await documentApi.split(new merger_cloud.SplitRequest(options));
+```
 
 {{< /tab >}} {{< tab "Python" >}}
 
-{{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_SplitToSinglePagesByRange.py >}}
+```python
+﻿# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-python-samples
+app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+documentApi = groupdocs_merger_cloud.DocumentApi.from_keys(app_sid, app_key)
+ 
+options = groupdocs_merger_cloud.SplitOptions()
+options.file_info = groupdocs_merger_cloud.FileInfo("WordProcessing/sample-10-pages.docx")
+options.output_path = "Output/split-by-start-end-numbers"
+options.start_page_number = 3
+options.end_page_number = 7
+options.mode = "Pages"
+ 
+result = documentApi.split(groupdocs_merger_cloud.SplitRequest(options))
+```
 
 {{< /tab >}} {{< /tabs >}}
 
@@ -290,27 +618,198 @@ Using an SDK (API client) is the quickest way for a developer to speed up the de
 
 {{< tabs "example6">}} {{< tab "C#" >}}
 
-{{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_SplitToSinglePagesByRangeWithFilter.cs >}}
+```csharp
+﻿using GroupDocs.Merger.Cloud.Sdk.Api;
+using GroupDocs.Merger.Cloud.Sdk.Client;
+using GroupDocs.Merger.Cloud.Sdk.Model;
+using GroupDocs.Merger.Cloud.Sdk.Model.Requests;
+using System;
+using FileInfo = GroupDocs.Merger.Cloud.Sdk.Model.FileInfo;
+
+namespace GroupDocs.Merger.Cloud.Examples.CSharp
+{
+    /// <summary>
+    /// This example demonstrates how to split the document to several one-page documents (by start/end page numbers and even/odd filter).
+    /// </summary>
+    public class SplitToSinglePagesByRangeWithFilter
+    {
+            public static void Run()
+            {
+                var configuration = new Configuration(Common.MyAppSid, Common.MyAppKey);
+                var apiInstance = new DocumentApi(configuration);
+
+                try
+                {
+                    var fileInfo = new FileInfo
+                    {
+                        FilePath = "WordProcessing/sample-10-pages.docx"
+                    };
+
+                    var options = new SplitOptions
+                    {
+                        FileInfo = fileInfo,
+                        OutputPath = "Output/split-by-start-end-numbers-with-filter",
+                        StartPageNumber = 3,
+                        EndPageNumber = 7,
+                        RangeMode = PageOptions.RangeModeEnum.OddPages,
+                        Mode = SplitOptions.ModeEnum.Pages
+                    };
+
+                    var request = new SplitRequest(options);
+                    var response = apiInstance.Split(request);
+
+                    foreach (var document in response.Documents)
+                    {
+                        Console.WriteLine("Output file path: " + document.Path);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Exception while calling api: " + e.Message);
+                }
+            }
+        }
+    }
+```
 
 {{< /tab >}} {{< tab "Java" >}}
 
-{{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_SplitToSinglePagesByRangeWithFilter.java >}}
+```java
+package examples.DocumentOperations.SplitDocument;
+
+import com.groupdocs.cloud.merger.client.*;
+import com.groupdocs.cloud.merger.model.*;
+import com.groupdocs.cloud.merger.model.requests.*;
+import com.groupdocs.cloud.merger.api.*;
+import examples.Utils;
+
+/**
+ * This example demonstrates how to split the document to several one-page documents (by start/end page numbers and even/odd filter).
+ */
+public class Merger_Java_SplitToSinglePagesByRangeWithFilter {
+
+	public static void main(String[] args) {		
+
+		DocumentApi apiInstance = new DocumentApi(Utils.GetConfiguration());
+
+		try {
+			FileInfo fileInfo = new FileInfo();			
+			fileInfo.setFilePath("WordProcessing/sample-10-pages.docx");
+
+			SplitOptions options = new SplitOptions();
+			options.setFileInfo(fileInfo);
+			options.setOutputPath("output/split-by-start-end-numbers-with-filter");
+			options.setStartPageNumber(3);
+			options.setEndPageNumber(7);
+			options.setRangeMode(PageOptions.RangeModeEnum.ODDPAGES);
+			options.setMode(SplitOptions.ModeEnum.PAGES);
+
+			SplitRequest request = new SplitRequest(options);
+
+			MultiDocumentResult response = apiInstance.split(request);
+
+			for (DocumentResult documentResult : response.getDocuments()) {
+				System.err.println("Output file path: " + documentResult.getPath());
+			}			
+		
+		} catch (ApiException e) {
+
+			System.err.println("Exception while calling api:");
+			e.printStackTrace();
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "PHP" >}}
 
-{{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_SplitToSinglePagesByRangeWithFilter.php >}}
+```php
+﻿// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-php-samples
+$AppSid = 'XXXX-XXXX-XXXX-XXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$AppKey = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+$configuration = new GroupDocs\Merger\Configuration();
+$configuration->setAppSid(CommonUtils::$AppSid);
+$configuration->setAppKey(CommonUtils::$AppKey);
+ 
+$documentApi = GroupDocs\Merger\DocumentApi($configuration);
+ 
+$fileInfo = new Model\FileInfo();
+$fileInfo->setFilePath("WordProcessing/sample-10-pages.docx");         
+ 
+$options = new Model\SplitOptions();
+$options->setFileInfo($fileInfo);
+$options->setOutputPath("Output/split-by-start-end-numbers-with-filter");
+$options->setStartPageNumber(3);
+$options->setEndPageNumber(7);
+$options->setRangeMode(Model\SplitOptions::RANGE_MODE_ODD_PAGES);
+$options->setMode(Model\SplitOptions::MODE_PAGES);
+ 
+$request = new Requests\splitRequest($options);       
+$response = $documentApi->split($request);
+```
 
 {{< /tab >}} {{< tab "Ruby" >}}
 
-{{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_SplitToSinglePagesByRangeWithFilter.rb >}}
+```ruby
+﻿# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-ruby-samples
+$app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+ 
+documentApi = GroupDocsMergerCloud::DocumentApi.from_keys($app_sid, $app_key)
+ 
+options = GroupDocsMergerCloud::SplitOptions.new
+options.file_info = GroupDocsMergerCloud::FileInfo.new
+options.file_info.file_path = 'WordProcessing/sample-10-pages.docx'
+options.output_path = "Output/split-by-start-end-numbers-with-filter"
+options.start_page_number = 3
+options.end_page_number = 7
+options.range_mode = "OddPages"
+options.mode = "Intervals"
+ 
+result = documentApi.split(GroupDocsMergerCloud::SplitRequest.new(options))
+```
 
 {{< /tab >}} {{< tab "Node.js" >}}
 
-{{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_SplitToSinglePagesByRangeWithFilter.js >}}
+```js
+﻿// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-node-samples
+global.appSid = "XXXX-XXXX-XXXX-XXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+global.appKey = "XXXXXXXXXXXXXXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+global.documentApi = merger_cloud.DocumentApi.fromKeys(appSid, appKey);
+ 
+let options = new merger_cloud.SplitOptions();
+options.fileInfo = new merger_cloud.FileInfo();
+options.fileInfo.filePath = "WordProcessing/sample-10-pages.docx";  
+options.outputPath = "Output/split-by-start-end-numbers-with-filter";
+options.startPageNumber = 3;
+options.endPageNumber = 7;
+options.rangeMode = merger_cloud.SplitOptions.RangeModeEnum.OddPages;
+options.mode = merger_cloud.SplitOptions.ModeEnum.Pages;
+ 
+let result = await documentApi.split(new merger_cloud.SplitRequest(options));
+```
 
 {{< /tab >}} {{< tab "Python" >}}
 
-{{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_SplitToSinglePagesByRangeWithFilter.py >}}
+```python
+﻿# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-python-samples
+app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+documentApi = groupdocs_merger_cloud.DocumentApi.from_keys(app_sid, app_key)
+ 
+options = groupdocs_merger_cloud.SplitOptions()
+options.file_info = groupdocs_merger_cloud.FileInfo("WordProcessing/sample-10-pages.docx")
+options.output_path = "Output/split-by-start-end-numbers-with-filter"
+options.start_page_number = 3
+options.end_page_number = 7
+options.range_mode = "OddPages"
+options.mode = "Pages"
+ 
+result = documentApi.split(groupdocs_merger_cloud.SplitRequest(options))
+```
 
 {{< /tab >}} {{< /tabs >}}
 
@@ -398,26 +897,189 @@ Using an SDK (API client) is the quickest way for a developer to speed up the de
 
 {{< tabs "example8">}} {{< tab "C#" >}}
 
-{{< gist groupdocscloud b7a9ad2a32b358e32583134d20c4a384 Merger_CSharp_SplitToMultiPageDocuments.cs >}}
+```csharp
+﻿using GroupDocs.Merger.Cloud.Sdk.Api;
+using GroupDocs.Merger.Cloud.Sdk.Client;
+using GroupDocs.Merger.Cloud.Sdk.Model;
+using GroupDocs.Merger.Cloud.Sdk.Model.Requests;
+using System;
+using System.Collections.Generic;
+using FileInfo = GroupDocs.Merger.Cloud.Sdk.Model.FileInfo;
+
+namespace GroupDocs.Merger.Cloud.Examples.CSharp
+{
+    /// <summary>
+    /// This example demonstrates how to split the document to several multi-page documents by specified page ranges.
+    /// </summary>
+    public class SplitToMultiPageDocuments
+    {
+        public static void Run()
+        {
+            var configuration = new Configuration(Common.MyAppSid, Common.MyAppKey);
+            var apiInstance = new DocumentApi(configuration);
+
+            try
+            {
+                var fileInfo = new FileInfo
+                {
+                    FilePath = "WordProcessing/sample-10-pages.docx"
+                };
+
+                var options = new SplitOptions
+                {
+                    FileInfo = fileInfo,
+                    OutputPath = "Output/split-to-multipage-document",
+                    Pages = new List<int?> { 3, 6, 8 },
+                    Mode = SplitOptions.ModeEnum.Intervals
+                };
+
+                var request = new SplitRequest(options);
+                var response = apiInstance.Split(request);
+
+                foreach (var document in response.Documents)
+                {
+                    Console.WriteLine("Output file path: " + document.Path);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception while calling api: " + e.Message);
+            }
+        }
+    }
+}
+
+```
 
 {{< /tab >}} {{< tab "Java" >}}
 
-{{< gist groupdocscloud a22ef5f91f7f8565fee2bac658674b49 Merger_Java_SplitToMultiPageDocuments.java >}}
+```java
+package examples.DocumentOperations.SplitDocument;
+
+import java.util.Arrays;
+import com.groupdocs.cloud.merger.client.*;
+import com.groupdocs.cloud.merger.model.*;
+import com.groupdocs.cloud.merger.model.requests.*;
+import com.groupdocs.cloud.merger.api.*;
+import examples.Utils;
+
+/**
+ * This example demonstrates how to split the document to several multi-page documents by specified page ranges.
+ */
+public class Merger_Java_SplitToMultiPageDocuments {
+
+	public static void main(String[] args) {		
+
+		DocumentApi apiInstance = new DocumentApi(Utils.GetConfiguration());
+
+		try {
+			FileInfo fileInfo = new FileInfo();			
+			fileInfo.setFilePath("WordProcessing/sample-10-pages.docx");
+
+			SplitOptions options = new SplitOptions();
+			options.setFileInfo(fileInfo);
+			options.setPages(Arrays.asList(3, 6, 8));
+			options.setOutputPath("output/split-to-multipage-document");
+			options.setMode(SplitOptions.ModeEnum.INTERVALS);
+
+			SplitRequest request = new SplitRequest(options);
+
+			MultiDocumentResult response = apiInstance.split(request);
+
+			for (DocumentResult documentResult : response.getDocuments()) {
+				System.err.println("Output file path: " + documentResult.getPath());
+			}			
+		
+		} catch (ApiException e) {
+
+			System.err.println("Exception while calling api:");
+			e.printStackTrace();
+		}
+	}
+}
+```
 
 {{< /tab >}} {{< tab "PHP" >}}
 
-{{< gist groupdocscloud 48648ca8f7d3bfedb079a7d7e3af9e0e Merger_Php_SplitToMultiPageDocuments.php >}}
+```php
+﻿// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-php-samples
+$AppSid = 'XXXX-XXXX-XXXX-XXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$AppKey = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+$configuration = new GroupDocs\Merger\Configuration();
+$configuration->setAppSid(CommonUtils::$AppSid);
+$configuration->setAppKey(CommonUtils::$AppKey);
+ 
+$documentApi = GroupDocs\Merger\DocumentApi($configuration);
+ 
+$fileInfo = new Model\FileInfo();
+$fileInfo->setFilePath("WordProcessing/sample-10-pages.docx");         
+ 
+$options = new Model\SplitOptions();
+$options->setFileInfo($fileInfo);
+$options->setOutputPath("Output/split-to-multipage-document");
+$options->setPages([3, 6, 8]);
+$options->setMode(Model\SplitOptions::MODE_INTERVALS);
+ 
+$request = new Requests\splitRequest($options);       
+$response = $documentApi->split($request);
+```
 
 {{< /tab >}} {{< tab "Ruby" >}}
 
-{{< gist groupdocscloud 61d2eea73f56f457c060b2894d545d23 Merger_Ruby_SplitToMultiPageDocuments.rb >}}
+```ruby
+﻿# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-ruby-samples
+$app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+$app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+ 
+ 
+documentApi = GroupDocsMergerCloud::DocumentApi.from_keys($app_sid, $app_key)
+ 
+options = GroupDocsMergerCloud::SplitOptions.new
+options.file_info = GroupDocsMergerCloud::FileInfo.new
+options.file_info.file_path = 'WordProcessing/sample-10-pages.docx'
+options.output_path = "Output/split-to-multipage-document"
+options.pages = [3, 6, 8]
+options.mode = "Intervals"
+ 
+result = documentApi.split(GroupDocsMergerCloud::SplitRequest.new(options))
+```
 
 {{< /tab >}} {{< tab "Node.js" >}}
 
-{{< gist groupdocscloud 45a085bb4520da51407ee295a67b4021 Merger_Node_SplitToMultiPageDocuments.js >}}
+```js
+﻿// For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-node-samples
+global.appSid = "XXXX-XXXX-XXXX-XXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+global.appKey = "XXXXXXXXXXXXXXXX"; // Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+global.documentApi = merger_cloud.DocumentApi.fromKeys(appSid, appKey);
+ 
+let options = new merger_cloud.SplitOptions();
+options.fileInfo = new merger_cloud.FileInfo();
+options.fileInfo.filePath = "WordProcessing/sample-10-pages.docx";  
+options.outputPath = "Output/split-to-multipage-document";
+options.pages = [3, 6, 8];
+options.mode = merger_cloud.SplitOptions.ModeEnum.Intervals;
+ 
+let result = await documentApi.split(new merger_cloud.SplitRequest(options));
+```
 
 {{< /tab >}} {{< tab "Python" >}}
 
-{{< gist groupdocscloud ca731968d52778c9e2b0fc5d82d044d0 Merger_Python_SplitToMultiPageDocuments.py >}}
+```python
+﻿# For complete examples and data files, please go to https://github.com/groupdocs-merger-cloud/groupdocs-merger-cloud-python-samples
+app_sid = "XXXX-XXXX-XXXX-XXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+app_key = "XXXXXXXXXXXXXXXX" # Get AppKey and AppSID from https://dashboard.groupdocs.cloud
+  
+documentApi = groupdocs_merger_cloud.DocumentApi.from_keys(app_sid, app_key)
+ 
+options = groupdocs_merger_cloud.SplitOptions()
+options.file_info = groupdocs_merger_cloud.FileInfo("WordProcessing/sample-10-pages.docx")
+options.output_path = "Output/split-to-multipage-document"
+options.pages = [3, 6, 8]
+options.mode = "Intervals"
+ 
+result = documentApi.split(groupdocs_merger_cloud.SplitRequest(options))
+```
 
 {{< /tab >}} {{< /tabs >}}
