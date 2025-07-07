@@ -25,7 +25,7 @@ Using an SDK (API client) is the quickest way for a developer to speed up the de
 
 ## Make an APIRequest from the SDK of your choice
 
-Use the **Client Id** and **Client Secret** from the API app client you created in step one and replace it in the corresponding code. Below is an example demonstrating how to get a list of all supported file formats in GroupDocs.Merger Cloud.
+Use the **Client Id** and **Client Secret** from the API app client you created in step one and replace it in the corresponding code. Below is an example demonstrating how to join multiple documents into one document using GroupDocs.Merger Cloud.
 
 {{< alert style="info" >}}
 The GitHub repository for [GroupDocs.Merger Cloud](https://github.com/groupdocs-merger-cloud) has a complete set of examples, demonstrating our API capabilities.
