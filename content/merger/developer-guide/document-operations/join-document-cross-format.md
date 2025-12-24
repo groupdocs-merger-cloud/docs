@@ -37,44 +37,86 @@ HTTP POST ~/join
 
 ## cURL example
 
-{{< tabs "example1">}} {{< tab "Request" >}}
+{{< tabs "example1">}} {{< tab "Linux/MacOS/Bash" >}}
 
 ```bash
-* First get JSON Web Token
-* Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications. Kindly place Client Id in "client_id" and Client Secret in "client_secret" argument.
+# First get JSON Web Token
+# Place your Client Id and Client Secret in the $CLIENT_ID and $CLIENT_SECRET environment variables.
 curl -v "https://api.groupdocs.cloud/connect/token" \
--X POST \
--d "grant_type=client_credentials&client_id=xxxx&client_secret=xxxx" \
--H "Content-Type: application/x-www-form-urlencoded" \
--H "Accept: application/json"
+  -X POST \
+  -d "grant_type=client_credentials&client_id=$CLIENT_ID&client_secret=$CLIENT_SECRET" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -H "Accept: application/json"
 
-* cURL example to join pages from several documents into one document
+# cURL example to join pages from several documents into one document
 curl -v "https://api.groupdocs.cloud/v1.0/merger/join" \
--X POST \
--H "Content-Type: application/json" \
--H "Accept: application/json" \
--H "Authorization: Bearer
-<jwt token>"
--d "{
-    'JoinItems':
-    [
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer $JWT_TOKEN" \
+  -d '{
+    "JoinItems": [
         {
-            'FileInfo':
-            {
-                'FilePath': 'Pdf/one-page-password.pdf',
-                'Password': 'password'
+            "FileInfo": {
+                "FilePath": "Pdf/one-page-password.pdf",
+                "Password": "password"
             }
         },
         {
-            'FileInfo':
-            {
-                'FilePath': 'WordProcessing/one-page.docx'
+            "FileInfo": {
+                "FilePath": "WordProcessing/one-page.docx"
             }
         }
     ],
-    'OutputPath': 'Output/joined.pdf'
-}"
+    "OutputPath": "Output/joined.pdf"
+}'
+```
 
+{{< /tab >}}
+
+{{< tab "Windows PowerShell" >}}
+
+```powershell
+# First get JSON Web Token
+# Ensure your environment variables CLIENT_ID, CLIENT_SECRET are set.
+curl.exe -v "https://api.groupdocs.cloud/connect/token" `
+  -X POST `
+  -d "grant_type=client_credentials&client_id=$env:CLIENT_ID&client_secret=$env:CLIENT_SECRET" `
+  -H "Content-Type: application/x-www-form-urlencoded" `
+  -H "Accept: application/json"
+
+# cURL example to join pages from several documents into one document
+curl.exe -v "https://api.groupdocs.cloud/v1.0/merger/join" `
+  -X POST `
+  -H "Content-Type: application/json" `
+  -H "Accept: application/json" `
+  -H "Authorization: Bearer $env:JWT_TOKEN" `
+  -d "{ 'JoinItems': [
+        { 'FileInfo': { 'FilePath': 'Pdf/one-page-password.pdf', 'Password': 'password' } },
+        { 'FileInfo': { 'FilePath': 'WordProcessing/one-page.docx' } }
+      ], 'OutputPath': 'Output/joined.pdf' }"
+```
+
+{{< /tab >}}
+
+{{< tab "Windows CMD" >}}
+
+```cmd
+:: First get JSON Web Token
+:: Ensure your environment variables CLIENT_ID and CLIENT_SECRET are set.
+curl -v "https://api.groupdocs.cloud/connect/token" ^
+  -X POST ^
+  -d "grant_type=client_credentials&client_id=%CLIENT_ID%&client_secret=%CLIENT_SECRET%" ^
+  -H "Content-Type: application/x-www-form-urlencoded" ^
+  -H "Accept: application/json"
+
+:: cURL example to join pages from several documents into one document
+curl -v "https://api.groupdocs.cloud/v1.0/merger/join" ^
+  -X POST ^
+  -H "Content-Type: application/json" ^
+  -H "Accept: application/json" ^
+  -H "Authorization: Bearer %JWT_TOKEN%" ^
+  -d "{\"JoinItems\":[{\"FileInfo\":{\"FilePath\":\"Pdf/one-page-password.pdf\",\"Password\":\"password\"}},{\"FileInfo\":{\"FilePath\":\"WordProcessing/one-page.docx\"}}],\"OutputPath\":\"Output/joined.pdf\"}"
 ```
 
 {{< /tab >}} {{< tab "Response" >}}

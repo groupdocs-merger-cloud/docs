@@ -43,31 +43,78 @@ HTTP POST ~/pages/rotate
 
 ## cURL example
 
-{{< tabs "example1">}} {{< tab "Request" >}}
+{{< tabs "example1">}} {{< tab "Linux/MacOS/Bash" >}}
 
 ```bash
-
-* First get JSON Web Token
-* Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications. Kindly place Client Id in "client_id" and Client Secret in "client_secret" argument.
+# First get JSON Web Token
+# Ensure CLIENT_ID and CLIENT_SECRET environment variables are set.
 curl -v "https://api.groupdocs.cloud/connect/token" \
--X POST \
--d "grant_type=client_credentials&client_id=xxxx&client_secret=xxxx" \
--H "Content-Type: application/x-www-form-urlencoded" \
--H "Accept: application/json"
+  -X POST \
+  -d "grant_type=client_credentials&client_id=$CLIENT_ID&client_secret=$CLIENT_SECRET" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -H "Accept: application/json"
 
-* cURL example to join several documents into one
+# cURL example to rotate selected pages of a PDF
 curl -v "https://api.groupdocs.cloud/v1.0/merger/pages/rotate" \
--X POST \
--H "Content-Type: application/json" \
--H "Accept: application/json" \
--H "Authorization: Bearer
-<jwt token>" \
--d "{
-     'FileInfo': { 'FilePath': '/Pdf/ten-pages.pdf'},
-     'Pages':  [ 2, 4 ],
-  'Mode': 'Rotate90',
-     'OutputPath': 'output/rotate-pages.pdf'
- }"
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer $JWT_TOKEN" \
+  -d '{
+    "FileInfo": { "FilePath": "/Pdf/ten-pages.pdf" },
+    "Pages": [2, 4],
+    "Mode": "Rotate90",
+    "OutputPath": "output/rotate-pages.pdf"
+  }'
+```
+
+{{< /tab >}}
+
+{{< tab "Windows PowerShell" >}}
+
+```powershell
+# First get JSON Web Token
+# Ensure CLIENT_ID and CLIENT_SECRET environment variables are set.
+curl.exe -v "https://api.groupdocs.cloud/connect/token" `
+  -X POST `
+  -d "grant_type=client_credentials&client_id=$env:CLIENT_ID&client_secret=$env:CLIENT_SECRET" `
+  -H "Content-Type: application/x-www-form-urlencoded" `
+  -H "Accept: application/json"
+
+# cURL example to rotate selected pages of a PDF
+curl.exe -v "https://api.groupdocs.cloud/v1.0/merger/pages/rotate" `
+  -X POST `
+  -H "Content-Type: application/json" `
+  -H "Accept: application/json" `
+  -H "Authorization: Bearer $env:JWT_TOKEN" `
+  -d "{
+    'FileInfo': { 'FilePath': '/Pdf/ten-pages.pdf' },
+    'Pages': [2, 4],
+    'Mode': 'Rotate90',
+    'OutputPath': 'output/rotate-pages.pdf'
+  }"
+```
+
+{{< /tab >}}
+
+{{< tab "Windows CMD" >}}
+
+```cmd
+rem First get JSON Web Token
+rem Ensure CLIENT_ID and CLIENT_SECRET environment variables are set.
+curl -v "https://api.groupdocs.cloud/connect/token" ^
+  -X POST ^
+  -d "grant_type=client_credentials&client_id=%CLIENT_ID%&client_secret=%CLIENT_SECRET%" ^
+  -H "Content-Type: application/x-www-form-urlencoded" ^
+  -H "Accept: application/json"
+
+rem cURL example to rotate selected pages of a PDF
+curl -v "https://api.groupdocs.cloud/v1.0/merger/pages/rotate" ^
+  -X POST ^
+  -H "Content-Type: application/json" ^
+  -H "Accept: application/json" ^
+  -H "Authorization: Bearer %JWT_TOKEN%" ^
+  -d "{\"FileInfo\": { \"FilePath\": \"/Pdf/ten-pages.pdf\" }, \"Pages\": [2,4], \"Mode\": \"Rotate90\", \"OutputPath\": \"output/rotate-pages.pdf\"}"
 ```
 
 {{< /tab >}} {{< tab "Response" >}}

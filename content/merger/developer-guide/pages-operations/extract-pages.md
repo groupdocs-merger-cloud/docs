@@ -27,32 +27,71 @@ HTTP POST ~/Pages/Extract
 
 ### cURL example
 
-{{< tabs "example1">}} {{< tab "Request" >}}
-
+{{< tabs "example1">}} {{< tab "Linux/MacOS/Bash" >}}
 ```bash
-
-* First get JSON Web Token
-* Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications. Kindly place Client Id in "client_id" and Client Secret in "client_secret" argument.
+# First get JSON Web Token
+# Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications.
+# Place Client Id in $CLIENT_ID and Client Secret in $CLIENT_SECRET.
 curl -v "https://api.groupdocs.cloud/connect/token" \
--X POST \
--d "grant_type=client_credentials&client_id=xxxx&client_secret=xxxx" \
--H "Content-Type: application/x-www-form-urlencoded" \
--H "Accept: application/json"
+  -X POST \
+  -d "grant_type=client_credentials&client_id=$CLIENT_ID&client_secret=$CLIENT_SECRET" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -H "Accept: application/json"
 
-* cURL example to join several documents into one
+# cURL example to extract pages from a document
 curl -v "https://api.groupdocs.cloud/v1.0/merger/pages/extract" \
--X POST \
--H "Content-Type: application/json" \
--H "Accept: application/json" \
--H "Authorization: Bearer
-<jwt token>" \
--d "{
-     'FileInfo': { 'FilePath': '/WordProcessing/sample-10-pages.docx'},
-     'Pages':  [ 2, 4, 7 ],
-     'OutputPath': 'output/extract-pages-by-numbers.docx'
- }"
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer $JWT_TOKEN" \
+  -d '{
+        "FileInfo": { "FilePath": "/WordProcessing/sample-10-pages.docx"},
+        "Pages":  [2, 4, 7],
+        "OutputPath": "output/extract-pages-by-numbers.docx"
+      }'
 ```
+{{< /tab >}}
 
+{{< tab "Windows PowerShell" >}}
+```powershell
+# First get JSON Web Token
+# Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications.
+# Place Client Id in $env:CLIENT_ID and Client Secret in $env:CLIENT_SECRET.
+curl.exe -v "https://api.groupdocs.cloud/connect/token" `
+  -X POST `
+  -d "grant_type=client_credentials&client_id=$env:CLIENT_ID&client_secret=$env:CLIENT_SECRET" `
+  -H "Content-Type: application/x-www-form-urlencoded" `
+  -H "Accept: application/json"
+
+# cURL example to extract pages from a document
+curl.exe -v "https://api.groupdocs.cloud/v1.0/merger/pages/extract" `
+  -X POST `
+  -H "Content-Type: application/json" `
+  -H "Accept: application/json" `
+  -H "Authorization: Bearer $env:JWT_TOKEN" `
+  -d '{ "FileInfo": { "FilePath": "/WordProcessing/sample-10-pages.docx"}, "Pages": [2,4,7], "OutputPath": "output/extract-pages-by-numbers.docx" }'
+```
+{{< /tab >}}
+
+{{< tab "Windows CMD" >}}
+```cmd
+rem First get JSON Web Token
+rem Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications.
+rem Place Client Id in %CLIENT_ID% and Client Secret in %CLIENT_SECRET%.
+curl -v "https://api.groupdocs.cloud/connect/token" ^
+  -X POST ^
+  -d "grant_type=client_credentials&client_id=%CLIENT_ID%&client_secret=%CLIENT_SECRET%" ^
+  -H "Content-Type: application/x-www-form-urlencoded" ^
+  -H "Accept: application/json"
+
+rem cURL example to extract pages from a document
+curl -v "https://api.groupdocs.cloud/v1.0/merger/pages/extract" ^
+  -X POST ^
+  -H "Content-Type: application/json" ^
+  -H "Accept: application/json" ^
+  -H "Authorization: Bearer %JWT_TOKEN%" ^
+  -d "{ \"FileInfo\": { \"FilePath\": \"/WordProcessing/sample-10-pages.docx\"}, \"Pages\": [2,4,7], \"OutputPath\": \"output/extract-pages-by-numbers.docx\" }"
+```
 {{< /tab >}} {{< tab "Response" >}}
 
 ```json
@@ -265,34 +304,73 @@ HTTP POST ~/Pages/Extract
 
 ### cURL example
 
-{{< tabs "example3">}} {{< tab "Request" >}}
-
+{{< tabs "example3">}} {{< tab "Linux/MacOS/Bash" >}}
 ```bash
-
-* First get JSON Web Token
-* Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications. Kindly place Client Id in "client_id" and Client Secret in "client_secret" argument.
+# First get JSON Web Token
+# Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications.
+# Place Client Id in $CLIENT_ID and Client Secret in $CLIENT_SECRET.
 curl -v "https://api.groupdocs.cloud/connect/token" \
--X POST \
--d "grant_type=client_credentials&client_id=xxxx&client_secret=xxxx" \
--H "Content-Type: application/x-www-form-urlencoded" \
--H "Accept: application/json"
+  -X POST \
+  -d "grant_type=client_credentials&client_id=$CLIENT_ID&client_secret=$CLIENT_SECRET" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -H "Accept: application/json"
 
-* cURL example to join several documents into one
+# cURL example to extract pages by range
 curl -v "https://api.groupdocs.cloud/v1.0/merger/pages/extract" \
--X POST \
--H "Content-Type: application/json" \
--H "Accept: application/json" \
--H "Authorization: Bearer
-<jwt token>" \
--d "{
-     'FileInfo': { 'FilePath': '/WordProcessing/sample-10-pages.docx'},
-  'StartPageNumber': 1,
-  'EndPageNumber': 10,
-        'RangeMode': 'EvenPages',
-     'OutputPath': 'output/extract-pages-by-range.docx'
- }"
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer $JWT_TOKEN" \
+  -d '{
+        "FileInfo": { "FilePath": "/WordProcessing/sample-10-pages.docx"},
+        "StartPageNumber": 1,
+        "EndPageNumber": 10,
+        "RangeMode": "EvenPages",
+        "OutputPath": "output/extract-pages-by-range.docx"
+      }'
 ```
+{{< /tab >}}
 
+{{< tab "Windows PowerShell" >}}
+```powershell
+# First get JSON Web Token
+# Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications.
+# Place Client Id in $env:CLIENT_ID and Client Secret in $env:CLIENT_SECRET.
+curl.exe -v "https://api.groupdocs.cloud/connect/token" `
+  -X POST `
+  -d "grant_type=client_credentials&client_id=$env:CLIENT_ID&client_secret=$env:CLIENT_SECRET" `
+  -H "Content-Type: application/x-www-form-urlencoded" `
+  -H "Accept: application/json"
+
+# cURL example to extract pages by range
+curl.exe -v "https://api.groupdocs.cloud/v1.0/merger/pages/extract" `
+  -X POST `
+  -H "Content-Type: application/json" `
+  -H "Accept: application/json" `
+  -H "Authorization: Bearer $env:JWT_TOKEN" `
+  -d '{ "FileInfo": { "FilePath": "/WordProcessing/sample-10-pages.docx"}, "StartPageNumber": 1, "EndPageNumber": 10, "RangeMode": "EvenPages", "OutputPath": "output/extract-pages-by-range.docx" }'
+```
+{{< /tab >}}
+
+{{< tab "Windows CMD" >}}
+```cmd
+rem First get JSON Web Token
+rem Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications.
+rem Place Client Id in %CLIENT_ID% and Client Secret in %CLIENT_SECRET%.
+curl -v "https://api.groupdocs.cloud/connect/token" ^
+  -X POST ^
+  -d "grant_type=client_credentials&client_id=%CLIENT_ID%&client_secret=%CLIENT_SECRET%" ^
+  -H "Content-Type: application/x-www-form-urlencoded" ^
+  -H "Accept: application/json"
+
+rem cURL example to extract pages by range
+curl -v "https://api.groupdocs.cloud/v1.0/merger/pages/extract" ^
+  -X POST ^
+  -H "Content-Type: application/json" ^
+  -H "Accept: application/json" ^
+  -H "Authorization: Bearer %JWT_TOKEN%" ^
+  -d "{ \"FileInfo\": { \"FilePath\": \"/WordProcessing/sample-10-pages.docx\"}, \"StartPageNumber\": 1, \"EndPageNumber\": 10, \"RangeMode\": \"EvenPages\", \"OutputPath\": \"output/extract-pages-by-range.docx\" }"
+```
 {{< /tab >}} {{< tab "Response" >}}
 
 ```json

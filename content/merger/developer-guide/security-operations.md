@@ -35,31 +35,62 @@ HTTP PUT ~/password
 
 ### cURL example
 
-{{< tabs "example1">}} {{< tab "Request" >}}
-
+{{< tabs "example1">}} {{< tab "Linux/MacOS/Bash" >}}
 ```bash
-
-* First get JSON Web Token
-* Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications. Kindly place Client Id in "client_id" and Client Secret in "client_secret" argument.
+# First get JSON Web Token
+# Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications.
 curl -v "https://api.groupdocs.cloud/connect/token" \
--X POST \
--d "grant_type=client_credentials&client_id=xxxx&client_secret=xxxx" \
--H "Content-Type: application/x-www-form-urlencoded" \
--H "Accept: application/json"
+ -X POST \
+ -d "grant_type=client_credentials&client_id=$CLIENT_ID&client_secret=$CLIENT_SECRET" \
+ -H "Content-Type: application/x-www-form-urlencoded" \
+ -H "Accept: application/json"
 
-* cURL example to get document information
+# cURL example to add password to a document
 curl -v "https://api.groupdocs.cloud/v1.0/merger/password" \
--X PUT
--H "Authorization: Bearer
-<jwt token>"
--d "{
-        'FileInfo': { 'FilePath': 'words/four-pages.docx'},
-        'Password':  'Password',
-        'OutputPath': 'output/add-password.docx'
-    }"
-
+ -X PUT \
+ -H "Authorization: Bearer $JWT_TOKEN" \
+ -d '{
+        "FileInfo": { "FilePath": "words/four-pages.docx"},
+        "Password":  "Password",
+        "OutputPath": "output/add-password.docx"
+    }'
 ```
+{{< /tab >}}
 
+{{< tab "Windows PowerShell" >}}
+```powershell
+# First get JSON Web Token
+# Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications.
+curl.exe -v "https://api.groupdocs.cloud/connect/token" `
+ -X POST `
+ -d "grant_type=client_credentials&client_id=$env:CLIENT_ID&client_secret=$env:CLIENT_SECRET" `
+ -H "Content-Type: application/x-www-form-urlencoded" `
+ -H "Accept: application/json"
+
+# cURL example to add password to a document
+curl.exe -v "https://api.groupdocs.cloud/v1.0/merger/password" `
+ -X PUT `
+ -H "Authorization: Bearer $env:JWT_TOKEN" `
+ -d "{ 'FileInfo': { 'FilePath': 'words/four-pages.docx' }, 'Password': 'Password', 'OutputPath': 'output/add-password.docx' }"
+```
+{{< /tab >}}
+
+{{< tab "Windows CMD" >}}
+```cmd
+rem First get JSON Web Token
+rem Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications.
+curl -v "https://api.groupdocs.cloud/connect/token" ^
+ -X POST ^
+ -d "grant_type=client_credentials&client_id=%CLIENT_ID%&client_secret=%CLIENT_SECRET%" ^
+ -H "Content-Type: application/x-www-form-urlencoded" ^
+ -H "Accept: application/json"
+
+rem cURL example to add password to a document
+curl -v "https://api.groupdocs.cloud/v1.0/merger/password" ^
+ -X PUT ^
+ -H "Authorization: Bearer %JWT_TOKEN%" ^
+ -d "{\"FileInfo\": { \"FilePath\": \"words/four-pages.docx\" }, \"Password\": \"Password\", \"OutputPath\": \"output/add-password.docx\"}"
+```
 {{< /tab >}} {{< tab "Response" >}}
 
 ```json
@@ -273,26 +304,52 @@ HTTP GET ~/password?filePath#{filePath}
 
 ### cURL example
 
-{{< tabs "example3">}} {{< tab "Request" >}}
-
+{{< tabs "example3">}} {{< tab "Linux/MacOS/Bash" >}}
 ```bash
-
-* First get JSON Web Token
-* Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications. Kindly place Client Id in "client_id" and Client Secret in "client_secret" argument.
+# First get JSON Web Token
 curl -v "https://api.groupdocs.cloud/connect/token" \
--X POST \
--d "grant_type=client_credentials&client_id=xxxx&client_secret=xxxx" \
--H "Content-Type: application/x-www-form-urlencoded" \
--H "Accept: application/json"
+ -X POST \
+ -d "grant_type=client_credentials&client_id=$CLIENT_ID&client_secret=$CLIENT_SECRET" \
+ -H "Content-Type: application/x-www-form-urlencoded" \
+ -H "Accept: application/json"
 
-* cURL example to get document information
+# Get document information
 curl -v "https://api.groupdocs.cloud/v1.0/merger/password?filePath#%2Fwords%2Fpassword-protected.docx" \
--X GET
--H "Authorization: Bearer
-<jwt token>"
-
+ -X GET \
+ -H "Authorization: Bearer $JWT_TOKEN"
 ```
+{{< /tab >}}
 
+{{< tab "Windows PowerShell" >}}
+```powershell
+# First get JSON Web Token
+curl.exe -v "https://api.groupdocs.cloud/connect/token" `
+ -X POST `
+ -d "grant_type=client_credentials&client_id=$env:CLIENT_ID&client_secret=$env:CLIENT_SECRET" `
+ -H "Content-Type: application/x-www-form-urlencoded" `
+ -H "Accept: application/json"
+
+# Get document information
+curl.exe -v "https://api.groupdocs.cloud/v1.0/merger/password?filePath#%2Fwords%2Fpassword-protected.docx" `
+ -X GET `
+ -H "Authorization: Bearer $env:JWT_TOKEN"
+```
+{{< /tab >}}
+
+{{< tab "Windows CMD" >}}
+```cmd
+rem First get JSON Web Token
+curl -v "https://api.groupdocs.cloud/connect/token" ^
+ -X POST ^
+ -d "grant_type=client_credentials&client_id=%CLIENT_ID%&client_secret=%CLIENT_SECRET%" ^
+ -H "Content-Type: application/x-www-form-urlencoded" ^
+ -H "Accept: application/json"
+
+rem Get document information
+curl -v "https://api.groupdocs.cloud/v1.0/merger/password?filePath#%2Fwords%2Fpassword-protected.docx" ^
+ -X GET ^
+ -H "Authorization: Bearer %JWT_TOKEN%"
+```
 {{< /tab >}} {{< tab "Response" >}}
 
 ```json
@@ -470,31 +527,59 @@ HTTP DELETE ~/password
 
 ### cURL example
 
-{{< tabs "example5">}} {{< tab "Request" >}}
-
+{{< tabs "example5">}} {{< tab "Linux/MacOS/Bash" >}}
 ```bash
-
-* First get JSON Web Token
-* Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications. Kindly place Client Id in "client_id" and Client Secret in "client_secret" argument.
+# First get JSON Web Token
 curl -v "https://api.groupdocs.cloud/connect/token" \
--X POST \
--d "grant_type=client_credentials&client_id=xxxx&client_secret=xxxx" \
--H "Content-Type: application/x-www-form-urlencoded" \
--H "Accept: application/json"
+ -X POST \
+ -d "grant_type=client_credentials&client_id=$CLIENT_ID&client_secret=$CLIENT_SECRET" \
+ -H "Content-Type: application/x-www-form-urlencoded" \
+ -H "Accept: application/json"
 
-* cURL example to get document information
+# Remove password from a document
 curl -v "https://api.groupdocs.cloud/v1.0/merger/password" \
--X DELETE
--H "Authorization: Bearer
-<jwt token>"
--d "{
-        'FileInfo': { 'FilePath': 'words/password-protected.docx'},
-        'Password':  'Password',
-        'OutputPath': 'output/remove-password.docx'
-    }"
-
+ -X DELETE \
+ -H "Authorization: Bearer $JWT_TOKEN" \
+ -d '{
+        "FileInfo": { "FilePath": "words/password-protected.docx"},
+        "Password": "Password",
+        "OutputPath": "output/remove-password.docx"
+    }'
 ```
+{{< /tab >}}
 
+{{< tab "Windows PowerShell" >}}
+```powershell
+# First get JSON Web Token
+curl.exe -v "https://api.groupdocs.cloud/connect/token" `
+ -X POST `
+ -d "grant_type=client_credentials&client_id=$env:CLIENT_ID&client_secret=$env:CLIENT_SECRET" `
+ -H "Content-Type: application/x-www-form-urlencoded" `
+ -H "Accept: application/json"
+
+# Remove password from a document
+curl.exe -v "https://api.groupdocs.cloud/v1.0/merger/password" `
+ -X DELETE `
+ -H "Authorization: Bearer $env:JWT_TOKEN" `
+ -d "{ 'FileInfo': { 'FilePath': 'words/password-protected.docx' }, 'Password': 'Password', 'OutputPath': 'output/remove-password.docx' }"
+```
+{{< /tab >}}
+
+{{< tab "Windows CMD" >}}
+```cmd
+rem First get JSON Web Token
+curl -v "https://api.groupdocs.cloud/connect/token" ^
+ -X POST ^
+ -d "grant_type=client_credentials&client_id=%CLIENT_ID%&client_secret=%CLIENT_SECRET%" ^
+ -H "Content-Type: application/x-www-form-urlencoded" ^
+ -H "Accept: application/json"
+
+rem Remove password from a document
+curl -v "https://api.groupdocs.cloud/v1.0/merger/password" ^
+ -X DELETE ^
+ -H "Authorization: Bearer %JWT_TOKEN%" ^
+ -d "{\"FileInfo\": { \"FilePath\": \"words/password-protected.docx\" }, \"Password\": \"Password\", \"OutputPath\": \"output/remove-password.docx\"}"
+```
 {{< /tab >}} {{< tab "Response" >}}
 
 ```json
@@ -711,34 +796,62 @@ HTTP POST ~/password
 
 ### cURL example
 
-{{< tabs "example7">}} {{< tab "Request" >}}
-
+{{< tabs "example7">}} {{< tab "Linux/MacOS/Bash" >}}
 ```bash
-
-* First get JSON Web Token
-* Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications. Kindly place Client Id in "client_id" and Client Secret in "client_secret" argument.
+# First get JSON Web Token
 curl -v "https://api.groupdocs.cloud/connect/token" \
--X POST \
--d "grant_type=client_credentials&client_id=xxxx&client_secret=xxxx" \
--H "Content-Type: application/x-www-form-urlencoded" \
--H "Accept: application/json"
+ -X POST \
+ -d "grant_type=client_credentials&client_id=$CLIENT_ID&client_secret=$CLIENT_SECRET" \
+ -H "Content-Type: application/x-www-form-urlencoded" \
+ -H "Accept: application/json"
 
-* cURL example to get document information
+# Update password of a document
 curl -v "https://api.groupdocs.cloud/v1.0/merger/password" \
--X POST
--H "Authorization: Bearer
-<jwt token>"
--d "{
-        'FileInfo':
-     {
-        'FilePath': '/words/password-protected.docx',
-         'Password':  'Password',
-     },
-     'NewPassword':  'NewPassword',
-     'OutputPath': 'output/update-password.docx'
-    }"
+ -X POST \
+ -H "Authorization: Bearer $JWT_TOKEN" \
+ -d '{
+        "FileInfo": {
+            "FilePath": "/words/password-protected.docx",
+            "Password": "Password"
+        },
+        "NewPassword": "NewPassword",
+        "OutputPath": "output/update-password.docx"
+    }'
 ```
+{{< /tab >}}
 
+{{< tab "Windows PowerShell" >}}
+```powershell
+# First get JSON Web Token
+curl.exe -v "https://api.groupdocs.cloud/connect/token" `
+ -X POST `
+ -d "grant_type=client_credentials&client_id=$env:CLIENT_ID&client_secret=$env:CLIENT_SECRET" `
+ -H "Content-Type: application/x-www-form-urlencoded" `
+ -H "Accept: application/json"
+
+# Update password of a document
+curl.exe -v "https://api.groupdocs.cloud/v1.0/merger/password" `
+ -X POST `
+ -H "Authorization: Bearer $env:JWT_TOKEN" `
+ -d "{ 'FileInfo': { 'FilePath': '/words/password-protected.docx', 'Password': 'Password' }, 'NewPassword': 'NewPassword', 'OutputPath': 'output/update-password.docx' }"
+```
+{{< /tab >}}
+
+{{< tab "Windows CMD" >}}
+```cmd
+rem First get JSON Web Token
+curl -v "https://api.groupdocs.cloud/connect/token" ^
+ -X POST ^
+ -d "grant_type=client_credentials&client_id=%CLIENT_ID%&client_secret=%CLIENT_SECRET%" ^
+ -H "Content-Type: application/x-www-form-urlencoded" ^
+ -H "Accept: application/json"
+
+rem Update password of a document
+curl -v "https://api.groupdocs.cloud/v1.0/merger/password" ^
+ -X POST ^
+ -H "Authorization: Bearer %JWT_TOKEN%" ^
+ -d "{\"FileInfo\": { \"FilePath\": \"/words/password-protected.docx\", \"Password\": \"Password\" }, \"NewPassword\": \"NewPassword\", \"OutputPath\": \"output/update-password.docx\"}"
+```
 {{< /tab >}} {{< tab "Response" >}}
 
 ```json

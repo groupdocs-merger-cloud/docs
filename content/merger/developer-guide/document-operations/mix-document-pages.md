@@ -40,24 +40,54 @@ HTTP POST ~/mix
 
 ## cURL example
 
-{{< tabs "example1">}} {{< tab "Request" >}}
-
+{{< tabs "example1">}} {{< tab "Linux/MacOS/Bash" >}}
 ```bash
 # First get JSON Web Token
 # Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications.
 curl -v "https://api.groupdocs.cloud/connect/token" \
--X POST \
--d "grant_type=client_credentials&client_id=xxxx&client_secret=xxxx" \
--H "Content-Type: application/x-www-form-urlencoded" \
--H "Accept: application/json"
+  -X POST \
+  -d "grant_type=client_credentials&client_id=$CLIENT_ID&client_secret=$CLIENT_SECRET" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -H "Accept: application/json"
 
 # cURL example to mix pages from several documents into one document
 curl -v "https://api.groupdocs.cloud/v1.0/merger/mix" \
--X POST \
--H "Content-Type: application/json" \
--H "Accept: application/json" \
--H "Authorization: Bearer <jwt token>" \
--d "{
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer $JWT_TOKEN" \
+  -d '{
+    "Files": [
+        { "FilePath": "WordProcessing/sample-10-pages.docx" },
+        { "FilePath": "WordProcessing/four-pages.docx" }
+    ],
+    "FilesPages": [
+        { "FileIndex": 0, "Pages": [1, 2] },
+        { "FileIndex": 1, "Pages": [1, 2] },
+        { "FileIndex": 0, "Pages": [3, 4] }
+    ],
+    "OutputPath": "Output/mixed-pages.docx"
+}'
+```
+{{< /tab >}}
+
+{{< tab "Windows PowerShell" >}}
+```powershell
+# First get JSON Web Token
+# Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications.
+curl.exe -v "https://api.groupdocs.cloud/connect/token" `
+  -X POST `
+  -d "grant_type=client_credentials&client_id=$env:CLIENT_ID&client_secret=$env:CLIENT_SECRET" `
+  -H "Content-Type: application/x-www-form-urlencoded" `
+  -H "Accept: application/json"
+
+# cURL example to mix pages from several documents into one document
+curl.exe -v "https://api.groupdocs.cloud/v1.0/merger/mix" `
+  -X POST `
+  -H "Content-Type: application/json" `
+  -H "Accept: application/json" `
+  -H "Authorization: Bearer $env:JWT_TOKEN" `
+  -d "{
     'Files': [
         { 'FilePath': 'WordProcessing/sample-10-pages.docx' },
         { 'FilePath': 'WordProcessing/four-pages.docx' }
@@ -70,7 +100,26 @@ curl -v "https://api.groupdocs.cloud/v1.0/merger/mix" \
     'OutputPath': 'Output/mixed-pages.docx'
 }"
 ```
+{{< /tab >}}
 
+{{< tab "Windows CMD" >}}
+```cmd
+:: First get JSON Web Token
+:: Please get your Client Id and Client Secret from https://dashboard.groupdocs.cloud/applications.
+curl -v "https://api.groupdocs.cloud/connect/token" ^
+  -X POST ^
+  -d "grant_type=client_credentials&client_id=%CLIENT_ID%&client_secret=%CLIENT_SECRET%" ^
+  -H "Content-Type: application/x-www-form-urlencoded" ^
+  -H "Accept: application/json"
+
+:: cURL example to mix pages from several documents into one document
+curl -v "https://api.groupdocs.cloud/v1.0/merger/mix" ^
+  -X POST ^
+  -H "Content-Type: application/json" ^
+  -H "Accept: application/json" ^
+  -H "Authorization: Bearer %JWT_TOKEN%" ^
+  -d "{\"Files\":[{\"FilePath\":\"WordProcessing/sample-10-pages.docx\"},{\"FilePath\":\"WordProcessing/four-pages.docx\"}],\"FilesPages\":[{\"FileIndex\":0,\"Pages\":[1,2]},{\"FileIndex\":1,\"Pages\":[1,2]},{\"FileIndex\":0,\"Pages\":[3,4]}],\"OutputPath\":\"Output/mixed-pages.docx\"}"
+```
 {{< /tab >}} {{< tab "Response" >}}
 
 ```json

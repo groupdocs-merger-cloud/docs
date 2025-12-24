@@ -26,13 +26,28 @@ This API allows you to get a list of all files of a specific folder from the 
 
 ### cURL example
 
-{{< tabs "example1">}} {{< tab "Request" >}}
-
+{{< tabs "example1">}} {{< tab "Linux/MacOS/Bash" >}}
 ```bash
-curl -X GET "https://api.groupdocs.cloud/v1.0/merger/storage/folder/conversiondocs?storageName#MyStorage" -H  "accept: application/json" -H  "authorization: Bearer [Access Token]"
-
+curl -X GET "https://api.groupdocs.cloud/v1.0/merger/storage/folder/conversiondocs?storageName#MyStorage" \
+-H "accept: application/json" \
+-H "authorization: Bearer $JWT_TOKEN"
 ```
+{{< /tab >}}
 
+{{< tab "Windows PowerShell" >}}
+```powershell
+curl.exe -X GET "https://api.groupdocs.cloud/v1.0/merger/storage/folder/conversiondocs?storageName#MyStorage" `
+    -H "accept: application/json" `
+    -H "authorization: Bearer $env:JWT_TOKEN"
+```
+{{< /tab >}}
+
+{{< tab "Windows CMD" >}}
+```cmd
+curl -X GET "https://api.groupdocs.cloud/v1.0/merger/storage/folder/conversiondocs?storageName#MyStorage" ^
+    -H "accept: application/json" ^
+    -H "authorization: Bearer %JWT_TOKEN%"
+```
 {{< /tab >}} {{< tab "Response" >}}
 
 ```json
@@ -280,13 +295,28 @@ This API allows you to create a new folder in the specified Cloud Storage. If yo
 
 ### cURL example
 
-{{< tabs "example3">}} {{< tab "Request" >}}
-
+{{< tabs "example3">}} {{< tab "Linux/MacOS/Bash" >}}
 ```bash
-curl -X POST "https://api.groupdocs.cloud/v1.0/merger/storage/folder/conversiondocs3?storageName#MyStorage" -H  "accept: application/json" -H  "authorization: Bearer [Access Token]"
-
+curl -X POST "https://api.groupdocs.cloud/v1.0/merger/storage/folder/conversiondocs3?storageName#MyStorage" \
+-H "accept: application/json" \
+-H "authorization: Bearer $JWT_TOKEN"
 ```
+{{< /tab >}}
 
+{{< tab "Windows PowerShell" >}}
+```powershell
+curl.exe -X POST "https://api.groupdocs.cloud/v1.0/merger/storage/folder/conversiondocs3?storageName#MyStorage" `
+    -H "accept: application/json" `
+    -H "authorization: Bearer $env:JWT_TOKEN"
+```
+{{< /tab >}}
+
+{{< tab "Windows CMD" >}}
+```cmd
+curl -X POST "https://api.groupdocs.cloud/v1.0/merger/storage/folder/conversiondocs3?storageName#MyStorage" ^
+    -H "accept: application/json" ^
+    -H "authorization: Bearer %JWT_TOKEN%"
+```
 {{< /tab >}} {{< tab "Response" >}}
 
 ```json
@@ -469,13 +499,28 @@ This API allows you to delete a particular folder in the specified Cloud Storage
 
 ### cURL example
 
-{{< tabs "example5">}} {{< tab "Request" >}}
-
+{{< tabs "example5">}} {{< tab "Linux/MacOS/Bash" >}}
 ```bash
-curl -X DELETE "https://api.groupdocs.cloud/v1.0/merger/storage/folder/conversiondocs3?storageName#MyStorage&recursive#true" -H  "accept: application/json" -H  "authorization: Bearer [Access Token]"
-
+curl -X DELETE "https://api.groupdocs.cloud/v1.0/merger/storage/folder/conversiondocs3?storageName#MyStorage&recursive#true" \
+-H "accept: application/json" \
+-H "authorization: Bearer $JWT_TOKEN"
 ```
+{{< /tab >}}
 
+{{< tab "Windows PowerShell" >}}
+```powershell
+curl.exe -X DELETE "https://api.groupdocs.cloud/v1.0/merger/storage/folder/conversiondocs3?storageName#MyStorage&recursive#true" `
+    -H "accept: application/json" `
+    -H "authorization: Bearer $env:JWT_TOKEN"
+```
+{{< /tab >}}
+
+{{< tab "Windows CMD" >}}
+```cmd
+curl -X DELETE "https://api.groupdocs.cloud/v1.0/merger/storage/folder/conversiondocs3?storageName#MyStorage&recursive#true" ^
+    -H "accept: application/json" ^
+    -H "authorization: Bearer %JWT_TOKEN%"
+```
 {{< /tab >}} {{< tab "Response" >}}
 
 ```json
@@ -661,13 +706,28 @@ This API allows you to copy a folder to another location in the GroupDocs Cloud 
 
 ### cURL example
 
-{{< tabs "example7">}} {{< tab "Request" >}}
-
+{{< tabs "example7">}} {{< tab "Linux/MacOS/Bash" >}}
 ```bash
-curl -X PUT "https://api.groupdocs.cloud/v1.0/merger/storage/folder/copy/conversiondocs?destPath#conversiondocs1&srcStorageName#MyStorage&destStorageName#MyStorage" -H  "accept: application/json" -H  "authorization: Bearer [Access Token]"
-
+curl -X PUT "https://api.groupdocs.cloud/v1.0/merger/storage/folder/copy/conversiondocs?destPath#conversiondocs1&srcStorageName#MyStorage&destStorageName#MyStorage" \
+-H "accept: application/json" \
+-H "authorization: Bearer $JWT_TOKEN"
 ```
+{{< /tab >}}
 
+{{< tab "Windows PowerShell" >}}
+```powershell
+curl.exe -X PUT "https://api.groupdocs.cloud/v1.0/merger/storage/folder/copy/conversiondocs?destPath#conversiondocs1&srcStorageName#MyStorage&destStorageName#MyStorage" `
+    -H "accept: application/json" `
+    -H "authorization: Bearer $env:JWT_TOKEN"
+```
+{{< /tab >}}
+
+{{< tab "Windows CMD" >}}
+```cmd
+curl -X PUT "https://api.groupdocs.cloud/v1.0/merger/storage/folder/copy/conversiondocs?destPath#conversiondocs1&srcStorageName#MyStorage&destStorageName#MyStorage" ^
+    -H "accept: application/json" ^
+    -H "authorization: Bearer %JWT_TOKEN%"
+```
 {{< /tab >}} {{< tab "Response" >}}
 
 ```json
@@ -853,12 +913,28 @@ This API allows you to move a folder to another location in the GroupDocs Cloud 
 
 ### cURL example
 
-{{< tabs "example9">}} {{< tab "Request" >}}
-
+{{< tabs "example9">}} {{< tab "Linux/MacOS/Bash" >}}
 ```bash
-curl -X PUT "https://api.groupdocs.cloud/v1.0/merger/storage/folder/move/conversiondocs?destPath#conversiondocs1&srcStorageName#MyStorage&destStorageName#MyStorage" -H  "accept: application/json" -H  "authorization: Bearer [Access Token]"
+curl -X PUT "https://api.groupdocs.cloud/v1.0/merger/storage/folder/move/conversiondocs?destPath#conversiondocs1&srcStorageName#MyStorage&destStorageName#MyStorage" \
+-H "accept: application/json" \
+-H "authorization: Bearer $JWT_TOKEN"
 ```
+{{< /tab >}}
 
+{{< tab "Windows PowerShell" >}}
+```powershell
+curl.exe -X PUT "https://api.groupdocs.cloud/v1.0/merger/storage/folder/move/conversiondocs?destPath#conversiondocs1&srcStorageName#MyStorage&destStorageName#MyStorage" `
+    -H "accept: application/json" `
+    -H "authorization: Bearer $env:JWT_TOKEN"
+```
+{{< /tab >}}
+
+{{< tab "Windows CMD" >}}
+```cmd
+curl -X PUT "https://api.groupdocs.cloud/v1.0/merger/storage/folder/move/conversiondocs?destPath#conversiondocs1&srcStorageName#MyStorage&destStorageName#MyStorage" ^
+    -H "accept: application/json" ^
+    -H "authorization: Bearer %JWT_TOKEN%"
+```
 {{< /tab >}} {{< tab "Response" >}}
 
 ```json
