@@ -28,6 +28,7 @@ The table below contains the full list of properties that can be specified for e
 |StartPageNumber|Start page number|Ignored if Pages collection is not empty
 |EndPageNumber|End page number|Ignored if Pages collection is not empty
 |RangeMode|Page range mode: Even, Odd, All. The default value is All|Ignored if Pages collection is not empty
+|PreserveAccessibility|Indicates if PDF accessibility (tagged PDF structure) should be preserved during merge.|Required property
 |OutputPath|Path to resultant document|Required
 
 ## Resource URI

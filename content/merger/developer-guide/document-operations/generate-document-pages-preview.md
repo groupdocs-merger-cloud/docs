@@ -31,6 +31,7 @@ The following properties of preview may be customized:
 |Width|Image width in pixels|Optional
 |Height|Image height in pixels|Optional
 |Format|Image format - JPG, PNG, BMP|The default value is JPG
+|Resolution|Preview image resolution (DPI). When 0, the default resolution is used.|Required property
 |OutputPath|Path format to resultant images|Required
 
 ## Resource URI
